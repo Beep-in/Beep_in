@@ -33,10 +33,12 @@ export default function Signin(){
                 <a href="" className="pt-3 font-karia text-[#6C63FF]">Forgot password?</a>
                 </div>
                 <button className='rounded-lg bg-[#6C63FF] block text-white w-52 h-12 ml-auto mr-auto mt-6 font-semibold'>Log in</button>
-                <div className='flex mt-4 ml-16'>
-                <img src="/icons/line1.svg" alt="line1" />
-                <p className='text-[#6C63FF] pl-2 pr-2'>OR</p>
-                <img src="/icons/line1.svg" alt="line1" />
+                <div className='flex mt-4 justify-center'>
+                {/* <img src="/icons/line1.svg" alt="line1" /> */}
+                <div className='h-[1px] opacity-20 w-40 bg-[#6C63FF] mt-3'></div>
+                <p className='text-[#6C63FF] pl-2 pr-2 '>OR</p>
+                <div className='h-[1px] opacity-20 w-40 bg-[#6C63FF] mt-3'></div>
+                {/* <img src="/icons/line1.svg" alt="line1" /> */}
                 </div>
                 <button className='bg-[#D9D9D9] bg-opacity-10 flex shadow-md font-karia  shadow-slate-400  rounded-lg h-12 w-64 text-center items-center pl-8 ml-auto mr-auto mt-4'><img src="/icons/google.svg" alt="google" className='pr-3'/>Sign In With Google</button>
                 <p className='font-karia pt-8 text-center'>Don't have an account?<Link href = "/dashboard/navbar" className='text-[#6C63FF] pl-1'>Sign up</Link></p>
