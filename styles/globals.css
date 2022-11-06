@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 ul{
-    /* display: none; */
+display: none;
 }
-a:hover ul{
-   /* display: block;  */
-   display: none;
-}
+a:hover
