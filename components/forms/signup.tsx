@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+
+
 // import signup from 'images/signup.png'
 
 export default function Signup() {
+  const[data,setData] = useState('');
   return (
     <div>
       <div className="flex">
@@ -18,13 +22,14 @@ export default function Signup() {
         />
       </div>
       {/* <div className='relative'> */}
-      <div className="flex mt-8 ">
-        <div className="mt-8 ">
+      <div className="flex mt-8">
+        <div className=" w-1/2 h-[100vh]">
           <Image
             width={720}
             height={600}
             alt="signup image"
             src={"/images/signup.png"}
+            className="ml-8 mt-32"
           />
         </div>
         {/* </div> */}
