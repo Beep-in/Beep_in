@@ -14,6 +14,11 @@ export default function Signin() {
           alt="logo"
           className="ml-auto mr-auto mt-4"
         />
+        <img 
+        src="/icons/dots.svg"
+        alt="dots"
+        
+        />
       </div>
 
       <div className="flex mt-8 justify-center">
@@ -71,8 +76,18 @@ export default function Signin() {
               </Link>
             </p>
           </form>
+          <div>
+          <div className="absolute left-0 bottom-0">  
+
+          <img 
+        src="/icons/dots.svg"
+        alt="dots"
+        
+        />
+          </div>
           <div className=" absolute right-0 bottom-0">
             <img src="/icons/corners3.svg" alt="corner" className="mt-0 " />
+          </div>
           </div>
         </div>
       </div>

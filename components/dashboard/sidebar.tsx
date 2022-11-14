@@ -1,10 +1,11 @@
+// import { useReducer, useState } from "react";
 import {
   FaRegComments,
   FaRegAddressBook,
   FaBook,
   FaRegPaperPlane,
 } from "react-icons/fa";
-import Select from "react-select";
+
 
 import {
   AiOutlineSetting,
@@ -13,16 +14,72 @@ import {
   AiOutlineUsergroupAdd,
   AiOutlineRight,
 } from "react-icons/ai";
-import { useState } from "react";
-export default function Sidebar() {
-  const [show, setShow] = useState(false);
-  const [single, setSingle] = useState(false);
-  const [bulk, setBulk] = useState(false);
-  const [group, setGroup] = useState(false);
-  const [chart, setChart] = useState(false);
-  const [topup, setTopup] = useState(false);
+import { useState,useReducer } from "react";
 
-  const options = [
+
+
+const initialEvent = {
+  message: false,
+  book: false,
+  group: false,
+  topup: false,
+  chart:false
+};
+type ACTIONTYPE =
+    | { type: "message" }
+    | { type: "book" }
+    | { type: "group"}
+    | { type: "topup"}
+    | {type: "chart"};
+  
+const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
+  state = {
+    message: false,
+    book: false,
+    group: false,
+    topup: false,
+    chart:false
+  };
+  switch (action.type) {
+    case "message":
+      return {
+        ...state,
+        message: true,
+      };
+ 
+    case "book":
+      return {
+        ...state,
+        book: true,
+      };
+          
+    case "group":
+      return {
+        ...state,
+        group: true,
+      };
+          
+    case "topup":
+      return {
+        ...state,
+        topup: true,
+      };
+      
+      case "chart":
+        return {
+          ...state,
+          chart: true,
+        };
+    default:
+      return { ...state };
+  }
+};
+
+export default function Sidebar() {
+  
+  const [state, dispatch] = useReducer(setEvents, initialEvent);
+
+    const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
   ];
@@ -32,85 +89,88 @@ export default function Sidebar() {
       <div className="h-[76vh] w-2 border-r-2 border-[] absolute left-72 top-44"></div>
       <div className="w-24 bg-[hsl(0,0%,95%)]  pt-28 h-auto pb-9 flex gap-7 flex-col">
         <FaRegComments
-          onClick={() => setShow(!show)}
+          onClick={() => { dispatch({type:"message"})
+        
+        }}
           className="w-full h-8   hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
-        {show && (
+        {state.message && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <div className="flex">
+            <button className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4" onClick={() => setSingle(!single)}>
+              <li className="pl-4">
                 Single
               </li>
-            </div>
-            <div className="flex">
+            </button>
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4" onClick={() => setBulk(!bulk)}>
+              <li className="pl-4">
                 Bulk
               </li>
             </div>
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4" onClick={() => setGroup(!group)}>
+              <li className="pl-4" >
                 Group
               </li>
             </div>
           </div>
-        )}
-
-        <FaRegAddressBook className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
-        <AiOutlineUsergroupAdd className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+         )} 
+        
+        <FaRegAddressBook onClick={() => dispatch({type:"book"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+        <AiOutlineUsergroupAdd   onClick={() => dispatch({type:"group"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
         <FaBook
-          onClick={() => setTopup(!topup)}
+         onClick={() => dispatch({type:"topup"})} 
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
-        {topup && (
+        {state.topup && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Topup history</li>
             </div>
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Buy SMS</li>
             </div>
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">SMS List</li>
             </div>
           </div>
-        )}
+          )}
 
         <AiOutlineLineChart
-          onClick={() => setChart(!chart)}
+         onClick={() => dispatch({type:"chart"})} 
+      
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
-        {chart && (
+        {state.chart && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Overview</li>
             </div>
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Report</li>
             </div>
-            <div className="flex">
+            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">SMS List</li>
             </div>
           </div>
-        )}
+          )}
         <div className=" gap-7 flex flex-col mt-28">
           <AiOutlinePlus className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
           <AiOutlineSetting className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
         </div>
       </div>
-      {single && (
+{/*   
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
-            {/* <div className="bg-blue-400 w-2/3 ml-auto mr-auto"> */}
+            <div className="bg-blue-400 w-2/3 ml-auto mr-auto"></div>
             <form action="" className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-20 mt-10">
                 <label htmlFor="name" className="pt-4">
@@ -147,15 +207,14 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-          {/* </div> */}
-        </div>
-      )}
+        </div> */}
+  
 
-      {bulk && (
+{/*     
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
-            {/* <div className="bg-blue-400 w-2/3 ml-auto mr-auto"> */}
+           
             <form action="" className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
@@ -172,11 +231,10 @@ export default function Sidebar() {
                   Method type :
                 </label>
                 <select className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3  rounded-lg pl-8   ml-12">
-
                   {options.map((option) => (
                     <option value={option.value}>{option.label}</option>
-                    ))};
-                  
+                  ))}
+                  ;
                 </select>
               </div>
 
@@ -195,14 +253,13 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-          {/* </div> */}
-        </div>
-      )}
-      {group && (
-        <div>
+       
+        </div> */}
+   
+        {/* <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
-            {/* <div className="bg-blue-400 w-2/3 ml-auto mr-auto"> */}
+          
             <form action="" className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
@@ -239,9 +296,9 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-          {/* </div> */}
-        </div>
-      )}
+
+        </div> */}
+    
     </div>
   );
 }
