@@ -1,11 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {useForm} from 'react-hook-form';
 
+interface FormInput{
+  fullname:string,
+  phoneNumber:Number,
+  email:string,
+  password:string,
+  agent:string,
 
-// import signup from 'images/signup.png'
+}
 
 export default function Signup() {
+const [input,setInput] = useState<string>();
+  const {
+    register,
+    handleSubmit
+  } = useForm<FormInput>();
+
+  
+  const submit = (data:FormInput) => {
+    setInput(JSON.stringify(data));
+
+    console.log(data);
+
+  }
  
   return (
     <div>
@@ -21,7 +41,6 @@ export default function Signup() {
           className="ml-auto mr-auto mt-4"
         />
       </div>
-      {/* <div className='relative'> */}
       <div className="flex mt-8">
         <div className=" w-1/2 h-[100vh]">
           <Image
@@ -35,32 +54,37 @@ export default function Signup() {
         {/* </div> */}
         <div className="float-right w-1/2 h-auto">
           <h1 className="text-center font-karia font-bold text-2xl">Sign up</h1>
-          <form action="" className="block mt-16  ml-[25%]">
+          <form action="" className="block mt-16  ml-[25%]"onSubmit={handleSubmit(submit)} >
             <input
+            {...register("fullname")}
               type="text"
               name="fullname"
               placeholder="Name"
               className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6 rounded-lg pl-8 "
             />
             <input
+            {...register("phoneNumber")}
             name="phoneNumber"
               type="telephone"
               placeholder="Phone number"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
             />
             <input
+            {...register("email")}
             name="email"
               type="email"
               placeholder="Email"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
             />
             <input
+            {...register("password")}
               type="password"
               placeholder="Password"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
             />
 
             <select
+            {...register("agent")}
               name="agent"
               id=""
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
@@ -80,7 +104,7 @@ export default function Signup() {
             <span className="pl-2 font-karia">
               I agree to the terms and conditions.
             </span>
-            <button className="rounded-lg bg-[#6C63FF] block text-white w-52 h-12 ml-auto mr-auto mt-6 font-semibold">
+            <button type = "submit" className="rounded-lg bg-[#6C63FF] block text-white w-52 h-12 ml-auto mr-auto mt-6 font-semibold">
               Sign up
             </button>
             <div className="flex mt-4 justify-center">
