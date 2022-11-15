@@ -14,29 +14,69 @@ import {
   AiOutlineUsergroupAdd,
   AiOutlineRight,
 } from "react-icons/ai";
-import { useState,useReducer } from "react";
-
-
-
+import {useReducer } from "react";
+// import { deflate } from "zlib";
 const initialEvent = {
-  message: false,
+  message: true,
   book: false,
-  group: false,
+  teams: false,
   topup: false,
-  chart:false
+  chart:false,
+  
+
 };
+const initialReciever = {
+  single:false,
+  bulk:false,
+  group:false
+}
 type ACTIONTYPE =
     | { type: "message" }
     | { type: "book" }
-    | { type: "group"}
+    | { type: "teams"}
     | { type: "topup"}
-    | {type: "chart"};
+    | {type: "chart"}
+    | { type: "single"}
+    | { type: "bulk" }
+    | { type: "group"}
+  
+   const recieverType = (reciever: typeof initialReciever, action:ACTIONTYPE) =>{
+    reciever = {
+      single:false,
+      bulk:false,
+      group:false
+    }
+    switch(action.type){
+      case "single":
+        return {
+          ...reciever,
+          single: true,
+        };
+            
+      case "bulk":
+        return {
+          ...reciever,
+          bulk: true,
+        };
+        
+        case "group":
+          return {
+            ...reciever,
+            group: true,
+          };
+       default:
+        return {
+          ...reciever
+        }
+    }
+
+   }
   
 const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
   state = {
     message: false,
     book: false,
-    group: false,
+    teams: false,
     topup: false,
     chart:false
   };
@@ -53,7 +93,7 @@ const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
         book: true,
       };
           
-    case "group":
+    case "teams":
       return {
         ...state,
         group: true,
@@ -70,6 +110,7 @@ const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
           ...state,
           chart: true,
         };
+
     default:
       return { ...state };
   }
@@ -78,7 +119,7 @@ const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
 export default function Sidebar() {
   
   const [state, dispatch] = useReducer(setEvents, initialEvent);
-
+  const [recieve,display] = useReducer(recieverType, initialReciever);
     const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
@@ -96,29 +137,30 @@ export default function Sidebar() {
         />
         {state.message && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <button className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button onClick = {() => display({type:"single"})} className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">
+                
                 Single
               </li>
             </button>
-            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button onClick = {() => display({type:"bulk"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">
                 Bulk
               </li>
-            </div>
-            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            </button>
+            <button onClick = {() => display({type:"group"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4" >
                 Group
               </li>
-            </div>
+            </button>
           </div>
          )} 
         
         <FaRegAddressBook onClick={() => dispatch({type:"book"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
-        <AiOutlineUsergroupAdd   onClick={() => dispatch({type:"group"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+        <AiOutlineUsergroupAdd   onClick={() => dispatch({type:"teams"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
         <FaBook
          onClick={() => dispatch({type:"topup"})} 
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
@@ -166,7 +208,7 @@ export default function Sidebar() {
           <AiOutlineSetting className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
         </div>
       </div>
-{/*   
+       {recieve.single && ( 
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
@@ -207,10 +249,11 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-        </div> */}
+        </div> 
+        )} 
   
 
-{/*     
+    {recieve.bulk && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
@@ -254,9 +297,11 @@ export default function Sidebar() {
             </form>
           </div>
        
-        </div> */}
-   
-        {/* <div>
+        </div>
+   )}
+
+   {recieve.group && (
+        <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
           
@@ -297,8 +342,8 @@ export default function Sidebar() {
             </form>
           </div>
 
-        </div> */}
-    
+        </div>
+    )}
     </div>
   );
 }

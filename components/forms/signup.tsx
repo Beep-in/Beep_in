@@ -38,15 +38,18 @@ export default function Signup() {
           <form action="" className="block mt-16  ml-[25%]">
             <input
               type="text"
+              name="fullname"
               placeholder="Name"
               className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6 rounded-lg pl-8 "
             />
             <input
+            name="phoneNumber"
               type="telephone"
               placeholder="Phone number"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
             />
             <input
+            name="email"
               type="email"
               placeholder="Email"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
@@ -63,11 +66,14 @@ export default function Signup() {
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
             >
               <option value="">Type of agent</option>
-              <option value="">Super user</option>
-              <option value="">Super Agent</option>
+              <option value="">Admin</option>
+              <option value="">Super Reseller</option>
+              <option value="">Reseller</option>
+
               <option value="">Agent</option>
             </select>
             <input
+              name="checkbox"
               type="checkbox"
               className="h-4 w-4 mt-4 border-solid border border-[#6C63FF] border-opacity-10"
             />
