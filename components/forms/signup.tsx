@@ -6,7 +6,7 @@ import { useState } from "react";
 // import signup from 'images/signup.png'
 
 export default function Signup() {
-  const[data,setData] = useState('');
+ 
   return (
     <div>
       <div className="flex">
@@ -93,7 +93,7 @@ export default function Signup() {
             <button className="bg-[#D9D9D9] bg-opacity-10 flex shadow-md font-karia  shadow-slate-400  rounded-lg h-12 w-64 text-center items-center pl-8 ml-auto mr-auto mt-4">
               <img src="/icons/google.svg" alt="google" className="pr-3" />
               Sign Up With Google
-            </button>
+            </button> 
             <p className="font-karia pt-8 text-center">
               Have an account?
               <Link href="/auth/login" className="text-[#6C63FF] pl-1">

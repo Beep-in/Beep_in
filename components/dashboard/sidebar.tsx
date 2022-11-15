@@ -5,8 +5,7 @@ import {
   FaBook,
   FaRegPaperPlane,
 } from "react-icons/fa";
-
-
+import { GraphUp } from "react-bootstrap-icons";
 import {
   AiOutlineSetting,
   AiOutlinePlus,
