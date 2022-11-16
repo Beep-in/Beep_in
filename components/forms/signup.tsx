@@ -22,8 +22,8 @@ const [input,setInput] = useState<string>();
   
   const submit = (data:FormInput) => {
     setInput(JSON.stringify(data));
-
     console.log(data);
+   
 
   }
  
@@ -60,6 +60,7 @@ const [input,setInput] = useState<string>();
               type="text"
               name="fullname"
               placeholder="Name"
+              required
               className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6 rounded-lg pl-8 "
             />
             <input
@@ -68,6 +69,7 @@ const [input,setInput] = useState<string>();
               type="telephone"
               placeholder="Phone number"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
+            required
             />
             <input
             {...register("email")}
@@ -75,18 +77,23 @@ const [input,setInput] = useState<string>();
               type="email"
               placeholder="Email"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
+              required
+            
             />
             <input
             {...register("password")}
               type="password"
               placeholder="Password"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
+               required
             />
 
             <select
             {...register("agent")}
+
               name="agent"
               id=""
+              required
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
             >
               <option value="">Type of agent</option>

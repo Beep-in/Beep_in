@@ -1,11 +1,13 @@
 // import { useReducer, useState } from "react";
+import Image from "next/image";
 import {
   FaRegComments,
   FaRegAddressBook,
   FaBook,
   FaRegPaperPlane,
 } from "react-icons/fa";
-import { GraphUp } from "react-bootstrap-icons";
+import { GraphUp,Folder,People,JournalCheck } from "react-bootstrap-icons";
+
 import {
   AiOutlineSetting,
   AiOutlinePlus,
@@ -21,13 +23,12 @@ const initialEvent = {
   teams: false,
   topup: false,
   chart:false,
-  
-
 };
 const initialReciever = {
   single:false,
   bulk:false,
-  group:false
+  group:false,
+  messageIcon:true
 }
 type ACTIONTYPE =
     | { type: "message" }
@@ -38,14 +39,17 @@ type ACTIONTYPE =
     | { type: "single"}
     | { type: "bulk" }
     | { type: "group"}
-  
+    | {type: "messageIcon"}
+     
    const recieverType = (reciever: typeof initialReciever, action:ACTIONTYPE) =>{
     reciever = {
       single:false,
       bulk:false,
-      group:false
+      group:false,
+      messageIcon:false
     }
     switch(action.type){
+      
       case "single":
         return {
           ...reciever,
@@ -138,10 +142,11 @@ export default function Sidebar() {
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
             <button onClick = {() => display({type:"single"})} className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4">
+              <li className="pl-4 ">
                 
                 Single
               </li>
+              {/* <AiOutlinePlus className=""/> */}
             </button>
             <button onClick = {() => display({type:"bulk"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
@@ -158,9 +163,9 @@ export default function Sidebar() {
           </div>
          )} 
         
-        <FaRegAddressBook onClick={() => dispatch({type:"book"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
-        <AiOutlineUsergroupAdd   onClick={() => dispatch({type:"teams"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
-        <FaBook
+        <JournalCheck onClick={() => dispatch({type:"book"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+        <People   onClick={() => dispatch({type:"teams"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+        <Folder
          onClick={() => dispatch({type:"topup"})} 
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
@@ -342,6 +347,20 @@ export default function Sidebar() {
           </div>
 
         </div>
+    )}
+
+    {recieve.messageIcon && (
+      <div className="h-96 mt-28 absolute right-[35%]">
+        <Image 
+         width={400}
+         height={400}
+         alt="signup image"
+         src={"/images/messages.png"}
+        
+        />
+        <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">START SENDING MESSAGES</h1>
+      </div>
+
     )}
     </div>
   );
