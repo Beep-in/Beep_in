@@ -1,12 +1,40 @@
 // import { useReducer, useState } from "react";
 import Image from "next/image";
+import React from "react";
+import { Line } from "react-chartjs-2";
+import 'chart.js/auto';
+
+const data = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  datasets: [
+    {
+      label: "Recieved",
+      data: [33, 53, 85, 41, 44, 65],
+      fill: true,
+      borderColor: "rgba(75,192,192,1)"
+    },
+    {
+      label: " sent",
+      data: [33, 25, 35, 51, 54, 76],
+      fill: false,
+      borderColor: "#742774"
+    },
+    {
+      label: "Failed",
+      data: [33, 25, 35, 51, 54, 76],
+      fill: false,
+      borderColor: "#742774"
+    }
+  ]
+};
+
 import {
   FaRegComments,
   FaRegAddressBook,
   FaBook,
   FaRegPaperPlane,
 } from "react-icons/fa";
-import { GraphUp,Folder,People,JournalCheck } from "react-bootstrap-icons";
+import { GraphUp, Folder, People, JournalCheck, Download } from "react-bootstrap-icons";
 
 import {
   AiOutlineSetting,
@@ -15,73 +43,110 @@ import {
   AiOutlineUsergroupAdd,
   AiOutlineRight,
 } from "react-icons/ai";
-import {useReducer } from "react";
+import { useReducer,useRef } from "react";
 // import { deflate } from "zlib";
 const initialEvent = {
-  message: true,
+  message: false,
   book: false,
   teams: false,
   topup: false,
-  chart:false,
+  chart: false,
 };
 const initialReciever = {
-  single:false,
-  bulk:false,
-  group:false,
-  messageIcon:true
+  single: false,
+  bulk: false,
+  group: false,
+  messageIcon: false,
+};
+const initialStatics = {
+  overview:false,
+  report:false,
+  sms_list:false
 }
 type ACTIONTYPE =
-    | { type: "message" }
-    | { type: "book" }
-    | { type: "teams"}
-    | { type: "topup"}
-    | {type: "chart"}
-    | { type: "single"}
-    | { type: "bulk" }
-    | { type: "group"}
-    | {type: "messageIcon"}
-     
-   const recieverType = (reciever: typeof initialReciever, action:ACTIONTYPE) =>{
-    reciever = {
-      single:false,
-      bulk:false,
-      group:false,
-      messageIcon:false
-    }
-    switch(action.type){
-      
-      case "single":
-        return {
-          ...reciever,
-          single: true,
-        };
-            
-      case "bulk":
-        return {
-          ...reciever,
-          bulk: true,
-        };
-        
-        case "group":
-          return {
-            ...reciever,
-            group: true,
-          };
-       default:
-        return {
-          ...reciever
-        }
-    }
+  | { type: "message" }
+  | { type: "book" }
+  | { type: "teams" }
+  | { type: "topup" }
+  | { type: "chart" }
+  | { type: "single" }
+  | { type: "bulk" }
+  | { type: "group" }
+  | { type: "messageIcon" }
+  | { type: "overview" }
+  | { type: "report" }
+  | { type: "sms_list" }
+ const staticsDisplay = (view: typeof initialStatics,action:ACTIONTYPE) => {
+  view = {
+    overview:false,
+    report:false,
+    sms_list:false
+  }
+  switch (action.type) {
+    case "overview":
+      return {
+        ...view,
+        overview: true,
+      };
 
-   }
-  
+    case "report":
+      return {
+        ...view,
+        report: true,
+      };
+
+    case "sms_list":
+      return {
+        ...view,
+        sms_list: true,
+      };
+    default:
+      return {
+        ...view,
+      };
+  }
+
+ }
+
+const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
+  reciever = {
+    single: false,
+    bulk: false,
+    group: false,
+    messageIcon: false,
+  };
+  switch (action.type) {
+    case "single":
+      return {
+        ...reciever,
+        single: true,
+      };
+
+    case "bulk":
+      return {
+        ...reciever,
+        bulk: true,
+      };
+
+    case "group":
+      return {
+        ...reciever,
+        group: true,
+      };
+    default:
+      return {
+        ...reciever,
+      };
+  }
+};
+
 const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
   state = {
     message: false,
     book: false,
     teams: false,
     topup: false,
-    chart:false
+    chart: false,
   };
   switch (action.type) {
     case "message":
@@ -89,41 +154,42 @@ const setEvents = (state: typeof initialEvent, action: ACTIONTYPE) => {
         ...state,
         message: true,
       };
- 
+
     case "book":
       return {
         ...state,
         book: true,
       };
-          
+
     case "teams":
       return {
         ...state,
         group: true,
       };
-          
+
     case "topup":
       return {
         ...state,
         topup: true,
       };
-      
-      case "chart":
-        return {
-          ...state,
-          chart: true,
-        };
+
+    case "chart":
+      return {
+        ...state,
+        chart: true,
+      };
 
     default:
       return { ...state };
   }
 };
 
-export default function Sidebar() {
-  
+export default function Sidebar(): JSX.Element{
+  const ref = useRef();
   const [state, dispatch] = useReducer(setEvents, initialEvent);
-  const [recieve,display] = useReducer(recieverType, initialReciever);
-    const options = [
+  const [recieve, display] = useReducer(recieverType, initialReciever);
+  const [statistics,displayStatistics] = useReducer(staticsDisplay, initialStatics)
+  const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
   ];
@@ -133,40 +199,48 @@ export default function Sidebar() {
       <div className="h-[76vh] w-2 border-r-2 border-[] absolute left-72 top-44"></div>
       <div className="w-24 bg-[hsl(0,0%,95%)]  pt-28 h-auto pb-9 flex gap-7 flex-col">
         <FaRegComments
-          onClick={() => { dispatch({type:"message"})
-        
-        }}
+          onClick={() => {
+            dispatch({ type: "message" });
+          }}
           className="w-full h-8   hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
         {state.message && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <button onClick = {() => display({type:"single"})} className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button
+              onClick={() => display({ type: "single" })}
+              className="flex  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+            >
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4 ">
-                
-                Single
-              </li>
+              <li className="pl-4 ">Single</li>
               {/* <AiOutlinePlus className=""/> */}
             </button>
-            <button onClick = {() => display({type:"bulk"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button
+              onClick={() => display({ type: "bulk" })}
+              className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+            >
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4">
-                Bulk
-              </li>
+              <li className="pl-4">Bulk</li>
             </button>
-            <button onClick = {() => display({type:"group"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button
+              onClick={() => display({ type: "group" })}
+              className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+            >
               <AiOutlineRight className="mt-1" />
-              <li className="pl-4" >
-                Group
-              </li>
+              <li className="pl-4">Group</li>
             </button>
           </div>
-         )} 
-        
-        <JournalCheck onClick={() => dispatch({type:"book"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
-        <People   onClick={() => dispatch({type:"teams"})} className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+        )}
+
+        <JournalCheck
+          onClick={() => dispatch({ type: "book" })}
+          className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
+        />
+        <People
+          onClick={() => dispatch({ type: "teams" })}
+          className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
+        />
         <Folder
-         onClick={() => dispatch({type:"topup"})} 
+          onClick={() => dispatch({ type: "topup" })}
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
         {state.topup && (
@@ -184,35 +258,34 @@ export default function Sidebar() {
               <li className="pl-4">SMS List</li>
             </div>
           </div>
-          )}
+        )}
 
         <AiOutlineLineChart
-         onClick={() => dispatch({type:"chart"})} 
-      
+          onClick={() => dispatch({ type: "chart" })}
           className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light"
         />
         {state.chart && (
           <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
-            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            <button onClick={()=> displayStatistics({type:"overview"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Overview</li>
-            </div>
-            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            </button>
+            <button onClick={()=> displayStatistics({type:"report"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">Report</li>
-            </div>
-            <div className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+            </button>
+            <button onClick={() => displayStatistics({type:"sms_list"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
               <AiOutlineRight className="mt-1" />
               <li className="pl-4">SMS List</li>
-            </div>
+            </button>
           </div>
-          )}
+        )}
         <div className=" gap-7 flex flex-col mt-28">
           <AiOutlinePlus className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
           <AiOutlineSetting className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
         </div>
       </div>
-       {recieve.single && ( 
+      {recieve.single && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
@@ -253,15 +326,14 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-        </div> 
-        )} 
-  
+        </div>
+      )}
 
-    {recieve.bulk && (
+      {recieve.bulk && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
-           
+
             <form action="" className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
@@ -300,15 +372,14 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-       
         </div>
-   )}
+      )}
 
-   {recieve.group && (
+      {recieve.group && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
-          
+
             <form action="" className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
@@ -345,23 +416,73 @@ export default function Sidebar() {
               </button>
             </form>
           </div>
-
         </div>
-    )}
+      )}
 
-    {recieve.messageIcon && (
-      <div className="h-96 mt-28 absolute right-[35%]">
-        <Image 
-         width={400}
-         height={400}
-         alt="signup image"
-         src={"/images/messages.png"}
-        
-        />
-        <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">START SENDING MESSAGES</h1>
+      {recieve.messageIcon && (
+        <div className="h-96 mt-28 absolute right-[35%]">
+          <Image
+            width={400}
+            height={400}
+            alt="signup image"
+            src={"/images/messages.png"}
+          />
+          <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">
+            START SENDING MESSAGES
+          </h1>
+        </div>
+      )}
+      {statistics.overview && (
+      <div className="h-96 w-3/4 mt-28 absolute right-10">
+      <div className="flex justify-between">
+        <h1>Today's Overview</h1>
+        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">Download Report <Download /></button>
       </div>
-
-    )}
+      <div className="flex justify-between">
+        <table className="w-1/3 mt-4">
+          <tr className="border-b-2">
+            <th className="text-start">Messages</th>
+          </tr>
+          <tr>
+            <td>Sent</td>
+            <td>0</td>
+            <td>0%</td>
+          </tr>
+          <tr>
+            <td>Recieved</td>
+            <td>0</td>
+            <td>0%</td>
+          </tr>
+        </table>
+        <table className="w-1/3 mt-4 mr-40">
+          <tr className="border-b-2">
+            <th className="text-start">Message Status</th>
+          </tr>
+          <tr>
+            <td>Delivered</td>
+            <td>0</td>
+            <td>0%</td>
+          </tr>
+          <tr>
+            <td>Failed</td>
+            <td>0</td>
+            <td>0%</td>
+          </tr>
+        </table>
+      </div>
+      <div className="mt-8">
+        <h1>Today</h1>
+        <div className="flex mt-4"> 
+        <button className="bg-blue-400 rounded-lg text-white h-10 w-36">Sent</button>
+        <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-36">Recieved</button>
+        </div>
+      </div>
+      <div>
+      <Line ref={ref} data={data} />
+      </div>
+      </div>
+      )}
+   
     </div>
   );
 }
