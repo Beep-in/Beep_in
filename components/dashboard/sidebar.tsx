@@ -10,7 +10,7 @@ const data = {
     {
       label: "Recieved",
       data: [33, 53, 85, 41, 44, 65],
-      fill: true,
+      fill: false,
       borderColor: "rgba(75,192,192,1)"
     },
     {
@@ -21,9 +21,9 @@ const data = {
     },
     {
       label: "Failed",
-      data: [33, 25, 35, 51, 54, 76],
+      data: [40, 20, 40, 51, 50, 76],
       fill: false,
-      borderColor: "#742774"
+      borderColor: "red"
     }
   ]
 };
@@ -192,6 +192,19 @@ export default function Sidebar(): JSX.Element{
   const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
+  ];
+
+  const messageType = [
+    { value: "Message Type", label: "Message Type" },
+    { value: "Single", label: "Single" },
+    { value: "Bulk", label: "Bulk" },
+    { value: "Group", label: "Group" },
+  ];
+  const messageStatus = [
+    { value: "Message Status", label: "Message Status" },
+    { value: "Sent", label: "Sent" },
+    { value: "Recieved", label: "Recieved" },
+    { value: "Failed", label: "Failed" },
   ];
 
   return (
@@ -477,11 +490,48 @@ export default function Sidebar(): JSX.Element{
         <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-36">Recieved</button>
         </div>
       </div>
-      <div>
+      <div className="h-40 w-1/2">
       <Line ref={ref} data={data} />
       </div>
       </div>
       )}
+      {statistics.report && (
+
+        <div className="h-96 w-3/4 mt-28 absolute right-10">
+           <div className="flex justify-between">
+        <h1 className="font-bold text-xl">Report</h1>
+        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">Download Report <Download /></button>
+      </div>
+       <div className="mt-4">
+        <button className="bg-white text-blue-500 shadow-xl rounded-lg h-14 w-40 text-center">Sent</button>
+        <button className="bg-[#6C63FF] text-white rounded-lg h-14 w-40 text-center ml-4">Recieved</button>
+       </div>
+       <div className="mt-12">
+         <input type="date" placeholder="Start date" className="h-14 w-56 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
+         <input type="date" placeholder="Start date" className="h-14 w-56 ml-14 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
+       </div>
+       <div className="flex mt-6">
+       <select className="block border-solid border border-[#6C63FF] border-opacity-10 h-14   rounded-lg w-56 pl-3">
+                  {messageType.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                  ;
+                </select>
+                <select className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  rounded-lg w-56 pl-3  ml-14">
+                  {messageStatus.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                  ;
+                </select>
+
+
+       </div>
+       <button className="h-14 bg-blue-500 rounded-lg text-white w-48 mt-14">Generate report</button>
+      </div>
+        )}
+        {
+
+        }
    
     </div>
   );
