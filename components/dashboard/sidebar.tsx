@@ -32,6 +32,7 @@ import {
   FaRegComments,
   FaRegAddressBook,
   FaBook,
+  FaTrashAlt,
   FaRegPaperPlane,
 } from "react-icons/fa";
 import { GraphUp, Folder, People, JournalCheck, Download } from "react-bootstrap-icons";
@@ -40,8 +41,9 @@ import {
   AiOutlineSetting,
   AiOutlinePlus,
   AiOutlineLineChart,
-  AiOutlineUsergroupAdd,
   AiOutlineRight,
+  AiOutlineEye,
+  AiOutlineCheck
 } from "react-icons/ai";
 import { useReducer,useRef } from "react";
 // import { deflate } from "zlib";
@@ -529,9 +531,86 @@ export default function Sidebar(): JSX.Element{
        <button className="h-14 bg-blue-500 rounded-lg text-white w-48 mt-14">Generate report</button>
       </div>
         )}
-        {
+        {statistics.sms_list && (
+           <div className="h-96 w-3/4 mt-28 absolute right-10">
+           <div className="flex justify-between">
+        <h1 className="font-bold text-xl">SMS List</h1>
+        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">Download Report <Download /></button>
+      </div>
+      <div className="mt-12">
+         <input type="date" placeholder="Start date" className="h-14 w-56 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
+         <input type="date" placeholder="Start date" className="h-14 w-56 ml-14 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
+       </div>
+    <div className="flex flex-col">
+      <div className="overflow-x-auto">
+        <div className="p-1.5 w-full inline-block align-middle">
+          <div className="overflow-hidden border rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                  >
+                    Date
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                  >
+                    Message Status
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                  >
+                    Recipients
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                  >
+                    Mobile Number
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                  >
+                    Options
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                <tr>
+                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                  2022-10-31
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">Sent <AiOutlineCheck className="text-green-500 ml-3"/></td>
+                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                  KALIGIRWA Sonia        
+                   </td>
+                  <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                    <a className="text-green-500 hover:text-green-700" href="#">
+                    +2507783466743                   
+                     </a>
+                  </td>
+                  <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
+                    <AiOutlineEye className="text-blue-500 text-xl" />
+                    <FaTrashAlt className="text-red-500 text-xl" />
+                  </td>
+                </tr>
+              
+               
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        }
+       </div>
+        )}
    
     </div>
   );
