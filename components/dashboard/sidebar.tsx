@@ -208,7 +208,39 @@ export default function Sidebar(): JSX.Element{
     { value: "Recieved", label: "Recieved" },
     { value: "Failed", label: "Failed" },
   ];
+const tableData = [{
+  date:"2020-10-12",
+  messageStatus: "Sent",
+  recipient: "KALIGIRWA Sonia",
+  mobileNumber: "+2507783466743"
+},
+{
+date:"2020-10-12",
+messageStatus: "Sent",
+recipient: "KALIGIRWA Sonia",
+mobileNumber: "+2507783466743"
+},
+{
+  date:"2020-10-12",
+  messageStatus: "Sent",
+  recipient: "KALIGIRWA Sonia",
+  mobileNumber: "+2507783466743"
+  },
+  {
+    date:"2020-10-12",
+    messageStatus: "Sent",
+    recipient: "KALIGIRWA Sonia",
+    mobileNumber: "+2507783466743"
+    },
+    {
+      date:"2020-10-12",
+      messageStatus: "Sent",
+      recipient: "KALIGIRWA Sonia",
+      mobileNumber: "+2507783466743"
+      }
+     
 
+]
   return (
     <div className="flex">
       <div className="h-[76vh] w-2 border-r-2 border-[] absolute left-72 top-44"></div>
@@ -541,7 +573,7 @@ export default function Sidebar(): JSX.Element{
          <input type="date" placeholder="Start date" className="h-14 w-56 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
          <input type="date" placeholder="Start date" className="h-14 w-56 ml-14 border-solid border border-[#6C63FF] border-opacity-10 rounded-lg pl-4 pr-2"/>
        </div>
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-10">
       <div className="overflow-x-auto">
         <div className="p-1.5 w-full inline-block align-middle">
           <div className="overflow-hidden border rounded-lg">
@@ -581,25 +613,24 @@ export default function Sidebar(): JSX.Element{
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                <tr>
+                {tableData.map((sms_data)=> (
+                    <tr>
                   <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                  2022-10-31
+                 {sms_data.date}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">Sent <AiOutlineCheck className="text-green-500 ml-3"/></td>
+                  <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">{sms_data.messageStatus} <AiOutlineCheck className="text-green-500 ml-3"/></td>
                   <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                  KALIGIRWA Sonia        
+                 {sms_data.recipient}      
                    </td>
                   <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                    <a className="text-green-500 hover:text-green-700" href="#">
-                    +2507783466743                   
-                     </a>
+                   {sms_data.mobileNumber}
                   </td>
                   <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
                     <AiOutlineEye className="text-blue-500 text-xl" />
                     <FaTrashAlt className="text-red-500 text-xl" />
                   </td>
                 </tr>
-              
+              ))}
                
                
               </tbody>
