@@ -6,8 +6,10 @@ function MessageHandler() {
   return (
     <div>
         <TopNavbar />
+        <div className='flex'>
         <LeftSidebar />
         <MessageType />
+        </div>
     </div>
   )
 }

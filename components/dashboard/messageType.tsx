@@ -1,32 +1,36 @@
 import React from "react";
+import Image from "next/image";
 import { useReducer, useRef } from "react";
-import Link from "next/link";
 import {
   
   FaRegPaperPlane,
 } from "react-icons/fa";
 
 import {
+  AiOutlinePlus,
   AiOutlineRight,
- 
-} from "react-icons/ai"
-;
+
+} from "react-icons/ai";
+
 const initialReciever = {
-  single: true,
+  single: false,
   bulk: false,
-  group: false
+  group: false,
+  messageIcon:true
 };
 type ACTIONTYPE =
   | { type: "single" }
   | { type: "bulk" }
   | { type: "group" }
+  | {type: "messageIcon"}
   
 
 const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   reciever = {
-    single: true,
+    single: false,
     bulk: false,
-    group: false
+    group: false,
+    messageIcon:false
   };
   switch (action.type) {
     case "single":
@@ -61,7 +65,11 @@ function MessageType(): JSX.Element{
   ];
 
   return (
-    <div>
+    <div className="w-full">
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
+        <h1>Messages</h1>
+        <button className="bg-blue-500 h-12 w-12 text-center rounded-lg absolute right-10"><AiOutlinePlus className="text-white text-center ml-3 text-xl font-bold"/></button>
+      </div>
       <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
           <button
             onClick={() => dispatch({ type: "single" })}
@@ -87,6 +95,19 @@ function MessageType(): JSX.Element{
           <li className="pl-4">Group</li>
         </button>
       </div>
+         {recieve.messageIcon && ( 
+         <div className="h-96 mt-28 absolute right-[35%]">
+          <Image
+            width={400}
+            height={400}
+            alt="signup image"
+            src={"/images/messages.png"}
+          />
+          <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">
+            START SENDING MESSAGES
+          </h1>
+        </div> 
+         )} 
       {recieve.single && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
@@ -153,7 +174,7 @@ function MessageType(): JSX.Element{
                 </label>
                 <select className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3  rounded-lg pl-8   ml-12">
                   {options.map((option) => (
-                    <option value={option.value}>{option.label}</option>
+                    <option key={option.value} value={option.value}>{option.label}</option>
                   ))}
                   ;
                 </select>

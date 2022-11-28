@@ -49,19 +49,6 @@ const LeftSidebar = () => {
           </div>
         </div>
         <div className="h-88 w-[1px] ml-52 bg-blue-500 opacity-25"></div>
-        {/* {recieve.messageIcon && ( */}
-        {/* <div className="h-96 mt-28 absolute right-[35%]">
-          <Image
-            width={400}
-            height={400}
-            alt="signup image"
-            src={"/images/messages.png"}
-          />
-          <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">
-            START SENDING MESSAGES
-          </h1>
-        </div> */}
-        {/* )} */}
       </div>
     </div>
   );

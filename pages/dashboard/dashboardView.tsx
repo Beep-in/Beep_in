@@ -6,8 +6,10 @@ function DashboardView() {
   return (
     <div>
         <TopNavbar />
+        <div className='flex'>
         <LeftSidebar />
        <Dashboard />
+       </div>
     </div>
   )
 }
