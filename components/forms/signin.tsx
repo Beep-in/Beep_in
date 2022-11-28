@@ -89,7 +89,7 @@ const onSubmit = (values:LoginInput) =>{
             </button>
             <p className="font-karia pt-8 text-center">
               Don't have an account?
-              <Link href="/dashboard/dashboard" className="text-[#6C63FF] pl-1">
+              <Link href="/dashboard/detailView" className="text-[#6C63FF] pl-1">
                 Sign up
               </Link>
             </p>
