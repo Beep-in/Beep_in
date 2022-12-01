@@ -43,7 +43,10 @@ const topupDisplay = (topup:typeof inititialHistory, action:ACTIONTYPE) => {
           ...topup,
           buySms:true
         }
-        
+        default :
+        return {
+          ...topup
+        }
    }
 }
 function Topup() {
@@ -114,11 +117,12 @@ function Topup() {
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Topup history</li>
         </button>
-        <button onClick={() => ({type : "buySms"})} className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
+        <Link href="topupResult">
+        <button  className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20">
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Buy SMS</li>
         </button>
-       
+        </Link>
       </div>
       {topup.topupHistory && (
     <div className="h-96 w-3/4 mt-28 absolute right-10">
