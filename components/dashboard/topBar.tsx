@@ -13,11 +13,11 @@ export default function TopNavbar() {
             <div className="flex">
               <form action="">
                 <div className="flex">
-                  {/* <span><img src="/icons/search.svg" alt="search" className=""/> */}
+                
                   <input
                     type="search"
                     placeholder=" Search"
-                    className="w-[35vw] h-14 bg-[#D9D9D9] opacity-25 pl-12 mt-2"
+                    className="w-[35vw] h-12 bg-[#D9D9D9] opacity-25 pl-12 mt-2"
                   />
                 </div>
               </form>

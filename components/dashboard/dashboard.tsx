@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
-
+import { PieChart, Pie } from "recharts";
 const data = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
   datasets: [
@@ -25,8 +25,14 @@ const data = {
     },
   ],
 };
+const details = [
+  { name: "Geeksforgeeks", students: 400 },
+  { name: "Technical scripter", students: 700 },
+  { name: "Geek-o-mania", students: 1000 },
+];
 
-import { Download, Check2All, Trash3 } from "react-bootstrap-icons";
+import { Download, Check2All, Trash3, People,Archive } from "react-bootstrap-icons";
+import { BiChevronRightCircle,BiChevronLeftCircle } from "react-icons/bi"
 import { AiOutlineRight, AiOutlineEye } from "react-icons/ai";
 import { useReducer, useRef } from "react";
 type ACTIONTYPE =
@@ -122,7 +128,13 @@ function Dashboard(): JSX.Element {
   ];
 
   return (
-    <div>
+    <div className="w-full">
+      <div className="h-14 w-full border-b-2 border-solid flex justify-center float-right items-center">
+        <h1>Analytics</h1>
+        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10">
+          Download Report <Download />
+        </button>
+      </div>
       <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
         <button
           onClick={() => displayStatistics({ type: "overview" })}
@@ -147,32 +159,83 @@ function Dashboard(): JSX.Element {
         </button>
       </div>
       {statistics.overview && (
-        <div className="h-96 w-3/4 mt-28 absolute right-10">
-          <div className="flex justify-between">
-            <h1>Today's Overview</h1>
-            <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
-              Download Report <Download />
-            </button>
+        <div className="h-96 w-3/4 mt-16 absolute right-10 ">
+            <h1 className="font-bold
+            ">Today's Overview</h1>
+          <div className="flex">
+            <div className="flex">
+       
+         
+          <div className="flex mt-2">
+            <div className="w-[32vw] justify-evenly">
+              <div className="">
+            <PieChart width={100} height={100}>
+              <Pie
+                data={details}
+                dataKey="students"
+                outerRadius={50}
+                fill="green"
+              />
+            </PieChart>
+            </div>
+            <div className="flex mt-6">
+            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex">
+              <People className="text-blue-500 text-xl text-center ml-2" />
+              </div>
+              <div className="pl-8">
+                <h1>Your groups</h1>
+                <p>50</p>
+            </div>
+            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex ml-24">
+              <People className="text-green-500 text-xl text-center ml-2"/>
+              </div>
+              <div className="pl-8">
+                <h1>Your groups</h1>
+                <p>50</p>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <table className="w-1/3 mt-4">
-              <tr className="border-b-2">
-                <th className="text-start">Messages</th>
-              </tr>
-              <tr>
-                <td>Sent</td>
-                <td>0</td>
-                <td>0%</td>
-              </tr>
-              <tr>
-                <td>Recieved</td>
-                <td>0</td>
-                <td>0%</td>
-              </tr>
-            </table>
-            <table className="w-1/3 mt-4 mr-40">
+          <div className="flex">
+            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex">
+              <People className="text-green-500 text-xl text-center ml-2" />
+              </div>
+              <div className="pl-8">
+                <h1>Your groups</h1>
+                <p>50</p>
+            </div>
+            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex ml-24">
+              <People className="text-blue-500 text-xl text-center ml-2" />
+              </div>
+              <div className="pl-8">
+                <h1>Your groups</h1>
+                <p>50</p>
+            </div>
+          </div>
+          <div className="">
+            <div className="flex mt-4 w-5/6 border-b-2 border-solid pb-4">
+            <h1>Recent Activity</h1>
+            <Archive className = "pt-1 ml-40 mr-2" />
+            <p>6 Sep 20 - 13 Sep 20</p>
+            </div>
+            <div className="flex mt-4">
+              <button className="bg-blue-400 rounded-lg text-white h-10 w-36">
+                Sent
+              </button>
+              <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-36">
+                Recieved
+              </button>
+            </div>
+          </div>
+          <div className="h-56 w-[40vw]">
+            <Line ref={ref} data={data} />
+          </div>
+            </div>
+            </div>
+            <div className="block">
+            <table className="w-[18vw] h-36">
               <tr className="border-b-2">
                 <th className="text-start">Message Status</th>
+                <th>Rate</th>
+                <th>Rate</th>
               </tr>
               <tr>
                 <td>Delivered</td>
@@ -185,25 +248,55 @@ function Dashboard(): JSX.Element {
                 <td>0%</td>
               </tr>
             </table>
-          </div>
-          <div className="mt-8">
-            <h1>Today</h1>
-            <div className="flex mt-4">
-              <button className="bg-blue-400 rounded-lg text-white h-10 w-36">
-                Sent
-              </button>
-              <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-36">
-                Recieved
-              </button>
+            <div className="mt-6">
+              <h1 className="font-bold">Your cards</h1>
+            <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
+                
+                </div>
+                <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
+                
+                </div>
+                <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
+                
+            </div>
+                </div>
+                </div>
+            </div>
+            <div className="block absolute right-0">
+              <h1 className="font-bold">Recent Agents</h1>
+              <p>15 participants</p>
+              <div className="flex mt-6">
+              <div className="h-12 w-12 rounded-full bg-slate-200 hover:border-b-4 hover:border-solid hover:border-blue-400"></div>
+              <div className="h-12 w-12 rounded-full bg-slate-200 ml-2"></div>
+              <div className="h-12 w-12 rounded-full bg-slate-200 ml-2"></div>
+              <div className="h-12 w-12 rounded-full bg-slate-200 ml-2"></div>
+              <div className="h-12 w-12 rounded-full bg-slate-200 ml-2"></div>
+              <AiOutlineRight className="mt-4 ml-4" />
+
+              </div>
+               <h1 className="font-bold pt-6">Groups</h1>
+              <div className="h-36 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl flex pt-4">
+              <div className="h-10 w-10 rounded-full bg-slate-200 ml-2"></div>
+              <div className="h-10 w-10 rounded-full bg-slate-200 ml-[-15px]"></div>
+              <div className="h-10 w-10 rounded-full bg-slate-200 ml-[-15px]"></div>
+              <div className="h-10 w-10 rounded-full bg-slate-200 ml-[-15px]"></div>
+              <div className="h-12 w-12 rounded-full bg-white ml-6 border-dashed border-2 text-center items-center">
+                <p className="pt-2">+15</p>
+              </div>
+              </div>
+              <h1 className="font-bold pt-6">New Topup Requests</h1>
+              <div className="h-36 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
+                
+                </div>
             </div>
           </div>
-          <div className="h-40 w-1/2">
-            <Line ref={ref} data={data} />
-          </div>
+       
+   
+   
         </div>
       )}
       {statistics.report && (
-        <div className="h-96 w-3/4 mt-28 absolute right-10">
+        <div className="h-96 w-3/4 mt-20 absolute right-10">
           <div className="flex justify-between">
             <h1 className="font-bold text-xl">Report</h1>
             <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
@@ -250,7 +343,7 @@ function Dashboard(): JSX.Element {
         </div>
       )}
       {statistics.sms_list && (
-        <div className="h-96 w-3/4 mt-28 absolute right-10">
+        <div className="h-96 w-3/4 mt-20 absolute right-10">
           <div className="flex justify-between">
             <h1 className="font-bold text-xl">SMS List</h1>
             <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
@@ -333,6 +426,10 @@ function Dashboard(): JSX.Element {
                     </tbody>
                   </table>
                 </div>
+                  <div className="flex justify-center mt-8">
+                    <BiChevronLeftCircle className="text-3xl text-blue-500" />
+                    <BiChevronRightCircle className="text-3xl text-blue-500" />
+                  </div>
               </div>
             </div>
           </div>

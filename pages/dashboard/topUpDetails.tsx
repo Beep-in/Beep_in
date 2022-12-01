@@ -6,8 +6,10 @@ function TopUpDetails() {
   return (
     <div>
         <TopNavbar />
+        <div className='flex'>
         <LeftSidebar />
         <Topup />
+        </div>
     </div>
   )
 }
