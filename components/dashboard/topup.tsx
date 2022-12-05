@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import {
   Download,
   Filter,
@@ -17,6 +18,7 @@ import {
 import { BiChevronRightCircle,BiChevronLeftCircle } from "react-icons/bi"
 
 import { useReducer, useRef } from "react";
+import TopupPreparation from "./topupPreparation";
 type ACTIONTYPE =
   | { type: "topupHistory" }
   | { type: "buySms" }
@@ -51,6 +53,7 @@ const topupDisplay = (topup:typeof inititialHistory, action:ACTIONTYPE) => {
 }
 function Topup() {
   const [topup, display ] = useReducer(topupDisplay,inititialHistory);
+  
   const tableData = [
     {
       date: "2020-10-12",
@@ -118,12 +121,17 @@ function Topup() {
           <li className="pl-4">Topup history</li>
         </button>
         <Link href="topupResult">
-        <button  className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20">
+        <Popup trigger={
+        <button className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20">
           <AiOutlineRight className="mt-1" />
-          <li className="pl-4">Buy SMS</li>
+          
+         <li className="pl-4">Buy SMS</li>
         </button>
+        }>
+        </Popup>
         </Link>
       </div>
+
       {topup.topupHistory && (
     <div className="h-96 w-3/4 mt-28 absolute right-10">
          <div className="flex flex-col mt-4">
