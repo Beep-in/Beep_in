@@ -10,12 +10,19 @@ const initialMode = {
   allMethods: true,
   complete:false,
 };
+const initialType = {
+  typeContact: false,
+  uploadFile: false
+
+}
 type ACTIONTYPE =
   | { type: "momo" }
   | { type: "bank" }
   | { type: "card" }
   | { type: "allMethods" }
   | { type: "complete"}
+  | { type: "typeContact"}
+  | { type: "uploadFile"}
 
 const paymentMode = (mode: typeof initialMode, action: ACTIONTYPE) => {
   mode = {
@@ -24,6 +31,7 @@ const paymentMode = (mode: typeof initialMode, action: ACTIONTYPE) => {
     card: false,
     allMethods: false,
     complete:false,
+    
   };
   switch (action.type) {
     case "allMethods":
@@ -31,34 +39,39 @@ const paymentMode = (mode: typeof initialMode, action: ACTIONTYPE) => {
         ...mode,
         allMethods: true,
       };
-    case "momo":
-      return {
-        ...mode,
-        momo: true,
-      };
-
-    case "bank":
-      return {
-        ...mode,
-        bank: true,
-      };
-
-    case "card":
-      return {
-        ...mode,
-        card: true,
-      };
-      case "complete": 
-      return {
-        ...mode,
-        complete:true
-      }
-    default:
-      return {
-        ...mode,
-      };
-  }
-};
+      case "momo":
+        return {
+          ...mode,
+          momo: true,
+        };
+        
+        case "bank":
+          return {
+            ...mode,
+            bank: true,
+          };
+          
+          case "card":
+            return {
+              ...mode,
+              card: true,
+            };
+            case "complete": 
+            return {
+              ...mode,
+              complete:true
+            }
+            default:
+              return {
+                ...mode,
+              };
+            }
+          };
+//           const addContactMethod = (method: typeof initialType, action: ACTIONTYPE)=> {
+//             typeContact: false,
+//             uploadFile:false
+            
+// }
 function PaymentMethod() {
   const [mode, dispatch] = useReducer(paymentMode, initialMode);
 
@@ -97,7 +110,6 @@ function PaymentMethod() {
                   value="bank"
                   name="default-radio"
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300   dark:bg-gray-700 dark:border-gray-600"
-                  // onChange={radioHandler}
                   onClick={() => dispatch({ type: "bank" })}
                 />
                 <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -111,7 +123,6 @@ function PaymentMethod() {
                   value="card"
                   name="default-radio"
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
-                  // onChange={radioHandler}
                   onClick={() => dispatch({ type: "card" })}
                 />
                 <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">

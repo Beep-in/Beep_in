@@ -140,7 +140,7 @@ function MessageType(): JSX.Element{
                   name="message"
                   id=""
                   placeholder="Type a message.."
-                  className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
               <button className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
@@ -168,16 +168,38 @@ function MessageType(): JSX.Element{
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
                 />
               </div>
-              <div className="flex ml-36 mt-4">
-                <label htmlFor="name" className="pt-4">
+              <div className="flex">
+                <div className="flex mt-6">
+                <label htmlFor="name" className="pl-36">
                   Method type :
                 </label>
-                <select className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3  rounded-lg pl-8   ml-12">
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                  ))}
-                  ;
-                </select>
+                <div className="flex items-center">
+                <input
+                  id="default-radio-2"
+                  type="radio"
+                  value="typeContact"
+                  name="default-radio"
+                  className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 ml-12"
+             
+                />
+                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Type contacts
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="default-radio-2"
+                  type="radio"
+                  value="uploadFile"
+                  name="default-radio"
+                  className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 ml-40"
+                  
+                />
+                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                 Upload a file
+                </label>
+              </div>
+              </div>
               </div>
 
               <div className="flex ml-36 mt-4">

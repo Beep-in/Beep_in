@@ -138,21 +138,21 @@ function Dashboard(): JSX.Element {
       <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
         <button
           onClick={() => displayStatistics({ type: "overview" })}
-          className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+          className="flex hover:text-[#6C63FF]  w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Overview</li>
         </button>
         <button
           onClick={() => displayStatistics({ type: "report" })}
-          className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+          className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Report</li>
         </button>
         <button
           onClick={() => displayStatistics({ type: "sms_list" })}
-          className="flex hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg w-full pr-20"
+          className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">SMS List</li>
