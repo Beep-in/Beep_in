@@ -12,6 +12,7 @@
     "@types/node": "18.11.8",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
+    "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",
     "chart.js": "^4.0.1",
     "next": "13.0.1",
