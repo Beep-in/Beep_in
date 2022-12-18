@@ -33,8 +33,9 @@ const LeftSidebar = () => {
           <Link href="messageHandler">
             <FaRegComments className="w-full h-8   hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
           </Link>
-
+          <Link href="detailView">
           <JournalCheck className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+          </Link>
           <Link href="groupManagement">
           <People className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
           </Link>
