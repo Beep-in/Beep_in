@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { useReducer, useRef } from "react";
+import { useReducer, useRef,useState } from "react";
 import {
   
   FaRegPaperPlane,
@@ -11,26 +11,31 @@ import {
   AiOutlineRight,
 
 } from "react-icons/ai";
-
+import { X } from "react-bootstrap-icons";
 const initialReciever = {
   single: false,
   bulk: false,
   group: false,
-  messageIcon:true
+  messageIcon:true,
+  success:false,
+  failed:false
 };
 type ACTIONTYPE =
   | { type: "single" }
   | { type: "bulk" }
   | { type: "group" }
-  | {type: "messageIcon"}
-  
+  | { type: "messageIcon"}
+  | { type: "success"}
+  | { type: "failed"}
 
 const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   reciever = {
     single: false,
     bulk: false,
     group: false,
-    messageIcon:false
+    messageIcon:false,
+    success: false,
+    failed: false
   };
   switch (action.type) {
     case "single":
@@ -50,6 +55,16 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
         ...reciever,
         group: true,
       };
+      case "success" : 
+      return {
+        ...reciever,
+        success:true
+      }
+      case "failed" : 
+      return {
+        ...reciever,
+        failed:true
+      }
     default:
       return {
         ...reciever,
@@ -59,6 +74,8 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
 
 function MessageType(): JSX.Element{
   const [recieve, dispatch] = useReducer(recieverType, initialReciever);
+  const [success, setSuccess] = useState(true);
+  const [failed,setFailed] = useState(true)
   const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
@@ -143,7 +160,7 @@ function MessageType(): JSX.Element{
                   className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
-              <button className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
+              <button onClick={() => dispatch({type: "success"})} className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
                 <FaRegPaperPlane className="mr-3" />
                 SEND
               </button>
@@ -211,7 +228,7 @@ function MessageType(): JSX.Element{
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
-              <button className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
+              <button onClick={()=> dispatch({type: "failed"})} className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
                 <FaRegPaperPlane className="mr-3" />
                 SEND
               </button>
@@ -264,6 +281,71 @@ function MessageType(): JSX.Element{
           </div>
         </div>
       )}
+       {success && (
+        <div>
+          {recieve.success && (
+
+       <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
+          <X
+                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                onClick={() => setSuccess(false)}
+              />
+       <img
+         src="/icons/messegeSuccess.svg"
+         alt="messege-tick"
+         className="ml-auto mr-auto pt-28"
+       />
+       <div className="w-72 ml-auto mr-auto">
+       <h1 className="text-center pt-8 text-xl">
+        Success!
+       </h1>
+     
+       <p className="text-center pt-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper 
+       scelerisque diam ac nunc rhoncus eget vitae venenatis. Commodo aliquam aliquam tincidunt et sit sit.
+        Aliquam in et fermentum vel at.</p>
+       </div>
+       <div className="">
+       <button className="h-12 w-40 bg-blue-500 text-white rounded-lg mt-10 ml-[45%]">
+         continue
+       </button>
+       </div>
+     </div>
+    )}
+    </div>
+    )}
+    {failed && (
+      <div>
+
+    
+    {recieve.failed && (
+           <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
+              <X
+                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                onClick={() => setFailed(false)}
+              />
+           <img
+             src="/icons/messegeFailed.svg"
+             alt="messege-cross"
+             className="ml-auto mr-auto pt-28"
+           />
+           <div className="w-72 ml-auto mr-auto">
+           <h1 className="text-center pt-8 text-xl">
+            Oooops!
+           </h1>
+         
+           <p className="text-center pt-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper 
+           scelerisque diam ac nunc rhoncus eget vitae venenatis. Commodo aliquam aliquam tincidunt et sit sit.
+            Aliquam in et fermentum vel at.</p>
+           </div>
+           <div className="">
+           <button className="h-12 w-40 bg-blue-500 text-white rounded-lg mt-10 ml-[45%]">
+             Try Again
+           </button>
+           </div>
+         </div>
+    )}
+      </div>
+    )}
     </div>
   );
 }
