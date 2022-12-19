@@ -114,52 +114,61 @@ function Topup() {
 
   const tableData = [
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
+    
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      names: "Kaligirwa Sonia",
+      buyingPrice: 10,
+      loadedSMS: 1000,
+      date: "2012-02-01",
+      totalAmount: 10000,
     },
   ];
 
@@ -198,39 +207,45 @@ function Topup() {
           <div className="flex flex-col mt-4">
             <div className="overflow-x-auto">
               <div className="p-1.5 w-full inline-block align-middle">
-                <div className="overflow-hidden border rounded-lg">
+                <div className="overflow-hidden">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                          className=" px-6 py-3 text-left "
                         >
-                          Date
+                          Agent Names
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                          className="px-6 py-3 text-left"
                         >
-                          Message Status
+                          Buying price
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                          className="px-6 py-3 text-left"
                         >
-                          Recipients
+                          Loaded messages
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                          className="px-6 py-3"
                         >
-                          Mobile Number
+                        Date
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
-                        >
-                          
+                          className="px-6 py-3 text-left "
+                        > 
+                          Total amount
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-left"
+                        > 
+                          Balance
                         </th>
                       </tr>
                     </thead>
@@ -238,21 +253,27 @@ function Topup() {
                       {tableData.map((sms_data) => (
                         <tr>
                           <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                            {sms_data.date}
+                            {sms_data.names}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
-                            {sms_data.messageStatus}{" "}
-                            <Check2All className="text-green-500 ml-3" />
+                            {sms_data.buyingPrice}
+                    
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                            {sms_data.recipient}
+                            {sms_data.loadedSMS}
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            {sms_data.mobileNumber}
+                            {sms_data.date}
                           </td>
-                          <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
-                            <AiOutlineEye className="text-blue-500 text-xl" />
-                            <Trash3 className="text-red-500 text-xl" />
+                          <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                            {sms_data.totalAmount}
+                          </td>
+                   
+                          <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap">
+                         <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 pl-4 pt-2 rounded-lg">
+                          <p className="pr-2">Balance</p>
+                           <AiOutlineEye />
+                         </button>
                           </td>
                         </tr>
                       ))}
