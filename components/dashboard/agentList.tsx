@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Upload } from "react-bootstrap-icons";
-
 import { Check2All, Trash3 } from "react-bootstrap-icons";
 
 import { AiOutlineEye } from "react-icons/ai";
@@ -8,10 +7,10 @@ import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 function AgentList() {
     const tableData = [
         {
-          date: "2020-10-12",
-          messageStatus: "Sent",
-          recipient: "KALIGIRWA Sonia",
-          mobileNumber: "+2507783466743",
+          date: "Agent 123KZ",
+          messageStatus: "0788733422",
+          recipient: "agent123@gmail.com",
+          mobileNumber: "Agent 123KZ",
         },
         {
           date: "2020-10-12",
@@ -61,43 +60,49 @@ function AgentList() {
     <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
         <h1>Agents List</h1>
       </div>
-      <div className="h-96 w-3/4 mt-28 absolute right-10">
+      <div className="h-96 w-4/5 mt-20 absolute right-4">
           <div className="flex flex-col mt-4">
             <div className="overflow-x-auto">
               <div className="p-1.5 w-full inline-block align-middle">
-                <div className="overflow-hidden border rounded-lg">
+                <div className="overflow-hidden ">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                          className="px-6 py-3  text-left "
                         >
-                          Date
+                          Agent name
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
-                        >
-                          Message Status
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
-                        >
-                          Recipients
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                          className="px-6 py-3 placeholder:text-left  "
                         >
                           Mobile Number
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                          className="px-6 py-3  text-left  "
                         >
-                          
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 ttext-right  "
+                        >
+                          Category
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3  text-right"
+                        >
+                          Account Status
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3  text-right  "
+                        >
+                          Actions
                         </th>
                       </tr>
                     </thead>
@@ -108,9 +113,7 @@ function AgentList() {
                             {sms_data.date}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
-                            {sms_data.messageStatus}{" "}
-                            <Check2All className="text-green-500 ml-3" />
-                          </td>
+                            {sms_data.messageStatus}</td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                             {sms_data.recipient}
                           </td>

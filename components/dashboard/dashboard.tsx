@@ -1,30 +1,17 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+
+// import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import { PieChart, Pie } from "recharts";
-const data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "Recieved",
-      data: [33, 53, 85, 41, 44, 65],
-      fill: false,
-      borderColor: "rgba(75,192,192,1)",
-    },
-    {
-      label: " sent",
-      data: [33, 25, 35, 51, 54, 76],
-      fill: false,
-      borderColor: "#742774",
-    },
-    {
-      label: "Failed",
-      data: [40, 20, 40, 51, 50, 76],
-      fill: false,
-      borderColor: "red",
-    },
-  ],
-};
+const data = [
+  { label: 'January', sent: 21, recieved: 41, failed: 51},
+  { label: 'February', sent: 35, recieved: 79,failed: 45 },
+  { label: 'March', sent: 75, recieved: 57 ,failed: 89},
+  { label: 'April', sent: 51, recieved: 47,failed: 61},
+  { label: 'May', sent: 41, recieved: 63 ,failed: 32},
+  { label: 'June', sent: 47, recieved: 71, failed: 67}
+];
 const details = [
   { name: "Accepted topup requests", students: 400 ,fill: "#8a000080",label:"25%"},
   { name: "Pending topup requests", students: 400,fill: "#E5DAFB",label:"25%"},
@@ -181,78 +168,98 @@ function Dashboard(): JSX.Element {
             <div className="flex">
               <div className="h-4 w-4 bg-[#4caf5080] rounded-full mt-1">
               </div>
-                <p className="pl-2">Accepted topup requests</p>
+                <p className="pl-2 pt-1 text-sm">Accepted topup requests</p>
               </div>
               <div className="flex">
               <div className="h-4 w-4 bg-[#E5DAFB] rounded-full mt-1">
               </div>
-                <p className="pl-2">Pending topup requests</p>
+                <p className="pl-2 pt-1 text-sm">Pending topup requests</p>
               </div>
               <div className="flex">
               <div className="h-4 w-4 bg-[#8a000080] rounded-full mt-1">
               </div>
-                <p className="pl-2">Denied topup requests </p>
+                <p className="pl-2 pt-1 text-sm">Denied topup requests </p>
               </div>
               </div>
             </div>
-            <div className="flex mt-6">
-            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex">
-              <People className="text-blue-500 text-xl text-center ml-2" />
+            <div className="flex mt-4">
+            <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex">
+              <People className="text-blue-500 text-xl text-center ml-1" />
               </div>
               <div className="pl-8">
-                <h1>Your groups</h1>
+                <p className="text-sm">Your groups</p>
                 <p>50</p>
             </div>
-            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex ml-24">
-              <People className="text-green-500 text-xl text-center ml-2"/>
+            <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex ml-24">
+              <People className="text-green-500 text-xl text-center ml-1"/>
               </div>
               <div className="pl-8">
-                <h1>Your groups</h1>
+                <p className="text-sm">Your groups</p>
                 <p>50</p>
             </div>
           </div>
           <div className="flex">
-            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex">
-              <People className="text-green-500 text-xl text-center ml-2" />
+            <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex">
+              <People className="text-green-500 text-xl text-center ml-1" />
               </div>
               <div className="pl-8">
-                <h1>Your groups</h1>
+                <p className="text-sm">Your groups</p>
                 <p>50</p>
             </div>
-            <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex ml-24">
-              <People className="text-blue-500 text-xl text-center ml-2" />
+            <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex ml-24">
+              <People className="text-blue-500 text-xl text-center ml-1" />
               </div>
               <div className="pl-8">
-                <h1>Your groups</h1>
+                <p className="text-sm">Your groups</p>
                 <p>50</p>
             </div>
           </div>
           <div className="">
-            <div className="flex mt-4 w-5/6 border-b-2 border-solid pb-4">
+            <div className="flex mt-2 w-2/3 border-b-2 border-solid pb-2">
             <h1>Recent Activity</h1>
-            <Archive className = "pt-1 ml-40 mr-2" />
-            <p>6 Sep 20 - 13 Sep 20</p>
+          
             </div>
-            <div className="flex mt-4">
-              <button className="bg-blue-400 rounded-lg text-white h-10 w-36">
+            <div className="flex mt-2">
+              <button className="bg-blue-400 rounded-lg text-white h-8 w-24">
                 Sent
               </button>
-              <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-36">
+              <button className="bg-white border-2 border-blue-400 rounded-lg ml-4 w-24 h-8">
                 Recieved
               </button>
             </div>
           </div>
           <div className="h-56 w-[40vw]">
-            <Line ref={ref} data={data} />
+
+            <div className="ml-[-2em]">
+        <div className="section-content">
+          <ResponsiveContainer width="70%" height={260}>
+            <LineChart className="text-[10px]" data={data}  margin={{ top: 25, right: 0, bottom: 0, left: 0 }}>
+              <Tooltip />
+              <XAxis dataKey="label" />
+              <YAxis />
+              <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+              <Legend/>
+              <Line type="monotone" dataKey="sent" stroke="red" />
+              <Line type="monotone" dataKey="recieved" stroke="#17A8F5" />
+              <Line type="monotone" dataKey="failed" stroke="#009355" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
           </div>
             </div>
             </div>
-            <div className="block">
+            <div className="block ml-10">
             <table className="w-[18vw] h-36">
               <tr className="border-b-2">
                 <th className="text-start">Message Status</th>
                 <th>Rate</th>
                 <th>Rate</th>
+              </tr>
+              <tr>
+                <td>Sent</td>
+                <td>0</td>
+                <td>0%</td>
               </tr>
               <tr>
                 <td>Delivered</td>
@@ -265,7 +272,7 @@ function Dashboard(): JSX.Element {
                 <td>0%</td>
               </tr>
             </table>
-            <div className="mt-6">
+            <div className="mt-20">
               <h1 className="font-bold">Your cards</h1>
             <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
                 
