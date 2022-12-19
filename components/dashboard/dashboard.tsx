@@ -26,9 +26,9 @@ const data = {
   ],
 };
 const details = [
-  { name: "Geeksforgeeks", students: 400 },
-  { name: "Technical scripter", students: 700 },
-  { name: "Geek-o-mania", students: 1000 },
+  { name: "Accepted topup requests", students: 400 ,fill: "#8a000080",label:"25%"},
+  { name: "Pending topup requests", students: 400,fill: "#E5DAFB",label:"25%"},
+  { name: "Denied topup requests ", students: 600,fill: "#4caf5080",label:"50%"},
 ];
 
 import { Download, Check2All, Trash3, People,Archive } from "react-bootstrap-icons";
@@ -166,17 +166,34 @@ function Dashboard(): JSX.Element {
             <div className="flex">
        
          
-          <div className="flex mt-2">
-            <div className="w-[32vw] justify-evenly">
-              <div className="">
+          <div className="flex mt-2 w-1/2">
+            <div className="">
+              <div className="flex">
             <PieChart width={100} height={100}>
               <Pie
                 data={details}
                 dataKey="students"
                 outerRadius={50}
-                fill="green"
               />
+
             </PieChart>
+            <div className="block mt-4 ml-4">
+            <div className="flex">
+              <div className="h-4 w-4 bg-[#4caf5080] rounded-full mt-1">
+              </div>
+                <p className="pl-2">Accepted topup requests</p>
+              </div>
+              <div className="flex">
+              <div className="h-4 w-4 bg-[#E5DAFB] rounded-full mt-1">
+              </div>
+                <p className="pl-2">Pending topup requests</p>
+              </div>
+              <div className="flex">
+              <div className="h-4 w-4 bg-[#8a000080] rounded-full mt-1">
+              </div>
+                <p className="pl-2">Denied topup requests </p>
+              </div>
+              </div>
             </div>
             <div className="flex mt-6">
             <div className="h-8 w-8 bg-slate-200 rounded-lg text-center items-center flex">
@@ -397,7 +414,7 @@ function Dashboard(): JSX.Element {
                           scope="col"
                           className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                         >
-                          Options
+                          
                         </th>
                       </tr>
                     </thead>

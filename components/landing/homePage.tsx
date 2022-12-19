@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Telephone,EnvelopeOpen } from 'react-bootstrap-icons'
 function HomePage() {
   return (
@@ -7,8 +8,12 @@ function HomePage() {
       <nav className='flex justify-between  w-full mt-8'>
         <img src="icons/logo.svg" alt="logo" className='ml-28'/>
         <div className='flex float-right'>
+          <Link href='auth/login'>
         <button className='h-12 bg-white text-blue-500 shadow-md shadow-slate-700 w-28 rounded-lg mr-6'>Login</button>
+        </Link>
+        <Link href='auth/signup'>
         <button className='bg-gradient-to-l from-green-700 to-blue-500 text-white rounded-lg h-12 w-28 mr-28'>Sign up</button>
+        </Link>
         </div>
       </nav>
       <div className='flex mt-20'>
@@ -125,7 +130,7 @@ function HomePage() {
         </p>
       </div>
       <div className='mt-14 ml-48'>
-        <h1 className='text-2xl text-blue-500'>Contacts</h1>
+        <h1 className='text-2xl text-blue-500'>Contact Us </h1>
         <p>Any questions? Talk to the admin.</p>
         <div className='flex mt-4'>
         <Telephone className='text-blue-500' />

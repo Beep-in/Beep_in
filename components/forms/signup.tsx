@@ -97,11 +97,11 @@ const [input,setInput] = useState<string>();
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
             >
               <option value="">Type of agent</option>
-              <option value="">Admin</option>
-              <option value="">Super Reseller</option>
-              <option value="">Reseller</option>
+              <option  value="admin">Admin</option>
+              <option value="superReseller">Super Reseller</option>
+              <option value="reseller">Reseller</option>
 
-              <option value="">Agent</option>
+              <option value="agent">Agent</option>
             </select>
             <input
               name="checkbox"

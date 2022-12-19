@@ -307,7 +307,7 @@ function GroupsManagement() {
                               scope="col"
                               className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                             >
-                              Options
+                              
                             </th>
                           </tr>
                         </thead>
