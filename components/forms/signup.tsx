@@ -121,10 +121,12 @@ const [input,setInput] = useState<string>();
               <div className="h-[1px] opacity-20 w-40 bg-[#6C63FF] mt-3"></div>
               {/* <img src="/icons/line1.svg" alt="line1" /> */}
             </div>
+            <Link href= "agentCreate">
             <button className="bg-[#D9D9D9] bg-opacity-10 flex shadow-md font-karia  shadow-slate-400  rounded-lg h-12 w-64 text-center items-center pl-8 ml-auto mr-auto mt-4">
               <img src="/icons/google.svg" alt="google" className="pr-3" />
               Sign Up With Google
             </button> 
+            </Link> 
             <p className="font-karia pt-8 text-center">
               Have an account?
               <Link href="/auth/login" className="text-[#6C63FF] pl-1">
