@@ -26,10 +26,10 @@ function HomePage() {
         </div>
         <div className=''>
           <div className='h-80 w-72 bg-[#D9D9D9] rounded-lg'>
-
+           <img src="/images/home.png" alt="home" className='h-80' />
           </div>
           <div className='h-80 w-72 bg-[#D9D9D9] rounded-lg absolute top-[40%] ml-[10%]'>
-
+             <img src="/images/home2.png" alt="home" className='h-80' />
         </div>
         <div className='flex'>
          
@@ -123,13 +123,13 @@ function HomePage() {
         </div>
        </div>
       </div>
-      <div className='flex pb-14'>
-      <div className='pl-32 mt-8'>
+      <div className='flex pb-14 justify-around'>
+      <div className='mt-8'>
         <img src="icons/logo.svg" alt="logo" />
         <p className='w-72 pt-12'>Termii helps businesses use messaging channels to verify and authenticate sms topups.
         </p>
       </div>
-      <div className='mt-14 ml-48'>
+      <div className='mt-14'>
         <h1 className='text-2xl text-blue-500'>Contact Us </h1>
         <p>Any questions? Talk to the admin.</p>
         <div className='flex mt-4'>
@@ -141,6 +141,10 @@ function HomePage() {
         <p className='pl-3'>supaad@gmail.com</p>
         </div>
       </div>
+        <div className='w-80 mt-14'>
+          <p>2022 Beep-in is focused on delivering great customer messaging experience globally.</p>
+          <p className='text-blue-500 pt-8'>Thank you!</p>
+        </div>
     </div>
     </div>
   )

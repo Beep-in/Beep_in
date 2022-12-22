@@ -1,7 +1,7 @@
 import { AiOutlineRight } from "react-icons/ai";
 import { useState, useReducer } from "react";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
-import { Upload, XCircle ,Filter,Download,Trash3,Check2All} from "react-bootstrap-icons";
+import { Upload, XCircle ,Filter,Download,Trash3,Check2All,PlusCircle,CloudDownload,PencilSquare} from "react-bootstrap-icons";
 import { AiOutlineEye,AiOutlinePlus} from "react-icons/ai";
 type ACTIONTYPE =
   | { type: "newGroup" }
@@ -77,52 +77,36 @@ function GroupsManagement() {
 
   const tableData = [
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
     {
-      date: "2020-10-12",
-      messageStatus: "Sent",
-      recipient: "KALIGIRWA Sonia",
-      mobileNumber: "+2507783466743",
+      groupName: "The Nickles",
+      numberOfPeople: 10
     },
   ];
 
@@ -275,39 +259,39 @@ function GroupsManagement() {
               <div className="flex flex-col mt-4">
                 <div className="overflow-x-auto">
                   <div className="p-1.5 w-full inline-block align-middle">
-                    <div className="overflow-hidden border rounded-lg">
+                    <div className="overflow-hidden">
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                              className="px-6 py-3  text-left  "
                             >
-                              Date
+                              Group Name
                             </th>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                              className="px-6 py-3 text-left"
                             >
-                              Message Status
+                              Number of People
                             </th>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                              className="px-6 py-3  text-left"
                             >
-                              Recipients
+                              Add People
                             </th>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                              className="px-6 py-3  text-left"
                             >
-                              Mobile Number
+                              Download
                             </th>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                              className="px-6 py-3  "
                             >
-                              
+                              More
                             </th>
                           </tr>
                         </thead>
@@ -315,21 +299,21 @@ function GroupsManagement() {
                           {tableData.map((sms_data) => (
                             <tr>
                               <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                {sms_data.date}
+                                {sms_data.groupName}
                               </td>
                               <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
-                                {sms_data.messageStatus}{" "}
-                                <Check2All className="text-green-500 ml-3" />
+                                {sms_data.numberOfPeople}
                               </td>
                               <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {sms_data.recipient}
+                              <PlusCircle className="text-xl text-blue-500" />
                               </td>
                               <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                {sms_data.mobileNumber}
+                               <CloudDownload className="text-xl text-blue-500" />
                               </td>
                               <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
-                                <AiOutlineEye className="text-blue-500 text-xl" />
+                                <AiOutlineEye className="text-green-500 text-xl" />
                                 <Trash3 className="text-red-500 text-xl" />
+                                <PencilSquare className="text-[#968D8D]"/>
                               </td>
                             </tr>
                           ))}

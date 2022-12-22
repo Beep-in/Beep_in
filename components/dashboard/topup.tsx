@@ -270,14 +270,16 @@ function Topup() {
                           </td>
                    
                           <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap">
+                            <Link href="requestTopup">
                          <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 pl-4 pt-2 rounded-lg">
                           <p className="pr-2">Balance</p>
                            <AiOutlineEye />
                          </button>
+                         </Link>
                           </td>
                         </tr>
                       ))}
-                    </tbody>
+                    </tbody>1
                   </table>
                 </div>
               </div>
