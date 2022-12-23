@@ -1,32 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import {useForm} from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
-interface FormInput{
-  fullname:string,
-  phoneNumber:Number,
-  email:string,
-  password:string,
-  agent:string,
-
+interface FormInput {
+  fullname: string;
+  phoneNumber: Number;
+  email: string;
+  password: string;
+  agent: string;
 }
 
 export default function Signup() {
-const [input,setInput] = useState<string>();
-  const {
-    register,
-    handleSubmit
-  } = useForm<FormInput>();
+  const [input, setInput] = useState<string>();
+  const { register, handleSubmit } = useForm<FormInput>();
 
-  
-  const submit = (data:FormInput) => {
+  const submit = (data: FormInput) => {
     setInput(JSON.stringify(data));
     console.log(data);
-   
+  };
 
-  }
- 
   return (
     <div>
       <div className="flex">
@@ -54,9 +47,13 @@ const [input,setInput] = useState<string>();
         {/* </div> */}
         <div className="float-right w-1/2 h-auto">
           <h1 className="text-center font-karia font-bold text-2xl">Sign up</h1>
-          <form action="" className="block mt-16  ml-[25%]"onSubmit={handleSubmit(submit)} >
+          <form
+            action=""
+            className="block mt-16  ml-[25%]"
+            onSubmit={handleSubmit(submit)}
+          >
             <input
-            {...register("fullname")}
+              {...register("fullname")}
               type="text"
               name="fullname"
               placeholder="Name"
@@ -64,40 +61,38 @@ const [input,setInput] = useState<string>();
               className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6 rounded-lg pl-8 "
             />
             <input
-            {...register("phoneNumber")}
-            name="phoneNumber"
+              {...register("phoneNumber")}
+              name="phoneNumber"
               type="telephone"
               placeholder="Phone number"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
-            required
+              required
             />
             <input
-            {...register("email")}
-            name="email"
+              {...register("email")}
+              name="email"
               type="email"
               placeholder="Email"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
               required
-            
             />
             <input
-            {...register("password")}
+              {...register("password")}
               type="password"
               placeholder="Password"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
-               required
+              required
             />
 
             <select
-            {...register("agent")}
-
+              {...register("agent")}
               name="agent"
               id=""
               required
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
             >
               <option value="">Type of agent</option>
-              <option  value="admin">Admin</option>
+              <option value="admin">Admin</option>
               <option value="superReseller">Super Reseller</option>
               <option value="reseller">Reseller</option>
 
@@ -111,7 +106,10 @@ const [input,setInput] = useState<string>();
             <span className="pl-2 font-karia">
               I agree to the terms and conditions.
             </span>
-            <button type = "submit" className="rounded-lg bg-[#6C63FF] block text-white w-52 h-12 ml-auto mr-auto mt-6 font-semibold">
+            <button
+              type="submit"
+              className="rounded-lg bg-[#6C63FF] block text-white w-52 h-12 ml-auto mr-auto mt-6 font-semibold"
+            >
               Sign up
             </button>
             <div className="flex mt-4 justify-center">
@@ -121,12 +119,12 @@ const [input,setInput] = useState<string>();
               <div className="h-[1px] opacity-20 w-40 bg-[#6C63FF] mt-3"></div>
               {/* <img src="/icons/line1.svg" alt="line1" /> */}
             </div>
-            <Link href= "agentCreate">
-            <button className="bg-[#D9D9D9] bg-opacity-10 flex shadow-md font-karia  shadow-slate-400  rounded-lg h-12 w-64 text-center items-center pl-8 ml-auto mr-auto mt-4">
-              <img src="/icons/google.svg" alt="google" className="pr-3" />
-              Sign Up With Google
-            </button> 
-            </Link> 
+            <Link href="agentCreate">
+              <button className="bg-[#D9D9D9] bg-opacity-10 flex shadow-md font-karia  shadow-slate-400  rounded-lg h-12 w-64 text-center items-center pl-8 ml-auto mr-auto mt-4">
+                <img src="/icons/google.svg" alt="google" className="pr-3" />
+                Sign Up With Google
+              </button>
+            </Link>
             <p className="font-karia pt-8 text-center">
               Have an account?
               <Link href="/auth/login" className="text-[#6C63FF] pl-1">

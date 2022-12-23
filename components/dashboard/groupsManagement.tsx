@@ -1,14 +1,24 @@
 import { AiOutlineRight } from "react-icons/ai";
 import { useState, useReducer } from "react";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
-import { Upload, XCircle ,Filter,Download,Trash3,Check2All,PlusCircle,CloudDownload,PencilSquare} from "react-bootstrap-icons";
-import { AiOutlineEye,AiOutlinePlus} from "react-icons/ai";
+import {
+  Upload,
+  XCircle,
+  Filter,
+  Download,
+  Trash3,
+  Check2All,
+  PlusCircle,
+  CloudDownload,
+  PencilSquare,
+} from "react-bootstrap-icons";
+import { AiOutlineEye, AiOutlinePlus } from "react-icons/ai";
 type ACTIONTYPE =
   | { type: "newGroup" }
   | { type: "typeContacts" }
   | { type: "uploadFile" }
   | { type: "success" }
-  | { type: "groupList"}
+  | { type: "groupList" };
 const initialMethod = {
   typeContacts: false,
   uploadFile: false,
@@ -16,14 +26,14 @@ const initialMethod = {
 const initialEvent = {
   newGroup: true,
   success: false,
-  groupList:false,
+  groupList: false,
 };
 
 const eventDisplay = (eventHappen: typeof initialEvent, action: ACTIONTYPE) => {
   eventHappen = {
     newGroup: false,
     success: false,
-    groupList:false
+    groupList: false,
   };
   switch (action.type) {
     case "newGroup":
@@ -36,11 +46,11 @@ const eventDisplay = (eventHappen: typeof initialEvent, action: ACTIONTYPE) => {
         ...eventHappen,
         success: true,
       };
-      case "groupList":
-        return {
-          ...eventHappen,
-          groupList: true,
-        }
+    case "groupList":
+      return {
+        ...eventHappen,
+        groupList: true,
+      };
     default:
       return {
         ...eventHappen,
@@ -78,49 +88,50 @@ function GroupsManagement() {
   const tableData = [
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
     {
       groupName: "The Nickles",
-      numberOfPeople: 10
+      numberOfPeople: 10,
     },
   ];
 
   return (
     <div className="w-full">
-           <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
-           <h1>Recipients Groups</h1>
-           <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center">
-             Filter by <Filter className="text-blue-500  ml-2 mt-1" />
-           </button>
-           <button className="flex bg-blue-500 text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 rounded-lg">
-              <AiOutlinePlus />New group
-           </button>
-         </div>
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
+        <h1>Recipients Groups</h1>
+        <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center">
+          Filter by <Filter className="text-blue-500  ml-2 mt-1" />
+        </button>
+        <button className="flex bg-blue-500 text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 rounded-lg">
+          <AiOutlinePlus />
+          New group
+        </button>
+      </div>
       <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
         <button
           onClick={() => setCreateGroup(true)}
@@ -129,7 +140,10 @@ function GroupsManagement() {
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Group</li>
         </button>
-        <button onClick={() => dispatch({type: "groupList"})} className="flex hover:text-[#6C63FF]  rounded-r-lg w-full pr-20">
+        <button
+          onClick={() => dispatch({ type: "groupList" })}
+          className="flex hover:text-[#6C63FF]  rounded-r-lg w-full pr-20"
+        >
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Group list</li>
         </button>
@@ -255,79 +269,64 @@ function GroupsManagement() {
         </div>
       )}
       {eventHappen.groupList && (
-              <div className="h-96 w-3/4 mt-28 absolute right-10">
-              <div className="flex flex-col mt-4">
-                <div className="overflow-x-auto">
-                  <div className="p-1.5 w-full inline-block align-middle">
-                    <div className="overflow-hidden">
-                      <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="px-6 py-3  text-left  "
-                            >
-                              Group Name
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-6 py-3 text-left"
-                            >
-                              Number of People
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-6 py-3  text-left"
-                            >
-                              Add People
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-6 py-3  text-left"
-                            >
-                              Download
-                            </th>
-                            <th
-                              scope="col"
-                              className="px-6 py-3  "
-                            >
-                              More
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200">
-                          {tableData.map((sms_data) => (
-                            <tr>
-                              <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                {sms_data.groupName}
-                              </td>
-                              <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
-                                {sms_data.numberOfPeople}
-                              </td>
-                              <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                              <PlusCircle className="text-xl text-blue-500" />
-                              </td>
-                              <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                               <CloudDownload className="text-xl text-blue-500" />
-                              </td>
-                              <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
-                                <AiOutlineEye className="text-green-500 text-xl" />
-                                <Trash3 className="text-red-500 text-xl" />
-                                <PencilSquare className="text-[#968D8D]"/>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+        <div className="h-96 w-3/4 mt-28 absolute right-10">
+          <div className="flex flex-col mt-4">
+            <div className="overflow-x-auto">
+              <div className="p-1.5 w-full inline-block align-middle">
+                <div className="overflow-hidden">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th scope="col" className="px-6 py-3  text-left  ">
+                          Group Name
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left">
+                          Number of People
+                        </th>
+                        <th scope="col" className="px-6 py-3  text-left">
+                          Add People
+                        </th>
+                        <th scope="col" className="px-6 py-3  text-left">
+                          Download
+                        </th>
+                        <th scope="col" className="px-6 py-3  ">
+                          More
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {tableData.map((sms_data) => (
+                        <tr>
+                          <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                            {sms_data.groupName}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
+                            {sms_data.numberOfPeople}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                            <PlusCircle className="text-xl text-blue-500" />
+                          </td>
+                          <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                            <CloudDownload className="text-xl text-blue-500" />
+                          </td>
+                          <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
+                            <AiOutlineEye className="text-green-500 text-xl" />
+                            <Trash3 className="text-red-500 text-xl" />
+                            <PencilSquare className="text-[#968D8D]" />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
-              <div className="flex justify-center mt-2">
-                <BiChevronLeftCircle className="text-3xl text-blue-500" />
-                <BiChevronRightCircle className="text-3xl text-blue-500" />
-              </div>
             </div>
+          </div>
+          <div className="flex justify-center mt-2">
+            <BiChevronLeftCircle className="text-3xl text-blue-500" />
+            <BiChevronRightCircle className="text-3xl text-blue-500" />
+          </div>
+        </div>
       )}
     </div>
   );

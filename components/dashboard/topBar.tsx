@@ -13,7 +13,6 @@ export default function TopNavbar() {
             <div className="flex">
               <form action="">
                 <div className="flex">
-                
                   <input
                     type="search"
                     placeholder=" Search"

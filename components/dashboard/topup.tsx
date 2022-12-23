@@ -119,7 +119,6 @@ function Topup() {
       loadedSMS: 1000,
       date: "2012-02-01",
       totalAmount: 10000,
-    
     },
     {
       names: "Kaligirwa Sonia",
@@ -211,40 +210,22 @@ function Topup() {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th
-                          scope="col"
-                          className=" px-6 py-3 text-left "
-                        >
+                        <th scope="col" className=" px-6 py-3 text-left ">
                           Agent Names
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left"
-                        >
+                        <th scope="col" className="px-6 py-3 text-left">
                           Buying price
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left"
-                        >
+                        <th scope="col" className="px-6 py-3 text-left">
                           Loaded messages
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3"
-                        >
-                        Date
+                        <th scope="col" className="px-6 py-3">
+                          Date
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left "
-                        > 
+                        <th scope="col" className="px-6 py-3 text-left ">
                           Total amount
                         </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left"
-                        > 
+                        <th scope="col" className="px-6 py-3 text-left">
                           Balance
                         </th>
                       </tr>
@@ -257,7 +238,6 @@ function Topup() {
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
                             {sms_data.buyingPrice}
-                    
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                             {sms_data.loadedSMS}
@@ -268,18 +248,19 @@ function Topup() {
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                             {sms_data.totalAmount}
                           </td>
-                   
+
                           <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap">
                             <Link href="requestTopup">
-                         <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 pl-4 pt-2 rounded-lg">
-                          <p className="pr-2">Balance</p>
-                           <AiOutlineEye />
-                         </button>
-                         </Link>
+                              <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 pl-4 pt-2 rounded-lg">
+                                <p className="pr-2">Balance</p>
+                                <AiOutlineEye />
+                              </button>
+                            </Link>
                           </td>
                         </tr>
                       ))}
-                    </tbody>1
+                    </tbody>
+                    1
                   </table>
                 </div>
               </div>

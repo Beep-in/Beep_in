@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Check2All, Trash3,CircleFill} from "react-bootstrap-icons";
+import { Check2All, Trash3, CircleFill } from "react-bootstrap-icons";
 
 import { AiOutlineEye } from "react-icons/ai";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
@@ -54,7 +54,6 @@ function AgentList() {
       category: "Agent 123KZ",
       accountStatus: "Active",
     },
-
   ];
   return (
     <div className="w-full">
@@ -109,14 +108,20 @@ function AgentList() {
                         </td>
                         <td className="px-24 py-5 text-sm font-medium text-right whitespace-nowrap flex">
                           {sms_data.accountStatus}
-                          <CircleFill className="text-green-500 ml-4 text-xs"/>
+                          <CircleFill className="text-green-500 ml-4 text-xs" />
                         </td>
                         <td className="py-3">
-                         <button className="text-blue-500 bg-[#6C63FF] bg-opacity-20 h-8 w-20 rounded-lg mr-6">Update</button>
-                         <label className="inline-flex relative items-center mr-5 cursor-pointer">
-                        <input type="checkbox" value="" className="sr-only peer"/>
-                        <div className="w-11 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-focus:ring-white dark:peer-focus:ring-green-800 dark:bg-green-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
-                         </label>
+                          <button className="text-blue-500 bg-[#6C63FF] bg-opacity-20 h-8 w-20 rounded-lg mr-6">
+                            Update
+                          </button>
+                          <label className="inline-flex relative items-center mr-5 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              value=""
+                              className="sr-only peer"
+                            />
+                            <div className="w-11 h-6 bg-green-500 rounded-full peer peer-focus:ring-4 peer-focus:ring-white dark:peer-focus:ring-green-800 dark:bg-green-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                          </label>
                         </td>
                       </tr>
                     ))}

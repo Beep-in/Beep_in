@@ -328,16 +328,28 @@ function Dashboard(): JSX.Element {
                 <div className="mt-20">
                   <h1 className="font-bold">Your cards</h1>
                   <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl pt-2 pl-4 flex">
-                    <img src="/images/masterCard.png" alt="masterCard" className="h-8 w-10 " />
+                    <img
+                      src="/images/masterCard.png"
+                      alt="masterCard"
+                      className="h-8 w-10 "
+                    />
                     <p className="pt-2 pl-2">Master card</p>
                   </div>
                   <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl pl-4 pt-2 flex">
-                  <img src="/images/payPal.png" alt="masterCard" className="h-8 w-10 " />
+                    <img
+                      src="/images/payPal.png"
+                      alt="masterCard"
+                      className="h-8 w-10 "
+                    />
                     <p className="pt-2 pl-3">Paypal</p>
                   </div>
                   <div className="h-12 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl pt-2 pl-4 flex">
-                  <img src="/images/visa.png" alt="masterCard" className="h-8 w-10 " />
-                  <p className="pt-2 pl-3">Visa</p>
+                    <img
+                      src="/images/visa.png"
+                      alt="masterCard"
+                      className="h-8 w-10 "
+                    />
+                    <p className="pt-2 pl-3">Visa</p>
                   </div>
                 </div>
               </div>
@@ -366,25 +378,37 @@ function Dashboard(): JSX.Element {
               <h1 className="font-bold pt-6">New Topup Requests</h1>
               <div className="h-48 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
                 <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
-                  
-                      <img src="/images/profile.jpg" alt="profile" className="rounded-full h-8 w-8" />
-                      <p className="pl-2 pt-1">Kaligirwa Sonia</p>
+                  <img
+                    src="/images/profile.jpg"
+                    alt="profile"
+                    className="rounded-full h-8 w-8"
+                  />
+                  <p className="pl-2 pt-1">Kaligirwa Sonia</p>
                 </div>
                 <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
-                  
-                  <img src="/images/profile.jpg" alt="profile" className="rounded-full h-8 w-8" />
+                  <img
+                    src="/images/profile.jpg"
+                    alt="profile"
+                    className="rounded-full h-8 w-8"
+                  />
                   <p className="pl-2 pt-1">Kaligirwa Sonia</p>
-            </div>
-            <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
-                  
-                  <img src="/images/profile.jpg" alt="profile" className="rounded-full h-8 w-8" />
+                </div>
+                <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="profile"
+                    className="rounded-full h-8 w-8"
+                  />
                   <p className="pl-2 pt-1">Kaligirwa Sonia</p>
-            </div>
-            <div className="flex  pt-2 ml-2">
-                  
-                  <img src="/images/profile.jpg" alt="profile" className="rounded-full h-8 w-8" />
+                </div>
+                <div className="flex  pt-2 ml-2">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="profile"
+                    className="rounded-full h-8 w-8"
+                  />
                   <p className="pl-2 pt-1">Kaligirwa Sonia</p>
-            </div>
+                </div>
               </div>
             </div>
           </div>
