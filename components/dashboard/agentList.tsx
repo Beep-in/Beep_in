@@ -1,61 +1,41 @@
 import React, { useState } from "react";
 import { Check2All, Trash3, CircleFill } from "react-bootstrap-icons";
-
+// import fetch from "node-fetch";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
-function AgentList() {
-  const tableData = [
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
+import { Result } from "postcss";
+type Agent = {
+  name: string;
+  mobileNumber:string,
+  email: string,
+  category: string,
+  accountStatus:string
+};
+type GetAgentDetails = {
+  data: Agent[];
+};
+async function getAgents() {
+  try{
+    const response = await fetch('https://beepin.onrender.com/agent/all',{
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
     },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-    {
-      name: "Agent 123KZ",
-      mobileNumber: "0788733422",
-      email: "agent123@gmail.com",
-      category: "Agent 123KZ",
-      accountStatus: "Active",
-    },
-  ];
-  return (
+  })
+  const data = (await response.json() as GetAgentDetails).data;
+  
+  return {  props: {data}};
+  }catch(error){
+   console.log(error);
+   
+  };
+}
+  
+
+ function AgentList({data}: {data:Agent[]}) {
+  console.log(data);
+  
+    return (
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
         <h1>Agents List</h1>
@@ -92,7 +72,7 @@ function AgentList() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
-                    {tableData.map((sms_data) => (
+                    {data && data.map((sms_data) => (
                       <tr>
                         <td className="px-6 py-5 text-sm font-medium text-gray-800 whitespace-nowrap">
                           {sms_data.name}
