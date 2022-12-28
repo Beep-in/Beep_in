@@ -4,7 +4,7 @@ import { useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../pages/utils/api";
 interface FormInput {
-  name?: string;
+  names?: string;
   email?: string;
   phone_number?: string;
   password?: string;
@@ -56,20 +56,8 @@ const createUser = (user: typeof initialUser, action: ACTIONTYPE) => {
       };
   }
 };
-const createAgent = async(data:FormInput) => {
-await api.post('/agent/create', {
- name:data.name,
- email:data.email,
- phone_number : data.phone_number,
- address:data.address
-}).then(({data}) => {
-  if(data.Status == 404){
-    console.log("Invalid creddentials");
-    
-  }
-})
-}
-function CreateAgent() {
+
+function CreateAgent(data:FormInput) {
   const [user, dispatch] = useReducer(createUser, initialUser);
   const [input, setInput] = React.useState<string>();
   const { register, handleSubmit } = useForm<FormInput>();
@@ -77,7 +65,19 @@ function CreateAgent() {
     setInput(JSON.stringify(data));
     console.log(data);
   };
-  createAgent(input);
+ api.post('/agent/create', {
+     names:data.names,
+     email:data.email,
+     phone_number : data.phone_number,
+     address:data.address
+    }).then(({data}) => {
+      if(data.Status == 404){
+        console.log("Invalid credentials");
+        
+      }
+    })
+    
+
   return (
     <div>
       {user.agentType && (
@@ -122,7 +122,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("name")}
+                {...register("names")}
                 type="text"
                 placeholder="Names"
                 name="name"
@@ -197,7 +197,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("name")}
+                {...register("names")}
                 name="name"
                 type="text"
                 placeholder="Reseller Names"
@@ -272,7 +272,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("name")}
+                {...register("names")}
                 name="name"
                 type="text"
                 placeholder="Agent Names"
