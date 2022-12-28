@@ -1,13 +1,14 @@
+import { setDefaultResultOrder } from "dns";
 import React from "react";
 import { useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
-import useSWR from "swr";
+import { api } from "../../pages/utils/api";
 interface FormInput {
-  names: string;
-  email: string;
-  phone_number: string;
-  password: string;
-  address: string;
+  name?: string;
+  email?: string;
+  phone_number?: string;
+  password?: string;
+  address?: string;
 }
 type ACTIONTYPE =
   | { type: "agentType" }
@@ -55,25 +56,28 @@ const createUser = (user: typeof initialUser, action: ACTIONTYPE) => {
       };
   }
 };
+const createAgent = async(data:FormInput) => {
+await api.post('/agent/create', {
+ name:data.name,
+ email:data.email,
+ phone_number : data.phone_number,
+ address:data.address
+}).then(({data}) => {
+  if(data.Status == 404){
+    console.log("Invalid creddentials");
+    
+  }
+})
+}
 function CreateAgent() {
   const [user, dispatch] = useReducer(createUser, initialUser);
-  const [input, setInput] = useState<string>();
+  const [input, setInput] = React.useState<string>();
   const { register, handleSubmit } = useForm<FormInput>();
   const create = (data: FormInput) => {
     setInput(JSON.stringify(data));
     console.log(data);
   };
-  const fields = {input};
-  const { data } = useSWR(
-    "https://beepin.onrender.com/agent/create",
-    
-    (apiURL: string,method:string,headers:string,body:any) => fetch(apiURL,{
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(fields),   
-     }).then((res) => res.json())
-  );
-  console.log(data);
+  createAgent(input);
   return (
     <div>
       {user.agentType && (
@@ -118,7 +122,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
+                {...register("name")}
                 type="text"
                 placeholder="Names"
                 name="name"
@@ -193,7 +197,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
+                {...register("name")}
                 name="name"
                 type="text"
                 placeholder="Reseller Names"
@@ -268,7 +272,7 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
+                {...register("name")}
                 name="name"
                 type="text"
                 placeholder="Agent Names"
