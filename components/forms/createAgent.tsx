@@ -2,7 +2,7 @@ import { setDefaultResultOrder } from "dns";
 import React from "react";
 import { useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
-import { api } from "../../pages/utils/api";
+import axios from "axios";
 interface FormInput {
   names?: string;
   email?: string;
@@ -57,27 +57,23 @@ const createUser = (user: typeof initialUser, action: ACTIONTYPE) => {
   }
 };
 
-function CreateAgent(data:FormInput) {
+function CreateAgent() {
   const [user, dispatch] = useReducer(createUser, initialUser);
   const [input, setInput] = React.useState<string>();
   const { register, handleSubmit } = useForm<FormInput>();
   const create = (data: FormInput) => {
     setInput(JSON.stringify(data));
     console.log(data);
-  };
- api.post('/agent/create', {
-     names:data.names,
-     email:data.email,
-     phone_number : data.phone_number,
-     address:data.address
-    }).then(({data}) => {
-      if(data.Status == 404){
-        console.log("Invalid credentials");
-        
-      }
-    })
-    
-
+    axios.post("https://beepin.onrender.com/agent/create", data,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }).then((res) => {
+      console.log(res);
+      
+  });
+};
   return (
     <div>
       {user.agentType && (

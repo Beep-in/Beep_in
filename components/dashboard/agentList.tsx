@@ -34,7 +34,7 @@ async function getAgents() {
 
  function AgentList({data}: {data:Agent[]}) {
   console.log(data);
-  
+  getAgents()
     return (
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">

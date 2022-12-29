@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import useSWR from "swr"
+
 interface LoginInput {
   email: string;
   password: string;
@@ -15,11 +15,7 @@ export default function Signin() {
     setFields(JSON.stringify(values));
     console.log(values);
   };
-  const { data } = useSWR('https://beepin.onrender.com/agent/login', (
-    apiURL: string
-    ) => fetch(apiURL)
-    .then(res => res.json()))
-    console.log(data);
+
   return (
     <div>
       <div className="flex">
