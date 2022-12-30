@@ -6,7 +6,10 @@ import { useForm } from "react-hook-form";
 import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
 import { X } from "react-bootstrap-icons";
 import axios from "axios";
-
+import Cookies from 'cookie';
+import {getCookie} from 'cookies-next';
+import { NextRequest } from "next/server";
+// import {cookies} from  'next/'
 interface FormValues {
 receiver:string,
 text:string
@@ -72,7 +75,8 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   }
 };
 
-function MessageType(): JSX.Element {
+export default function MessageType(req: NextRequest): JSX.Element {
+  console.log(getCookie('accessToken'))
   const [recieve, dispatch] = useReducer(recieverType, initialReciever);
   const [success, setSuccess] = useState(true);
   const [failed, setFailed] = useState(true);
@@ -88,8 +92,8 @@ function MessageType(): JSX.Element {
    console.log(data);
    axios.post("https://beepin.onrender.com/message/send/single",data, {
     headers: {
-      "Content-Type":"application/json"
-    },
+      "Content-Type":"application/json",
+    }
    }).then((res) => {
     console.log(res);
      
@@ -373,5 +377,3 @@ function MessageType(): JSX.Element {
     </div>
   );
 }
-
-export default MessageType;

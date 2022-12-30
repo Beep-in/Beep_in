@@ -1,8 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import axios from "axios";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import Cookies from 'cookie';
+
+import axios from 'axios';
 
 interface LoginInput {
   email: string;
@@ -12,18 +15,29 @@ interface LoginInput {
 export default function Signin() {
   const [fields, setFields] = useState<string>();
   const { register, handleSubmit } = useForm<LoginInput>();
+  const [cookie, setCookie] = useCookies();
   const onSubmit = (values: LoginInput) => {
     setFields(JSON.stringify(values));
     console.log(values);
-    axios.post("https://beepin.onrender.com/agent/login", values,{
-      headers: {
-        "Content-Type":"application/json"
-      },
-    }).then((response) => {
-      console.log(response);
-      
-    })
- 
+    axios
+      .post('https://beepin.onrender.com/agent/login', values, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+        console.log(response)
+        setCookie('accessToken', response.data.access_token, {
+          path: '/',
+          maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+        setCookie('refreshToken', response.data.refresh_TO, {
+          path: '/',
+          maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+      });
   };
 
   return (
@@ -48,7 +62,7 @@ export default function Signin() {
             width={600}
             height={600}
             alt="signup image"
-            src={"/images/login.png"}
+            src={'/images/login.png'}
           />
         </div>
         <div className="float-right w-1/2 h-auto">
@@ -61,13 +75,13 @@ export default function Signin() {
             className="block mt-16  ml-[25%]"
           >
             <input
-              {...register("email")}
+              {...register('email')}
               type="email"
               placeholder="Email"
               className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6 rounded-lg pl-8 "
             />
             <input
-              {...register("password")}
+              {...register('password')}
               type="password"
               placeholder="Password"
               className="block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-4"
