@@ -4,7 +4,7 @@ import { useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 interface FormInput {
-  names?: string;
+  name?: string;
   email?: string;
   phone_number?: string;
   password?: string;
@@ -60,17 +60,20 @@ const createUser = (user: typeof initialUser, action: ACTIONTYPE) => {
 function CreateAgent() {
   const [user, dispatch] = useReducer(createUser, initialUser);
   const [input, setInput] = React.useState<string>();
-  const { register, handleSubmit } = useForm<FormInput>();
-  const create = (data: FormInput) => {
+  const { register, handleSubmit ,formState: { errors } } = useForm<FormInput>();
+ 
+  const create = (data: FormInput,event:any) => {
+    event.preventDefault();
     setInput(JSON.stringify(data));
     console.log(data);
-    axios.post("https://beepin.onrender.com/agent/create", data,
+   axios.post("https://beepin.onrender.com/agent/create", data,
     {
       headers: {
         "Content-Type":"application/json"
       },
+    
     }).then((res) => {
-      console.log(res);
+     console.log(res);
       
   });
 };
@@ -118,13 +121,17 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
+                {...register("name"
+                
+                )}
+                aria-invalid={errors.name ? "true" : "false"}
                 type="text"
                 placeholder="Names"
-                name="names"
+                name="name"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
                 required
               />
+       
               <input
                 {...register("email")}
                 type="text"
@@ -156,7 +163,13 @@ function CreateAgent() {
                 required
               />
               <input
-                {...register("password")}
+                {...register("password", {
+
+                  minLength: 6,
+                  max:10,
+                  pattern: /[A-Za-z]{3}/
+
+                })}
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -193,8 +206,8 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
-                name="names"
+                {...register("name")}
+                name="name"
                 type="text"
                 placeholder="Reseller Names"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
@@ -268,8 +281,8 @@ function CreateAgent() {
               onSubmit={handleSubmit(create)}
             >
               <input
-                {...register("names")}
-                name="names"
+                {...register("name")}
+                name="name"
                 type="text"
                 placeholder="Agent Names"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"

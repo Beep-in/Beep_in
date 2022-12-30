@@ -1,3 +1,4 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,6 +19,7 @@ export default function Signup() {
   const submit = (data: FormInput) => {
     setInput(JSON.stringify(data));
     console.log(data);
+    axios.post("")
   };
 
   return (
