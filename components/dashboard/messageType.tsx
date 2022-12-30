@@ -76,7 +76,6 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
 };
 
 export default function MessageType(req: NextRequest): JSX.Element {
-  console.log(getCookie('accessToken'))
   const [recieve, dispatch] = useReducer(recieverType, initialReciever);
   const [success, setSuccess] = useState(true);
   const [failed, setFailed] = useState(true);
@@ -88,11 +87,13 @@ export default function MessageType(req: NextRequest): JSX.Element {
  const {register,handleSubmit} = useForm<FormValues>();
 
   const submit = (data:FormValues) => {
+    const token = getCookie('accessToken')
    setFields(JSON.stringify(data))
    console.log(data);
    axios.post("https://beepin.onrender.com/message/send/single",data, {
     headers: {
       "Content-Type":"application/json",
+      "authorization" : token
     }
    }).then((res) => {
     console.log(res);
