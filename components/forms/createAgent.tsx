@@ -67,7 +67,7 @@ function CreateAgent() {
     axios.post("https://beepin.onrender.com/agent/create", data,
     {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type":"application/json"
       },
     }).then((res) => {
       console.log(res);
@@ -121,7 +121,7 @@ function CreateAgent() {
                 {...register("names")}
                 type="text"
                 placeholder="Names"
-                name="name"
+                name="names"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
                 required
               />
@@ -129,7 +129,7 @@ function CreateAgent() {
                 {...register("email")}
                 type="text"
                 placeholder="Email"
-                name="emai"
+                name="email"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import axios from "axios";
 
 interface LoginInput {
   email: string;
@@ -14,6 +15,15 @@ export default function Signin() {
   const onSubmit = (values: LoginInput) => {
     setFields(JSON.stringify(values));
     console.log(values);
+    axios.post("https://beepin.onrender.com/agent/login", values,{
+      headers: {
+        "Content-Type":"application/json"
+      },
+    }).then((response) => {
+      console.log(response);
+      
+    })
+ 
   };
 
   return (
