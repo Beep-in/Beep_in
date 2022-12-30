@@ -2,9 +2,16 @@ import React from "react";
 import Image from "next/image";
 import { useReducer, useRef, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
-
+import { useForm } from "react-hook-form";
 import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
 import { X } from "react-bootstrap-icons";
+import axios from "axios";
+
+interface FormValues {
+receiver:string,
+text:string
+}
+
 const initialReciever = {
   single: false,
   bulk: false,
@@ -73,6 +80,21 @@ function MessageType(): JSX.Element {
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
   ];
+  const [fields,setFields] = useState<string>()
+ const {register,handleSubmit} = useForm<FormValues>();
+
+  const submit = (data:FormValues) => {
+   setFields(JSON.stringify(data))
+   console.log(data);
+   axios.post("https://beepin.onrender.com/message/send/single",data, {
+    headers: {
+      "Content-Type":"application/json"
+    },
+   }).then((res) => {
+    console.log(res);
+     
+ });
+  }
 
   return (
     <div className="w-full">
@@ -124,7 +146,7 @@ function MessageType(): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
             <div className="bg-blue-400 w-2/3 ml-auto mr-auto"></div>
-            <form action="" className=" w-3/4 ml-auto mr-auto">
+            <form action="" className=" w-3/4 ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
               <div className="flex ml-20 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
@@ -140,6 +162,8 @@ function MessageType(): JSX.Element {
                   Phone number :
                 </label>
                 <input
+                {...register("receiver")}
+                  name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8"
@@ -148,14 +172,16 @@ function MessageType(): JSX.Element {
               <div className="flex ml-20 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                  name="message"
+                {...register("text")}
+                  name="text"
                   id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
               <button
-                onClick={() => dispatch({ type: "success" })}
+                // onClick={() => dispatch({ type: "success" })}
+                type="submit"
                 className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
               >
                 <FaRegPaperPlane className="mr-3" />
@@ -177,6 +203,8 @@ function MessageType(): JSX.Element {
                   Sender :
                 </label>
                 <input
+
+                 name="reciever"
                   type="text"
                   placeholder="Add name"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
