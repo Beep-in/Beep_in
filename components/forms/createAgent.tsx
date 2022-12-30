@@ -6,7 +6,7 @@ import axios from "axios";
 interface FormInput {
   name?: string;
   email?: string;
-  phone_number?: string;
+  phoneNumber?: string;
   password?: string;
   address?: string;
 }
@@ -60,10 +60,8 @@ const createUser = (user: typeof initialUser, action: ACTIONTYPE) => {
 function CreateAgent() {
   const [user, dispatch] = useReducer(createUser, initialUser);
   const [input, setInput] = React.useState<string>();
-  const { register, handleSubmit ,formState: { errors } } = useForm<FormInput>();
- 
-  const create = (data: FormInput,event:any) => {
-    event.preventDefault();
+  const { register, handleSubmit } = useForm<FormInput>();
+  const create = (data: FormInput) => {
     setInput(JSON.stringify(data));
     console.log(data);
    axios.post("https://beepin.onrender.com/agent/create", data,
@@ -124,7 +122,7 @@ function CreateAgent() {
                 {...register("name"
                 
                 )}
-                aria-invalid={errors.name ? "true" : "false"}
+                aria-invalid={Error.name ? "true" : "false"}
                 type="text"
                 placeholder="Names"
                 name="name"
@@ -141,10 +139,10 @@ function CreateAgent() {
                 required
               />
               <input
-                {...register("phone_number")}
-                type="tel"
+                {...register("phoneNumber")}
+                type="number"
                 placeholder="Contact Phone"
-                name="phone_number"
+                name="phoneNumber"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
@@ -222,9 +220,9 @@ function CreateAgent() {
                 required
               />
               <input
-                {...register("phone_number")}
-                name="phone_number"
-                type="tel"
+                {...register("phoneNumber")}
+                name="phoneNumber"
+                type="number"
                 placeholder="Reseller Contact Phone"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
@@ -297,9 +295,9 @@ function CreateAgent() {
                 required
               />
               <input
-                {...register("phone_number")}
-                name="phone_number"
-                type="tel"
+                {...register("phoneNumber")}
+                name="phoneNumber"
+                type="number"
                 placeholder="Agent Contact Phone"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
