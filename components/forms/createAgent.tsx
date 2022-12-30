@@ -194,7 +194,7 @@ function CreateAgent() {
             >
               <input
                 {...register("names")}
-                name="name"
+                name="names"
                 type="text"
                 placeholder="Reseller Names"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
@@ -233,7 +233,7 @@ function CreateAgent() {
               <input
                 {...register("password")}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="Password"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
@@ -269,7 +269,7 @@ function CreateAgent() {
             >
               <input
                 {...register("names")}
-                name="name"
+                name="names"
                 type="text"
                 placeholder="Agent Names"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
@@ -308,7 +308,7 @@ function CreateAgent() {
               <input
                 {...register("password")}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="Password"
                 className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
                 required
