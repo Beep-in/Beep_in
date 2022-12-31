@@ -4,7 +4,7 @@ import { useReducer, useRef, useState } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
-import { X } from "react-bootstrap-icons";
+import { X,Upload } from "react-bootstrap-icons";
 import axios from "axios";
 import Cookies from 'cookie';
 import {getCookie} from 'cookies-next';
@@ -29,7 +29,9 @@ type ACTIONTYPE =
   | { type: "group" }
   | { type: "messageIcon" }
   | { type: "success" }
-  | { type: "failed" };
+  | { type: "failed" }
+  | { type: "typeContacts" }
+  | { type: "uploadFile" }
 
 const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   reciever = {
@@ -40,6 +42,7 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
     success: false,
     failed: false,
   };
+
   switch (action.type) {
     case "single":
       return {
@@ -74,11 +77,38 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
       };
   }
 };
+const initialMethod = {
+  typeContacts: false,
+  uploadFile: false,
+};
+const methodType = (method: typeof initialMethod, action: ACTIONTYPE) => {
+  method = {
+    typeContacts: false,
+    uploadFile: false,
+  };
+  switch (action.type) {
+    case "typeContacts":
+      return {
+        ...method,
+        typeContacts: true,
+      };
+    case "uploadFile":
+      return {
+        ...method,
+        uploadFile: true,
+      };
+    default:
+      return {
+        ...method,
+      };
+  }
+};
 
 export default function MessageType(req: NextRequest): JSX.Element {
   const [recieve, dispatch] = useReducer(recieverType, initialReciever);
   const [success, setSuccess] = useState(true);
   const [failed, setFailed] = useState(true);
+  const [method, setDisplayMethod] = useReducer(methodType, initialMethod);
   const options = [
     { value: "Type numbers", label: "Type numbers" },
     { value: "upload file", label: "upload file" },
@@ -222,6 +252,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </label>
                   <div className="flex items-center">
                     <input
+                     onClick={() => setDisplayMethod({ type: "typeContacts" })}
                       id="default-radio-2"
                       type="radio"
                       value="typeContact"
@@ -234,6 +265,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </div>
                   <div className="flex items-center">
                     <input
+                    onClick={() => setDisplayMethod({ type: "uploadFile" })}
                       id="default-radio-2"
                       type="radio"
                       value="uploadFile"
@@ -246,7 +278,32 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </div>
                 </div>
               </div>
-
+               
+              <div className="block">
+                  {method.typeContacts && (
+                    <textarea
+                      className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg "
+                      placeholder="Type telephone numbers of group members"
+                    ></textarea>
+                  )}
+                  {method.uploadFile && (
+                    <div className="flex mt-4 w-full">
+                      <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <Upload className="text-3xl mt-4" />
+                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 pb-4">
+                            Upload contacts
+                          </p>
+                        </div>
+                        <input
+                          id="dropzone-file" ml-12
+                          type="file"
+                          className="hidden"
+                        />
+                      </label>
+                    </div>
+                  )}
+                </div>
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
