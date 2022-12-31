@@ -232,7 +232,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
 
-            <form action="" className=" w-3/4 ml-auto mr-auto">
+            <form action="" onSubmit={handleSubmit(submit)} className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
@@ -284,6 +284,9 @@ export default function MessageType(req: NextRequest): JSX.Element {
                     <textarea
                       className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg "
                       placeholder="Type telephone numbers of group members"
+                      value="typeContact"
+                      {...register("receiver")}
+                      name="reciever"
                     ></textarea>
                   )}
                   {method.uploadFile && (
@@ -298,7 +301,9 @@ export default function MessageType(req: NextRequest): JSX.Element {
                         <input
                           id="dropzone-file" ml-12
                           type="file"
-                          className="hidden"
+                          className="hidden" value="typeContact"
+                          {...register("receiver")}
+                          name="receiver"
                         />
                       </label>
                     </div>
@@ -307,14 +312,16 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                  name="message"
+                   {...register("text")}
+                   name="text"
                   id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
               <button
-                onClick={() => dispatch({ type: "failed" })}
+                // onClick={() => dispatch({ type: "failed" })}
+                type="submit"
                 className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
               >
                 <FaRegPaperPlane className="mr-3" />
@@ -330,7 +337,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
 
-            <form action="" className=" w-3/4 ml-auto mr-auto">
+            <form action="" onSubmit={handleSubmit(submit)} className=" w-3/4 ml-auto mr-auto">
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
@@ -346,6 +353,8 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   Phone number :
                 </label>
                 <input
+                 {...register("receiver")}
+                 name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8"
@@ -354,14 +363,16 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                  name="message"
+                    {...register("text")}
+                    name="text"
                   id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
-              <button className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
+              <button type="submit" className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
                 <FaRegPaperPlane className="mr-3" />
+                
                 SEND
               </button>
             </form>
