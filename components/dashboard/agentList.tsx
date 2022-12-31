@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Check2All, Trash3, CircleFill } from "react-bootstrap-icons";
-// import fetch from "node-fetch";
 import axios from "axios"
-import { AiOutlineEye } from "react-icons/ai";
+
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
-import { Result } from "postcss";
+
 type Agent = {
   name: string;
   mobileNumber:string,
@@ -12,37 +11,15 @@ type Agent = {
   category: string,
   accountStatus:string
 };
-type GetAgentDetails = {
-  data: Agent[];
-};
-// async function getAgents() {
-//   try{
-//     const response = await fetch('https://beepin.onrender.com/agent/all',{
-//     method: 'GET',
-//     headers: {
-//       Accept: 'application/json',
-//     },
-//   })
-//   const data = (await response.json() as GetAgentDetails).data;
-  
-//   return {  props: {data}};
-//   }catch(error){
-//    console.log(error);
-   
-//   };
-// }
- const  getAgents = async(data:Agent) => {
-     await  axios.get("https://beepin.onrender.com/agent/all", {
-      headers: {
-        "Content-Type":"application/json"
-      },
-    }).then((res) => {
-      console.log(res);
-       console.log("fsjsljks");
-   });
- }
-
  function AgentList({data}: {data:Agent[]}) {
+     axios.get("https://beepin.onrender.com/agent/all", {
+     headers: {
+       Accept:"application/json"
+     },
+   }).then((res) => {
+    console.log(res);
+    
+  });
   console.log(data);
   
     return (
