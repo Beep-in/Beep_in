@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Check2All, Trash3, CircleFill } from "react-bootstrap-icons";
+import {  CircleFill } from "react-bootstrap-icons";
 import axios from "axios"
 
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
