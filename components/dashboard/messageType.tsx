@@ -299,7 +299,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="block">
                 {method.typeContacts && (
                   <textarea
-                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg "
+                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg text-sm"
                     placeholder="Type telephone numbers of receivers separated with comma"
                     {...register('receiver')}
                     name="receiver"
@@ -315,13 +315,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                         </p>
                       </div>
                       <input
-                        id="dropzone-file"
-                        ml-12
-                        type="file"
-                        className="hidden"
-                        value="typeContact"
-                        {...register('receiver')}
-                        name="receiver"
+                       type="file"
                       />
                     </label>
                   </div>
