@@ -1,18 +1,18 @@
-import React from "react";
-import Image from "next/image";
-import { useReducer, useRef, useState } from "react";
-import { FaRegPaperPlane } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import { AiOutlinePlus, AiOutlineRight } from "react-icons/ai";
-import { X,Upload } from "react-bootstrap-icons";
-import axios from "axios";
+import React from 'react';
+import Image from 'next/image';
+import { useReducer, useRef, useState } from 'react';
+import { FaRegPaperPlane } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
+import { AiOutlinePlus, AiOutlineRight } from 'react-icons/ai';
+import { X, Upload } from 'react-bootstrap-icons';
+import axios from 'axios';
 import Cookies from 'cookie';
-import {getCookie} from 'cookies-next';
-import { NextRequest } from "next/server";
+import { getCookie } from 'cookies-next';
+import { NextRequest } from 'next/server';
 // import {cookies} from  'next/'
 interface FormValues {
-receiver:string,
-text:string
+  receiver: string;
+  text: string;
 }
 
 const initialReciever = {
@@ -24,14 +24,14 @@ const initialReciever = {
   failed: false,
 };
 type ACTIONTYPE =
-  | { type: "single" }
-  | { type: "bulk" }
-  | { type: "group" }
-  | { type: "messageIcon" }
-  | { type: "success" }
-  | { type: "failed" }
-  | { type: "typeContacts" }
-  | { type: "uploadFile" }
+  | { type: 'single' }
+  | { type: 'bulk' }
+  | { type: 'group' }
+  | { type: 'messageIcon' }
+  | { type: 'success' }
+  | { type: 'failed' }
+  | { type: 'typeContacts' }
+  | { type: 'uploadFile' };
 
 const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   reciever = {
@@ -44,29 +44,29 @@ const recieverType = (reciever: typeof initialReciever, action: ACTIONTYPE) => {
   };
 
   switch (action.type) {
-    case "single":
+    case 'single':
       return {
         ...reciever,
         single: true,
       };
 
-    case "bulk":
+    case 'bulk':
       return {
         ...reciever,
         bulk: true,
       };
 
-    case "group":
+    case 'group':
       return {
         ...reciever,
         group: true,
       };
-    case "success":
+    case 'success':
       return {
         ...reciever,
         success: true,
       };
-    case "failed":
+    case 'failed':
       return {
         ...reciever,
         failed: true,
@@ -87,12 +87,12 @@ const methodType = (method: typeof initialMethod, action: ACTIONTYPE) => {
     uploadFile: false,
   };
   switch (action.type) {
-    case "typeContacts":
+    case 'typeContacts':
       return {
         ...method,
         typeContacts: true,
       };
-    case "uploadFile":
+    case 'uploadFile':
       return {
         ...method,
         uploadFile: true,
@@ -110,26 +110,35 @@ export default function MessageType(req: NextRequest): JSX.Element {
   const [failed, setFailed] = useState(true);
   const [method, setDisplayMethod] = useReducer(methodType, initialMethod);
   const options = [
-    { value: "Type numbers", label: "Type numbers" },
-    { value: "upload file", label: "upload file" },
+    { value: 'Type numbers', label: 'Type numbers' },
+    { value: 'upload file', label: 'upload file' },
   ];
-  const [fields,setFields] = useState<string>()
- const {register,handleSubmit} = useForm<FormValues>();
+  const [fields, setFields] = useState<string>();
+  const { register, handleSubmit } = useForm<FormValues>();
 
-  const submit = (data:FormValues) => {
-    const token = getCookie('accessToken')
-   setFields(JSON.stringify(data))
-   console.log(data);
-   axios.post("https://beepin.onrender.com/message/send/single",data, {
-    headers: {
-      "Content-Type":"application/json",
-      "authorization" : token
-    }
-   }).then((res) => {
-    console.log(res);
-     
- });
-  }
+  const submit = (data: FormValues) => {
+    const token = getCookie('accessToken');
+    setFields(JSON.stringify(data));
+    console.log(data);
+    const url = recieve.single
+      ? 'https://beepin.onrender.com/message/send/single'
+      : recieve.bulk
+      ? 'https://beepin.onrender.com/message/send/multiple'
+      : 'https://beepin.onrender.com/message/send/group';
+    axios
+      .post(url, data, {
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: token,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="w-full">
@@ -141,7 +150,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
       </div>
       <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
         <button
-          onClick={() => dispatch({ type: "single" })}
+          onClick={() => dispatch({ type: 'single' })}
           className="flex  hover:text-[#6C63FF] w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
@@ -149,14 +158,14 @@ export default function MessageType(req: NextRequest): JSX.Element {
         </button>
 
         <button
-          onClick={() => dispatch({ type: "bulk" })}
+          onClick={() => dispatch({ type: 'bulk' })}
           className="flex hover:text-[#6C63FF] w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
           <li className="pl-4">Bulk</li>
         </button>
         <button
-          onClick={() => dispatch({ type: "group" })}
+          onClick={() => dispatch({ type: 'group' })}
           className="flex hover:text-[#6C63FF]  w-full pr-20"
         >
           <AiOutlineRight className="mt-1" />
@@ -169,7 +178,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
             width={400}
             height={400}
             alt="signup image"
-            src={"/images/messages.png"}
+            src={'/images/messages.png'}
           />
           <h1 className="text-xl font-bold text-center pt-4 drop-shadow-lg shadow-black">
             START SENDING MESSAGES
@@ -181,7 +190,11 @@ export default function MessageType(req: NextRequest): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
             <div className="bg-blue-400 w-2/3 ml-auto mr-auto"></div>
-            <form action="" className=" w-3/4 ml-auto mr-auto" onSubmit={handleSubmit(submit)}>
+            <form
+              action=""
+              className=" w-3/4 ml-auto mr-auto"
+              onSubmit={handleSubmit(submit)}
+            >
               <div className="flex ml-20 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
@@ -197,7 +210,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   Phone number :
                 </label>
                 <input
-                {...register("receiver")}
+                  {...register('receiver')}
                   name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
@@ -207,7 +220,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="flex ml-20 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                {...register("text")}
+                  {...register('text')}
                   name="text"
                   id=""
                   placeholder="Type a message.."
@@ -232,14 +245,17 @@ export default function MessageType(req: NextRequest): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
 
-            <form action="" onSubmit={handleSubmit(submit)} className=" w-3/4 ml-auto mr-auto">
+            <form
+              action=""
+              onSubmit={handleSubmit(submit)}
+              className=" w-3/4 ml-auto mr-auto"
+            >
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
                 </label>
                 <input
-
-                 name="reciever"
+                  name="reciever"
                   type="text"
                   placeholder="Add name"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
@@ -252,10 +268,11 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </label>
                   <div className="flex items-center">
                     <input
-                     onClick={() => setDisplayMethod({ type: "typeContacts" })}
+                      onClick={() => setDisplayMethod({ type: 'typeContacts' })}
                       id="default-radio-2"
                       type="radio"
-                      value="typeContact"
+                      value=""
+                      placeholder="Enter the receivers number separated with comma"
                       name="default-radio"
                       className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 ml-12"
                     />
@@ -265,7 +282,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </div>
                   <div className="flex items-center">
                     <input
-                    onClick={() => setDisplayMethod({ type: "uploadFile" })}
+                      onClick={() => setDisplayMethod({ type: 'uploadFile' })}
                       id="default-radio-2"
                       type="radio"
                       value="uploadFile"
@@ -278,42 +295,43 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   </div>
                 </div>
               </div>
-               
+
               <div className="block">
-                  {method.typeContacts && (
-                    <textarea
-                      className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg "
-                      placeholder="Type telephone numbers of group members"
-                      value="typeContact"
-                      {...register("receiver")}
-                      name="reciever"
-                    ></textarea>
-                  )}
-                  {method.uploadFile && (
-                    <div className="flex mt-4 w-full">
-                      <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                          <Upload className="text-3xl mt-4" />
-                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 pb-4">
-                            Upload contacts
-                          </p>
-                        </div>
-                        <input
-                          id="dropzone-file" ml-12
-                          type="file"
-                          className="hidden" value="typeContact"
-                          {...register("receiver")}
-                          name="receiver"
-                        />
-                      </label>
-                    </div>
-                  )}
-                </div>
+                {method.typeContacts && (
+                  <textarea
+                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg "
+                    placeholder="Type telephone numbers of receivers separated with comma"
+                    {...register('receiver')}
+                    name="receiver"
+                  ></textarea>
+                )}
+                {method.uploadFile && (
+                  <div className="flex mt-4 w-full">
+                    <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <Upload className="text-3xl mt-4" />
+                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 pb-4">
+                          Upload contacts
+                        </p>
+                      </div>
+                      <input
+                        id="dropzone-file"
+                        ml-12
+                        type="file"
+                        className="hidden"
+                        value="typeContact"
+                        {...register('receiver')}
+                        name="receiver"
+                      />
+                    </label>
+                  </div>
+                )}
+              </div>
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                   {...register("text")}
-                   name="text"
+                  {...register('text')}
+                  name="text"
                   id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
@@ -337,7 +355,11 @@ export default function MessageType(req: NextRequest): JSX.Element {
           <div className="h-96 w-3/4 mt-28 absolute right-10">
             <h1 className="text-2xl text-center">SEND MESSAGE</h1>
 
-            <form action="" onSubmit={handleSubmit(submit)} className=" w-3/4 ml-auto mr-auto">
+            <form
+              action=""
+              onSubmit={handleSubmit(submit)}
+              className=" w-3/4 ml-auto mr-auto"
+            >
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
                   Sender :
@@ -353,8 +375,8 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   Phone number :
                 </label>
                 <input
-                 {...register("receiver")}
-                 name="receiver"
+                  {...register('receiver')}
+                  name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8"
@@ -363,16 +385,18 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
-                    {...register("text")}
-                    name="text"
+                  {...register('text')}
+                  name="text"
                   id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
-              <button type="submit" className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 ">
+              <button
+                type="submit"
+                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
+              >
                 <FaRegPaperPlane className="mr-3" />
-                
                 SEND
               </button>
             </form>
