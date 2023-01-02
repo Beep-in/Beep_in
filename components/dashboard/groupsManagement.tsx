@@ -199,18 +199,6 @@ function GroupsManagement() {
                   required
                   className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 "
                 />
-                <select
-                  name="agent"
-                  id=""
-                  required
-                  className="block border-solid border bg-[#D9D9D9] border-opacity-10 h-14  w-5/6  rounded-lg pl-8 mt-6 "
-                >
-                  <option value="">Type of agent</option>
-                  <option value="">Admin</option>
-                  <option value="">Super Reseller</option>
-                  <option value="">Reseller</option>
-                  <option value="">Agent</option>
-                </select>
                 <p className="pt-8 font-bold">
                   What kind of method do you prefer?
                 </p>
