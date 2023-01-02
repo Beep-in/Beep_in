@@ -134,7 +134,7 @@ function GroupsManagement() {
     const token = getCookie('accessToken');
     console.log(data)
     axios
-      .post("http://localhost:7000/groups/create", data, {
+      .post("https://beepin.onrender.com/groups/create", data, {
         headers: {
           'Content-Type': 'application/json',
           authorization: token,
