@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Cookies from 'cookie';
-
+import { useRouter } from 'next/router';
 import axios from 'axios';
+import useAuth from '../context/authContext';
+// import { useAuth } from '../context/authContext';
 
 interface LoginInput {
   email: string;
@@ -16,28 +17,52 @@ export default function Signin() {
   const [fields, setFields] = useState<string>();
   const { register, handleSubmit } = useForm<LoginInput>();
   const [cookie, setCookie] = useCookies();
-  const onSubmit = (values: LoginInput) => {
-    setFields(JSON.stringify(values));
-    console.log(values);
-    axios
-      .post('https://beepin.onrender.com/agent/login', values, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => {
-        console.log(response)
-        setCookie('accessToken', response.data.access_token, {
-          path: '/',
-          maxAge: 3600, // Expires after 1hr
-          sameSite: true,
-        });
-        setCookie('refreshToken', response.data.refresh_TO, {
-          path: '/',
-          maxAge: 3600, // Expires after 1hr
-          sameSite: true,
-        });
-      });
+  const { user, login } = useAuth();
+  const onSubmit = async (values: LoginInput) => {
+    login(values)
+    console.log(user)
+    // setFields(JSON.stringify(values));
+    // const response = await axios.post(
+    //   'https://beepin.onrender.com/agent/login',
+    //   values,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   },
+    // );
+    // login(response.data.user);
+    // console.log(user);
+    // setCookie('accessToken', response.data.access_token, {
+    //   path: '/',
+    //   maxAge: 3600, // Expires after 1hr
+    //   sameSite: true,
+    // });
+    // setCookie('refreshToken', response.data.refresh_TO, {
+    //   path: '/',
+    //   maxAge: 3600, // Expires after 1hr
+    //   sameSite: true,
+    // });
+    // axios
+    //   .post('https://beepin.onrender.com/agent/login', values, {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   })
+    //   .then((response) => {
+    //     setUser(response.data.user)
+    //      console.log(user)
+    //     setCookie('accessToken', response.data.access_token, {
+    //       path: '/',
+    //       maxAge: 3600, // Expires after 1hr
+    //       sameSite: true,
+    //     });
+    //     setCookie('refreshToken', response.data.refresh_TO, {
+    //       path: '/',
+    //       maxAge: 3600, // Expires after 1hr
+    //       sameSite: true,
+    //     });
+    //   });
   };
 
   return (

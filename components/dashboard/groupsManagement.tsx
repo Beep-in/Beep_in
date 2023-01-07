@@ -1,5 +1,5 @@
 import { AiOutlineRight } from "react-icons/ai";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 import {
   Upload,
@@ -36,7 +36,10 @@ interface FormValues{
 name : string,
 members : string
 }
-
+interface groupValues{
+  name: string, 
+  groupMembers: Array<string>
+}
 
 const eventDisplay = (eventHappen: typeof initialEvent, action: ACTIONTYPE) => {
   eventHappen = {
@@ -95,40 +98,7 @@ function GroupsManagement() {
   const [eventHappen, dispatch] = useReducer(eventDisplay, initialEvent);
   const { register, handleSubmit } = useForm<FormValues>();
 
-  const tableData = [
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-    {
-      groupName: "The Nickles",
-      numberOfPeople: 10,
-    },
-  ];
+  const [tableData, setTableData]= useState([]);
 
   const submit = (data: FormValues)=>{
     const token = getCookie('accessToken');
@@ -147,7 +117,14 @@ function GroupsManagement() {
         console.log(err);
       });
   }
-
+useEffect(()=>{
+  const  url = "https://beepin.onrender.com/groups/get";
+  axios.get(url, {
+    headers : {
+      authorization: getCookie("accessToken")
+    }
+  }).then((res) => {return setTableData(res.data.data)})
+}, [])
   return (
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
@@ -315,13 +292,13 @@ function GroupsManagement() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {tableData.map((sms_data) => (
+                      {tableData.map((sms_data:groupValues) => (
                         <tr>
                           <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                            {sms_data.groupName}
+                            {sms_data.name}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex">
-                            {sms_data.numberOfPeople}
+                            {sms_data.groupMembers.length}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                             <PlusCircle className="text-xl text-blue-500" />

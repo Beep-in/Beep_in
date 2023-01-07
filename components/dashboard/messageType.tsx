@@ -9,8 +9,9 @@ import axios from 'axios';
 import Cookies from 'cookie';
 import { getCookie } from 'cookies-next';
 import { NextRequest } from 'next/server';
-// import {cookies} from  'next/'
+import useAuth from '../context/authContext';
 interface FormValues {
+  name: string;
   receiver: string;
   text: string;
 }
@@ -116,6 +117,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
   const [fields, setFields] = useState<string>();
   const { register, handleSubmit } = useForm<FormValues>();
 
+  const { user } = useAuth();
   const submit = (data: FormValues) => {
     const token = getCookie('accessToken');
     setFields(JSON.stringify(data));
@@ -123,7 +125,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
     const url = recieve.single
       ? 'https://beepin.onrender.com/message/send/single'
       : recieve.bulk
-      ? 'https://beepin.onrender.com/message/send/multiple'
+      ? 'http://localhost:7000/message/send/multiple'
       : 'https://beepin.onrender.com/message/send/group';
     axios
       .post(url, data, {
@@ -139,7 +141,6 @@ export default function MessageType(req: NextRequest): JSX.Element {
         console.log(err);
       });
   };
-
   return (
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
@@ -200,6 +201,8 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   Sender :
                 </label>
                 <input
+                  {...register('name')}
+                  name="name"
                   type="text"
                   placeholder="Add name"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
@@ -255,7 +258,8 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   Sender :
                 </label>
                 <input
-                  name="reciever"
+                  {...register('name')}
+                  name="name"
                   type="text"
                   placeholder="Add name"
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
@@ -314,9 +318,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                           Upload contacts
                         </p>
                       </div>
-                      <input
-                       type="file"
-                      />
+                      <input type="file" />
                     </label>
                   </div>
                 )}
@@ -326,7 +328,6 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 <textarea
                   {...register('text')}
                   name="text"
-                  id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
@@ -356,26 +357,21 @@ export default function MessageType(req: NextRequest): JSX.Element {
             >
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4">
-                  Sender :
+                  Receiver :
                 </label>
-                <input
-                  type="text"
-                  placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
-                />
-              </div>
-              <div className="flex ml-36 mt-4">
-                <label htmlFor="name" className="pt-4">
-                  Phone number :
-                </label>
-                <input
+                <select
                   {...register('receiver')}
                   name="receiver"
-                  type="telephone"
-                  placeholder="Add telephone"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8"
-                />
+                  placeholder="Group name"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-1/3 rounded-lg pl-8 ml-24 "
+                >
+                  <option value="">Group name</option>
+                  {user!.groups.map((group) => {
+                    return <option value={group.id}>{group.name}</option>;
+                  })}
+                </select>
               </div>
+        
               <div className="flex ml-36 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
