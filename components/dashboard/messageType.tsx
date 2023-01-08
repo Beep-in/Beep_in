@@ -221,15 +221,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8 font-inter"
                 />
               </div>
-              <div className="flex ml-20 mt-4">
-                <label htmlFor="Message">Sender :</label>
-                <textarea
-                  {...register('name')}
-                  name="name"
-                  placeholder="Disaplayed sender name"
-                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
-                ></textarea>
-              </div>
+    
               <div className="flex ml-20 mt-4">
                 <label htmlFor="Message" className='font-karla'>Message :</label>
                 <textarea

@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+import React from 'react';
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 export interface user{
   id: string;
@@ -42,10 +43,26 @@ interface Props  {
 
 export function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<user | null>(null);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const router = useRouter()
-  
+        React.useEffect(() => {
+      /* we are going to use localStorage for user storage
+          but we will leter use cookies when integrated with backend.
+      */
+      setLoading(true);
+      const user = localStorage.getItem('user');
+      if (user) {
+          setUser(JSON.parse(user));
+      } else {
+          if (router.pathname !== '/')
+              router.push("/auth/login")
+      }
+      setLoading(false);
+      // console.log("pathname", router.pathname);
+  }, [router.pathname]);
   const login = async (values: LoginInput) => {
     // setFiel(JSON.stringify(values));
+    setLoading(true);
     await axios.post(
       'https://beepin.onrender.com/agent/login',
       values,
@@ -69,8 +86,9 @@ export function AuthProvider({ children }: Props) {
       });
 
     })
+  
 
-  };
+ };
 
   const logout = () => {
     setUser({
@@ -87,10 +105,15 @@ export function AuthProvider({ children }: Props) {
         groups: [],
     });
   };
+ 
+
+
   const value = {
     user,
     login,
     logout,
+    loading
+
   };
 
   return (<AuthContext.Provider value={value}>{children}</AuthContext.Provider>);
@@ -99,3 +122,4 @@ export function AuthProvider({ children }: Props) {
 export default function useAuth() {
   return useContext(AuthContext);
 }
+

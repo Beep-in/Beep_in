@@ -1,23 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import useAuth from '../context/authContext';
-// import { useAuth } from '../context/authContext';
+
 
 interface LoginInput {
   email: string;
   password: string;
 }
 
+
 export default function Signin() {
+
   const [fields, setFields] = useState<string>();
-  const { register, handleSubmit } = useForm<LoginInput>();
+  const { register, handleSubmit ,setError} = useForm<LoginInput>();
   const [cookie, setCookie] = useCookies();
   const { user, login } = useAuth();
+
+
   const onSubmit = async (values: LoginInput) => {
     login(values)
     console.log(user)
@@ -63,8 +67,7 @@ export default function Signin() {
     //       sameSite: true,
     //     });
     //   });
-  };
-
+  }
   return (
     <div>
       <div className="flex">
