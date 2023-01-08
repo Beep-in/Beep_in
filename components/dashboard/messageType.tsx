@@ -190,7 +190,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
       {recieve.single && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
-            <h1 className="text-2xl text-center">SEND MESSAGE</h1>
+            <h1 className="text-2xl text-center font-inter">SEND MESSAGE</h1>
             <div className="bg-blue-400 w-2/3 ml-auto mr-auto"></div>
             <form
               action=""
@@ -198,7 +198,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               onSubmit={handleSubmit(submit)}
             >
               <div className="flex ml-20 mt-10">
-                <label htmlFor="name" className="pt-4">
+                <label htmlFor="name" className="pt-4 font-karla">
                   Sender :
                 </label>
                 <input
@@ -206,11 +206,11 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   name="name"
                   type="text"
                   placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 font-inter"
                 />
               </div>
               <div className="flex ml-20 mt-4">
-                <label htmlFor="name" className="pt-4">
+                <label htmlFor="name" className="pt-4 font-karla">
                   Phone number :
                 </label>
                 <input
@@ -218,7 +218,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8 font-inter"
                 />
               </div>
               <div className="flex ml-20 mt-4">
@@ -231,18 +231,18 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 ></textarea>
               </div>
               <div className="flex ml-20 mt-4">
-                <label htmlFor="Message">Message :</label>
+                <label htmlFor="Message" className='font-karla'>Message :</label>
                 <textarea
                   {...register('text')}
                   name="text"
                   placeholder="Type a message.."
-                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full font-inter"
                 ></textarea>
               </div>
               <button
                 
                 type="submit"
-                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
+                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 font-inter"
               >
                 <FaRegPaperPlane className="mr-3"/>
                 SEND
@@ -255,7 +255,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
       {recieve.bulk && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
-            <h1 className="text-2xl text-center">SEND MESSAGE</h1>
+            <h1 className="text-2xl text-center font-inter">SEND MESSAGE</h1>
 
             <form
               action=""
@@ -263,7 +263,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               className=" w-3/4 ml-auto mr-auto"
             >
               <div className="flex ml-36 mt-10">
-                <label htmlFor="name" className="pt-4">
+                <label htmlFor="name" className="pt-4 font-karla">
                   Sender :
                 </label>
                 <input
@@ -271,12 +271,12 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   name="name"
                   type="text"
                   placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 font-inter"
                 />
               </div>
               <div className="flex">
                 <div className="flex mt-6">
-                  <label htmlFor="name" className="pl-36">
+                  <label htmlFor="name" className="pl-36 font-karla">
                     Method type :
                   </label>
                   <div className="flex items-center">
@@ -289,7 +289,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                       name="default-radio"
                       className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 ml-12"
                     />
-                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       Type contacts
                     </label>
                   </div>
@@ -302,7 +302,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                       name="default-radio"
                       className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 ml-40"
                     />
-                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       Upload a file
                     </label>
                   </div>
@@ -336,12 +336,12 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 )}
               </div>
               <div className="flex ml-36 mt-4">
-                <label htmlFor="Message">Message :</label>
+                <label htmlFor="Message" className='font-karla'>Message :</label>
                 <textarea
                   {...register('text')}
                   name="text"
                   placeholder="Type a message.."
-                  className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                  className=" pt-4 block font-inter border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
               <button
@@ -349,7 +349,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 type="submit"
                 className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
               >
-                <FaRegPaperPlane className="mr-3" />
+                <FaRegPaperPlane className="mr-3 font-inter" />
                 SEND
               </button>
             </form>
