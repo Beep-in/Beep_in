@@ -125,7 +125,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
     const url = recieve.single
       ? 'https://beepin.onrender.com/message/send/single'
       : recieve.bulk
-      ? 'http://localhost:7000/message/send/multiple'
+      ? 'https://beepin.onrender.com/message/send/multiple'
       : 'https://beepin.onrender.com/message/send/group';
     axios
       .post(url, data, {
@@ -136,6 +136,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
       })
       .then((res) => {
         console.log(res);
+         dispatch({ type: "success" })
       })
       .catch((err) => {
         console.log(err);
@@ -221,21 +222,29 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 />
               </div>
               <div className="flex ml-20 mt-4">
+                <label htmlFor="Message">Sender :</label>
+                <textarea
+                  {...register('name')}
+                  name="name"
+                  placeholder="Disaplayed sender name"
+                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                ></textarea>
+              </div>
+              <div className="flex ml-20 mt-4">
                 <label htmlFor="Message">Message :</label>
                 <textarea
                   {...register('text')}
                   name="text"
-                  id=""
                   placeholder="Type a message.."
                   className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
                 ></textarea>
               </div>
               <button
-                // onClick={() => dispatch({ type: "success" })}
+                
                 type="submit"
                 className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
               >
-                <FaRegPaperPlane className="mr-3" />
+                <FaRegPaperPlane className="mr-3"/>
                 SEND
               </button>
             </form>
