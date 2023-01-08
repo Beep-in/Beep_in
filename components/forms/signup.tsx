@@ -37,21 +37,21 @@ export default function Signup() {
         />
       </div>
       <div className="flex mt-8">
-        <div className=" w-1/2 h-[100vh]">
+        <div className=" lg:w-1/2 h-[100vh] sm:w-0">
           <Image
             width={720}
             height={600}
             alt="signup image"
             src={"/images/signup.png"}
-            className="ml-8 mt-32"
+            className="ml-8 mt-28 lg:w-[42vw] sm:w-0"
           />
         </div>
         {/* </div> */}
-        <div className="float-right w-1/2 h-auto">
+        <div className="float-right lg:w-1/2 sm:w-full h-auto">
           <h1 className="text-center font-karia font-bold text-2xl">Sign up</h1>
           <form
             action=""
-            className="block mt-16  ml-[25%]"
+            className="block mt-16  lg:ml-[25%] sm:ml-[20%]"
             onSubmit={handleSubmit(submit)}
           >
             <input

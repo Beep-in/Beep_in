@@ -318,7 +318,10 @@ export default function MessageType(req: NextRequest): JSX.Element {
                           Upload contacts
                         </p>
                       </div>
-                      <input type="file" />
+                      <input
+                       type="file"
+                       
+                      />
                     </label>
                   </div>
                 )}
