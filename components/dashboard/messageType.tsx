@@ -143,34 +143,34 @@ export default function MessageType(req: NextRequest): JSX.Element {
   };
   return (
     <div className="w-full">
-      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center font-inter text-[#6C63FF] text-xl">
         <h1>Messages</h1>
         <button className="bg-[#6C63FF] h-12 w-12 text-center rounded-lg absolute right-10">
           <AiOutlinePlus className="text-white text-center ml-3 text-xl font-bold" />
         </button>
       </div>
-      <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
+      <div className="absolute left-24 top-48 list-none flex gap-8 flex-col">
         <button
           onClick={() => dispatch({ type: 'single' })}
-          className="flex  hover:text-[#6C63FF] w-full pr-20"
+          className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
-          <li className="pl-4 ">Single</li>
+          <AiOutlineRight className="mt-1 ml-2" />
+          <li className="pl-4 font-karla">Single</li>
         </button>
 
         <button
           onClick={() => dispatch({ type: 'bulk' })}
-          className="flex hover:text-[#6C63FF] w-full pr-20"
+          className="flex  hover:text-[#6C63FF] w-auto h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
-          <li className="pl-4">Bulk</li>
+          <AiOutlineRight className="mt-1 ml-2" />
+          <li className="pl-4 font-karla">Bulk</li>
         </button>
         <button
           onClick={() => dispatch({ type: 'group' })}
-          className="flex hover:text-[#6C63FF]  w-full pr-20"
+          className="flex  hover:text-[#6C63FF] w-auto h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
-          <li className="pl-4">Group</li>
+          <AiOutlineRight className="mt-1 ml-2" />
+          <li className="pl-4 font-karla ">Group</li>
         </button>
       </div>
       {recieve.messageIcon && (

@@ -162,26 +162,26 @@ function Dashboard(): JSX.Element {
           Download Report <Download />
         </button>
       </div>
-      <div className="absolute left-32 top-56 list-none flex gap-8 flex-col">
+      <div className="absolute left-24 top-52 list-none flex gap-8 flex-col">
         <button
           onClick={() => displayStatistics({ type: "overview" })}
-          className="flex hover:text-[#6C63FF]  w-full pr-20"
+          className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
+          <AiOutlineRight className="mt-1 ml-2" />
           <li className="pl-4">Overview</li>
         </button>
         <button
           onClick={() => displayStatistics({ type: "report" })}
-          className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20"
+          className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
+          <AiOutlineRight className="mt-1 ml-2" />
           <li className="pl-4">Report</li>
         </button>
         <button
           onClick={() => displayStatistics({ type: "sms_list" })}
-          className="flex hover:text-[#6C63FF] rounded-r-lg w-full pr-20"
+          className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
-          <AiOutlineRight className="mt-1" />
+          <AiOutlineRight className="mt-1 ml-2" />
           <li className="pl-4">SMS List</li>
         </button>
       </div>

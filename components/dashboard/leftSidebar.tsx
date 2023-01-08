@@ -29,9 +29,9 @@ const LeftSidebar = () => {
   return (
     <div>
       <div className="flex">
-        <div className="w-24 bg-[hsl(0,0%,95%)]  pt-28 h-auto pb-9 flex gap-7 flex-col">
+        <div className="w-24 bg-blue-100 bg-opacity-40  pt-28 h-auto pb-20 flex gap-7 flex-col">
           <Link href="messageHandler">
-            <FaRegComments className="w-full h-8   hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
+            <FaRegComments className="w-full h-8   hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-xs font-light focus:text-[#6C63FF] focus:border-r-8 focus:border-solid focus:border-[#6C63FF]" />
           </Link>
           <Link href="detailView">
             <JournalCheck className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />

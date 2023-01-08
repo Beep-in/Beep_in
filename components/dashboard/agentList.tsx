@@ -24,7 +24,7 @@ type Agent = {
   
     return (
     <div className="w-full">
-      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center font-karla text-[#6C63FF]  text-xl">
         <h1>Agents List</h1>
       </div>
       <div className="h-96 w-4/5 mt-20 absolute right-4">
@@ -33,7 +33,7 @@ type Agent = {
             <div className="p-1.5 w-full inline-block ">
               <div className="overflow-hidden ">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-gray-50 font-inter">
                     <tr>
                       <th scope="col" className="px-6 py-3  text-left ">
                         Agent name
@@ -58,7 +58,7 @@ type Agent = {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-gray-200 font-inter">
                     {data && data.map((sms_data) => (
                       <tr>
                         <td className="px-6 py-5 text-sm font-medium text-gray-800 whitespace-nowrap">
