@@ -54,7 +54,7 @@ export function AuthProvider({ children }: Props) {
       if (user) {
           setUser(JSON.parse(user));
       } else {
-          if (router.pathname !== '/')
+          if (router.pathname !== '/'||'/auth/signup')
               router.push("/auth/login")
       }
       setLoading(false);
