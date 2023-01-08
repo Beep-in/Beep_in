@@ -78,7 +78,7 @@ type Agent = {
                           <CircleFill className="text-green-500 ml-4 text-xs" />
                         </td>
                         <td className="py-3">
-                          <button className="text-blue-500 bg-[#6C63FF] bg-opacity-20 h-8 w-20 rounded-lg mr-6">
+                          <button className="text-[#6C63FF] bg-[#6C63FF] bg-opacity-20 h-8 w-20 rounded-lg mr-6">
                             Update
                           </button>
                           <label className="inline-flex relative items-center mr-5 cursor-pointer">
@@ -99,8 +99,8 @@ type Agent = {
           </div>
         </div>
         <div className="flex justify-center mt-2">
-          <BiChevronLeftCircle className="text-3xl text-blue-500" />
-          <BiChevronRightCircle className="text-3xl text-blue-500" />
+          <BiChevronLeftCircle className="text-3xl text-[#6C63FF]" />
+          <BiChevronRightCircle className="text-3xl text-[#6C63FF]" />
         </div>
       </div>
     </div>

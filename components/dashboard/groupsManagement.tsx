@@ -130,9 +130,9 @@ useEffect(()=>{
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
         <h1>Recipients Groups</h1>
         <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center">
-          Filter by <Filter className="text-blue-500  ml-2 mt-1" />
+          Filter by <Filter className="text-[#6C63FF]  ml-2 mt-1" />
         </button>
-        <button className="flex bg-blue-500 text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 rounded-lg">
+        <button className="flex bg-[#6C63FF] text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 rounded-lg">
           <AiOutlinePlus />
           New group
         </button>
@@ -158,7 +158,7 @@ useEffect(()=>{
           {eventHappen.newGroup && (
             <div className="h-[74vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <XCircle
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl mt-2 mr-2 text-blue-500"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl mt-2 mr-2 text-[#6C63FF]"
                 onClick={() => setCreateGroup(false)}
               />
               <img
@@ -239,7 +239,7 @@ useEffect(()=>{
                 className="flex float-right mr-20 mt-4 items-center font-normal"
                 >
                 Continue
-                <BiChevronRightCircle className="text-4xl text-blue-500 ml-4" />
+                <BiChevronRightCircle className="text-4xl text-[#6C63FF] ml-4" />
               </button>
                 </form>
             </div>
@@ -247,7 +247,7 @@ useEffect(()=>{
           {eventHappen.success && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <XCircle
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl mt-2 mr-2 text-blue-500"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl mt-2 mr-2 text-[#6C63FF]"
                 onClick={() => setCreateGroup(false)}
               />
               <img
@@ -258,7 +258,7 @@ useEffect(()=>{
               <h1 className="text-center pt-8 text-xl">
                 Start Sending Messages to The Nickels
               </h1>
-              <button className="h-12 w-40 bg-blue-500 text-white ml-48 rounded-lg mt-10 ">
+              <button className="h-12 w-40 bg-[#6C63FF] text-white ml-48 rounded-lg mt-10 ">
                 PROCEED
               </button>
             </div>
@@ -301,10 +301,10 @@ useEffect(()=>{
                             {sms_data.groupMembers.length}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                            <PlusCircle className="text-xl text-blue-500" />
+                            <PlusCircle className="text-xl text-[#6C63FF]" />
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <CloudDownload className="text-xl text-blue-500" />
+                            <CloudDownload className="text-xl text-[#6C63FF]" />
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
                             <AiOutlineEye className="text-green-500 text-xl" />
@@ -320,8 +320,8 @@ useEffect(()=>{
             </div>
           </div>
           <div className="flex justify-center mt-2">
-            <BiChevronLeftCircle className="text-3xl text-blue-500" />
-            <BiChevronRightCircle className="text-3xl text-blue-500" />
+            <BiChevronLeftCircle className="text-3xl text-[#6C63FF]" />
+            <BiChevronRightCircle className="text-3xl text-[#6C63FF]" />
           </div>
         </div>
       )}

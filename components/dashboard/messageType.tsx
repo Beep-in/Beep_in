@@ -145,7 +145,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
         <h1>Messages</h1>
-        <button className="bg-blue-500 h-12 w-12 text-center rounded-lg absolute right-10">
+        <button className="bg-[#6C63FF] h-12 w-12 text-center rounded-lg absolute right-10">
           <AiOutlinePlus className="text-white text-center ml-3 text-xl font-bold" />
         </button>
       </div>
@@ -401,7 +401,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
           {recieve.success && (
             <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setSuccess(false)}
               />
               <img
@@ -420,7 +420,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 </p>
               </div>
               <div className="">
-                <button className="h-12 w-40 bg-blue-500 text-white rounded-lg mt-10 ml-[45%]">
+                <button className="h-12 w-40 bg-[#6C63FF] text-white rounded-lg mt-10 ml-[45%]">
                   continue
                 </button>
               </div>
@@ -433,7 +433,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
           {recieve.failed && (
             <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setFailed(false)}
               />
               <img
@@ -452,7 +452,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 </p>
               </div>
               <div className="">
-                <button className="h-12 w-40 bg-blue-500 text-white rounded-lg mt-10 ml-[45%]">
+                <button className="h-12 w-40 bg-[#6C63FF] text-white rounded-lg mt-10 ml-[45%]">
                   Try Again
                 </button>
               </div>

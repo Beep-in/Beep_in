@@ -176,7 +176,7 @@ function Topup() {
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
         <h1>Topup History</h1>
         <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center">
-          Filter by <Filter className="text-blue-500  ml-2 mt-1" />
+          Filter by <Filter className="text-[#6C63FF]  ml-2 mt-1" />
         </button>
         <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10">
           Download Report <Download />
@@ -267,8 +267,8 @@ function Topup() {
             </div>
           </div>
           <div className="flex justify-center mt-2">
-            <BiChevronLeftCircle className="text-3xl text-blue-500" />
-            <BiChevronRightCircle className="text-3xl text-blue-500" />
+            <BiChevronLeftCircle className="text-3xl text-[#6C63FF]" />
+            <BiChevronRightCircle className="text-3xl text-[#6C63FF]" />
           </div>
         </div>
       )}
@@ -277,7 +277,7 @@ function Topup() {
           {mode.topupData && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img
@@ -315,14 +315,14 @@ function Topup() {
                 className="flex float-right mr-20 mt-16 items-center font-normal"
               >
                 Payment method
-                <BiChevronRightCircle className="text-4xl text-blue-500 ml-4" />
+                <BiChevronRightCircle className="text-4xl text-[#6C63FF] ml-4" />
               </button>
             </div>
           )}
           {mode.allMethods && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img
@@ -381,13 +381,13 @@ function Topup() {
               <div className="flex mt-16 justify-between ml-16 mr-16">
                 <Link href="topupResult">
                   <button className="flex  items-center font-normal">
-                    <BiChevronLeftCircle className="text-4xl text-blue-500 mr-4" />
+                    <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
                 <button className="flex  items-center font-normal">
                   Continue
-                  <BiChevronRightCircle className="text-4xl text-blue-500 ml-4" />
+                  <BiChevronRightCircle className="text-4xl text-[#6C63FF] ml-4" />
                 </button>
               </div>
             </div>
@@ -395,7 +395,7 @@ function Topup() {
           {mode.momo && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img
@@ -425,14 +425,14 @@ function Topup() {
               <div className="flex mt-20 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
                   <button className="flex  items-center font-normal">
-                    <BiChevronLeftCircle className="text-4xl text-blue-500 mr-4" />
+                    <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
 
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-blue-500 text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
                 >
                   Done
                 </button>
@@ -442,7 +442,7 @@ function Topup() {
           {mode.bank && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img
@@ -467,13 +467,13 @@ function Topup() {
               <div className="flex mt-20 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
                   <button className="flex  items-center font-normal">
-                    <BiChevronLeftCircle className="text-4xl text-blue-500 mr-4" />
+                    <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-blue-500 text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
                 >
                   Done
                 </button>
@@ -483,7 +483,7 @@ function Topup() {
           {mode.card && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img
@@ -549,13 +549,13 @@ function Topup() {
               <div className="flex mt-8 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
                   <button className="flex  items-center font-normal">
-                    <BiChevronLeftCircle className="text-4xl text-blue-500 mr-4" />
+                    <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-blue-500 text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
                 >
                   Done
                 </button>
@@ -565,7 +565,7 @@ function Topup() {
           {mode.complete && (
             <div className="h-[70vh] w-1/3 bg-white shadow-sm shadow-slate-400 ml-auto mr-auto mt-24">
               <X
-                className="float-right text-xl hover:text-blue-500 hover:text-2xl"
+                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
                 onClick={() => setShowPopup(false)}
               />
               <img

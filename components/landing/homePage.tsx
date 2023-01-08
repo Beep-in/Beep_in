@@ -9,19 +9,19 @@ function HomePage() {
         <img src="icons/logo.svg" alt="logo" className='lg:ml-28 sm:ml-6'/>
         <div className='flex float-right'>
           <Link href='auth/login'>
-        <button className='h-12 bg-white text-blue-500 shadow-md shadow-slate-700 w-28 rounded-lg mr-6'>Login</button>
+        <button className='h-12 bg-white text-[#6C63FF] shadow-md shadow-slate-700 w-28 rounded-lg mr-6 font-karla'>Login</button>
         </Link>
         <Link href='auth/signup'>
-        <button className='bg-gradient-to-l from-green-700 to-blue-500 text-white rounded-lg h-12 w-28 mr-28'>Sign up</button>
+        <button className='bg-gradient-to-l from-green-700 to-[#6C63FF] text-white rounded-lg h-12 w-28 mr-28 font-karla'>Sign up</button>
         </Link>
         </div>
       </nav>
       <div className='flex mt-20'>
         <div className='lg:w-[50vw] sm:w-[43vw]'>
         <div className='lg:pl-28 sm:pl-6 w-[30vw] pt-[8%]'>
-          <h1 className='text-blue-500 text-3xl font-karla'>Easily engage your customers anywhere.</h1>
-          <p className='pt-8'>Lorem ipsum dolor sit amet consectetur. Cursus tempor enim viverra sed. Felis quisque.</p>
-          <button className='bg-gradient-to-l from-green-700 to-blue-500 text-white rounded-lg h-12 w-40 mt-10'>Get started</button>
+          <h1 className='text-[#6C63FF] text-4xl font-karla'>Easily engage your customers anywhere.</h1>
+          <p className='pt-8 font-inter text-lg text-black text-opacity-50'>Lorem ipsum dolor sit amet consectetur. Cursus tempor enim viverra sed. Felis quisque.</p>
+          <button className='bg-gradient-to-l from-green-700 to-[#6C63FF] text-white rounded-lg h-12 w-40 mt-10 font-karla  text-xl'>Get Started</button>
         </div>
         </div>
         <div className=''>
@@ -37,15 +37,15 @@ function HomePage() {
           <div className='bg-[#6c63ff26] rounded-full w-16 h-16 text-center lg:absolute sm:hidden mt-10 top-[30%] ml-[29.5%]'>
             <h1 className='items-center text-3xl pt-3 text-green-700'>A</h1>
           </div>
-          <div className='h-12  w-56 bg-white shadow-sm shadow-slate-700 pt-3 text-center absolute mt-12 top-[30%] ml-[15%]'>
+          <div className='h-12  w-56 bg-white shadow-sm shadow-slate-700 pt-3 text-center absolute mt-12 top-[30%] ml-[15%] font-inter'>
           <p>Lorem ipsum sit amet.</p>
           </div>
           </div>
           <div className='flex'>
           <div className='bg-[#6c63ff26] rounded-full w-16 h-16 text-center mt-6 '>
-            <h1 className='items-center text-3xl pt-3 text-blue-500'>K</h1>
+            <h1 className='items-center text-3xl pt-3 text-[#6C63FF]'>K</h1>
           </div>
-          <div className='h-12  w-56 bg-white shadow-sm shadow-slate-700 pt-3 text-center absolute mt-12 top-[60%] ml-20'>
+          <div className='h-12  w-56 bg-white shadow-sm shadow-slate-700 pt-3 text-center absolute mt-12 top-[60%] ml-20 font-inter'>
           <p>Lorem ipsum sit amet.</p>
           </div>
           </div>
@@ -56,14 +56,14 @@ function HomePage() {
         <div className='flex'>
           <div className='flex'>
              <img src="icons/message.svg" alt="message" className='h-12 w-12' />
-             <div className='pl-6'>
+             <div className='pl-6 font-karla'>
               <h1>SMS-Channel Messaging</h1>
               <p>Use sms to verify, authenticate and engage customers.</p>
              </div>
           </div>
           <div className='flex lg:ml-40 sm:ml-12 '>
              <img src="icons/topupTick.svg" alt="message" className='h-12 w-12'  />
-             <div className='pl-6'>
+             <div className='pl-6 font-karla'>
               <h1 className='text-lg '>SMS-Channel Messaging</h1>
               <p>Use sms to verify, authenticate and engage customers.</p>
              </div>
@@ -72,14 +72,14 @@ function HomePage() {
           <div className='flex mt-16'>
           <div className='flex'>
              <img src="icons/folder.svg" alt="message" className='h-12 w-12'  />
-             <div className='pl-6'>
+             <div className='pl-6 font-karla'>
               <h1>SMS-Channel Messaging</h1>
               <p>Use sms to verify, authenticate and engage customers.</p>
              </div>
           </div>
           <div className='flex lg:ml-40 sm:ml-12'>
              <img src="icons/team.svg" alt="message" className='h-12 w-12'  />
-             <div className='pl-6'>
+             <div className='pl-6 font-karla'>
               <h1>SMS-Channel Messaging</h1>
               <p>Use sms to verify, authenticate and engage customers.</p>
              </div>
@@ -90,8 +90,8 @@ function HomePage() {
       <div className='flex'>
         <div className='w-1/2 mt-[10%]'>
         <div className='lg:pl-24 sm:pl-4 w-[35vw]'>
-          <h1 className='text-blue-500 text-3xl'>Deliver messages efficiently.</h1>
-          <p className='pt-4'>Enhance customer loyalty and retention by guaranteeing the delivery of bulk, group or single message. 
+          <h1 className='text-[#6C63FF] text-3xl font-karla'>Deliver messages efficiently.</h1>
+          <p className='pt-4 font-inter text-black text-opacity-50'>Enhance customer loyalty and retention by guaranteeing the delivery of bulk, group or single message. 
         </p>
         </div>
        </div>
@@ -117,8 +117,8 @@ function HomePage() {
        </div>
        <div className='w-1/2 mt-[10%]'>
         <div className='lg:pl-24 sm:pl-14 lg:w-[35vw]'>
-          <h1 className='text-blue-500 text-3xl '>Retrieve real-time reports.</h1>
-          <p className='pt-4'>Generate detailed cross-channel reports for incoming and outgoing agent messages. 
+          <h1 className='text-[#6C63FF] text-3xl font-karla'>Retrieve real-time reports.</h1>
+          <p className='pt-4 font-inter text-black text-opacity-50'>Generate detailed cross-channel reports for incoming and outgoing agent messages. 
         </p>
         </div>
        </div>
@@ -126,24 +126,24 @@ function HomePage() {
       <div className='flex pb-14 justify-around'>
       <div className='mt-8'>
         <img src="icons/logo.svg" alt="logo" />
-        <p className='w-72 pt-12'>Termii helps businesses use messaging channels to verify and authenticate sms topups.
+        <p className='w-72 pt-12 font-inter text-black text-opacity-80'>Termii helps businesses use messaging channels to verify and authenticate sms topups.
         </p>
       </div>
-      <div className='mt-14'>
-        <h1 className='text-2xl text-blue-500'>Contact Us </h1>
+      <div className='mt-14 font-inter'>
+        <h1 className='text-2xl text-[#6C63FF]'>Contact Us </h1>
         <p>Any questions? Talk to the admin.</p>
         <div className='flex mt-4'>
-        <Telephone className='text-blue-500' />
-        <p className='pl-3'>+250785341151</p>
+        <Telephone className='text-[#6C63FF]' />
+        <p className='pl-3 text-black text-opacity-80'>+250785341151</p>
         </div>
           <div className='flex'>
-        <EnvelopeOpen className='text-blue-500' />
-        <p className='pl-3'>supaad@gmail.com</p>
+        <EnvelopeOpen className='text-[#6C63FF]' />
+        <p className='pl-3 text-black text-opacity-80'>supaad@gmail.com</p>
         </div>
       </div>
-        <div className='w-80 mt-14 lg:block sm:hidden'>
+        <div className='w-80 mt-14 lg:block sm:hidden font-inter'>
           <p>2022 Beep-in is focused on delivering great customer messaging experience globally.</p>
-          <p className='text-blue-500 pt-8'>Thank you!</p>
+          <p className='text-[#6C63FF] pt-8'>Thank you!</p>
         </div>
     </div>
     </div>

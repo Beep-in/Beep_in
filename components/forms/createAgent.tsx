@@ -85,19 +85,19 @@ function CreateAgent() {
           <div className="mt-14 flex flex-col ml-auto mr-auto">
             <button
               onClick={() => dispatch({ type: "superReseller" })}
-              className="h-16 w-96 bg-blue-500 text-white text-center rounded-xl"
+              className="h-16 w-96 bg-[#6C63FF] text-white text-center rounded-xl"
             >
               SUPER RESELLER
             </button>
             <button
               onClick={() => dispatch({ type: "reseller" })}
-              className="h-16 w-96 bg-blue-500 text-white text-center rounded-xl mt-10"
+              className="h-16 w-96 bg-[#6C63FF] text-white text-center rounded-xl mt-10"
             >
               RESELLER
             </button>
             <button
               onClick={() => dispatch({ type: "agent" })}
-              className="h-16 w-96 bg-blue-500 text-white text-center rounded-xl mt-10"
+              className="h-16 w-96 bg-[#6C63FF] text-white text-center rounded-xl mt-10"
             >
               AGENT
             </button>
@@ -126,7 +126,7 @@ function CreateAgent() {
                 type="text"
                 placeholder="Names"
                 name="name"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10"
                 required
               />
        
@@ -135,7 +135,7 @@ function CreateAgent() {
                 type="text"
                 placeholder="Email"
                 name="email"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -143,21 +143,21 @@ function CreateAgent() {
                 type="number"
                 placeholder="Contact Phone"
                 name="phoneNumber"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
                 type="text"
                 placeholder="TIN/NID"
                 name="tin"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6 "
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6 "
               />
               <input
                 {...register("address")}
                 type="text"
                 placeholder="Address"
                 name="address"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -171,16 +171,16 @@ function CreateAgent() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <div className="mt-8 flex justify-between">
-                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-blue-500">
+                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-[#6C63FF]">
                   CANCEL
                 </button>
                 <button
                   type="submit"
-                  className="h-14 w-28 bg-blue-500 text-white rounded-xl "
+                  className="h-14 w-28 bg-[#6C63FF] text-white rounded-xl "
                 >
                   SAVE
                 </button>
@@ -208,7 +208,7 @@ function CreateAgent() {
                 name="name"
                 type="text"
                 placeholder="Reseller Names"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10"
                 required
               />
               <input
@@ -216,7 +216,7 @@ function CreateAgent() {
                 name="email"
                 type="text"
                 placeholder="Reseller Email"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -224,13 +224,13 @@ function CreateAgent() {
                 name="phoneNumber"
                 type="number"
                 placeholder="Reseller Contact Phone"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
                 type="text"
                 placeholder="TIN/NID"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6 "
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6 "
                 required
               />
               <input
@@ -238,7 +238,7 @@ function CreateAgent() {
                 name="address"
                 type="text"
                 placeholder="Reseller Address"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -246,16 +246,16 @@ function CreateAgent() {
                 name="password"
                 type="password"
                 placeholder="Password"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <div className="mt-8 flex justify-between">
-                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-blue-500">
+                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-[#6C63FF]">
                   CANCEL
                 </button>
                 <button
                   type="submit"
-                  className="h-14 w-28 bg-blue-500 text-white rounded-xl "
+                  className="h-14 w-28 bg-[#6C63FF] text-white rounded-xl "
                 >
                   SAVE
                 </button>
@@ -283,7 +283,7 @@ function CreateAgent() {
                 name="name"
                 type="text"
                 placeholder="Agent Names"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10"
                 required
               />
               <input
@@ -291,7 +291,7 @@ function CreateAgent() {
                 name="email"
                 type="text"
                 placeholder="Agent Email"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -299,13 +299,13 @@ function CreateAgent() {
                 name="phoneNumber"
                 type="number"
                 placeholder="Agent Contact Phone"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
                 type="text"
                 placeholder="TIN/NID"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6 "
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6 "
                 required
               />
               <input
@@ -313,7 +313,7 @@ function CreateAgent() {
                 name="address"
                 type="text"
                 placeholder="Agent Address"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <input
@@ -321,16 +321,16 @@ function CreateAgent() {
                 name="password"
                 type="password"
                 placeholder="Password"
-                className="h-16 border-2 border-blue-500 border-opacity-20 rounded-lg pl-10 mt-6"
+                className="h-16 border-2 border-[#6C63FF] border-opacity-20 rounded-lg pl-10 mt-6"
                 required
               />
               <div className="mt-8 flex justify-between">
-                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-blue-500">
+                <button className="h-14 w-28 shadow-sm rounded-xl shadow-slate-500 bg-white text-[#6C63FF]">
                   CANCEL
                 </button>
                 <button
                   type="submit"
-                  className="h-14 w-28 bg-blue-500 text-white rounded-xl "
+                  className="h-14 w-28 bg-[#6C63FF] text-white rounded-xl "
                 >
                   SAVE
                 </button>

@@ -51,7 +51,7 @@ const LeftSidebar = () => {
             <AiOutlineSetting className="w-full h-8  hover:text-[#6C63FF] hover:border-r-8 hover:border-solid hover:border-[#6C63FF] rounded-r-lg text-sm font-light" />
           </div>
         </div>
-        <div className="h-88 w-[1px] ml-52 bg-blue-500 opacity-25"></div>
+        <div className="h-88 w-[1px] ml-52 bg-[#6C63FF] opacity-25"></div>
       </div>
     </div>
   );

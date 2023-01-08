@@ -224,7 +224,7 @@ function Dashboard(): JSX.Element {
                   </div>
                   <div className="flex mt-4">
                     <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex">
-                      <People className="text-blue-500 text-xl text-center ml-1" />
+                      <People className="text-[#6C63FF] text-xl text-center ml-1" />
                     </div>
                     <div className="pl-8">
                       <p className="text-sm">Your groups</p>
@@ -247,7 +247,7 @@ function Dashboard(): JSX.Element {
                       <p>50</p>
                     </div>
                     <div className="h-7 w-7 bg-slate-200 rounded-lg text-center items-center flex ml-24">
-                      <People className="text-blue-500 text-xl text-center ml-1" />
+                      <People className="text-[#6C63FF] text-xl text-center ml-1" />
                     </div>
                     <div className="pl-8">
                       <p className="text-sm">Your groups</p>
@@ -377,7 +377,7 @@ function Dashboard(): JSX.Element {
               </div>
               <h1 className="font-bold pt-6">New Topup Requests</h1>
               <div className="h-48 w-56 bg-white shadow-lg shadow-grey-200 mt-6 rounded-xl">
-                <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
+                <div className="flex border-b-2 border-solid border-[#6C63FF] border-opacity-10 pb-1 pt-2 ml-2">
                   <img
                     src="/images/profile.jpg"
                     alt="profile"
@@ -385,7 +385,7 @@ function Dashboard(): JSX.Element {
                   />
                   <p className="pl-2 pt-1">Kaligirwa Sonia</p>
                 </div>
-                <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
+                <div className="flex border-b-2 border-solid border-[#6C63FF] border-opacity-10 pb-1 pt-2 ml-2">
                   <img
                     src="/images/profile.jpg"
                     alt="profile"
@@ -393,7 +393,7 @@ function Dashboard(): JSX.Element {
                   />
                   <p className="pl-2 pt-1">Kaligirwa Sonia</p>
                 </div>
-                <div className="flex border-b-2 border-solid border-blue-500 border-opacity-10 pb-1 pt-2 ml-2">
+                <div className="flex border-b-2 border-solid border-[#6C63FF] border-opacity-10 pb-1 pt-2 ml-2">
                   <img
                     src="/images/profile.jpg"
                     alt="profile"
@@ -423,7 +423,7 @@ function Dashboard(): JSX.Element {
             </button>
           </div>
           <div className="mt-4">
-            <button className="bg-white text-blue-500 shadow-xl rounded-lg h-14 w-40 text-center">
+            <button className="bg-white text-[#6C63FF] shadow-xl rounded-lg h-14 w-40 text-center">
               Sent
             </button>
             <button className="bg-[#6C63FF] text-white rounded-lg h-14 w-40 text-center ml-4">
@@ -456,7 +456,7 @@ function Dashboard(): JSX.Element {
               ;
             </select>
           </div>
-          <button className="h-14 bg-blue-500 rounded-lg text-white w-48 mt-14">
+          <button className="h-14 bg-[#6C63FF] rounded-lg text-white w-48 mt-14">
             Generate report
           </button>
         </div>
@@ -532,7 +532,7 @@ function Dashboard(): JSX.Element {
                             </button>
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
-                            <AiOutlineEye className="text-blue-500 text-xl" />
+                            <AiOutlineEye className="text-[#6C63FF] text-xl" />
                             <Trash3 className="text-red-500 text-xl" />
                           </td>
                         </tr>
@@ -541,8 +541,8 @@ function Dashboard(): JSX.Element {
                   </table>
                 </div>
                 <div className="flex justify-center mt-8">
-                  <BiChevronLeftCircle className="text-3xl text-blue-500" />
-                  <BiChevronRightCircle className="text-3xl text-blue-500" />
+                  <BiChevronLeftCircle className="text-3xl text-[#6C63FF]" />
+                  <BiChevronRightCircle className="text-3xl text-[#6C63FF]" />
                 </div>
               </div>
             </div>
