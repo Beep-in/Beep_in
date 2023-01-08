@@ -8,7 +8,7 @@ const  Dashboard = () => {
         <TopNavbar />
         <div className='flex'>
         <LeftSidebar />
-        <AgentList />
+        <AgentList data={[]}  />
         </div>
     </div>
   )
