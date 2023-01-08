@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'karia': ['karia', 'sans-serif'] 
+        'karla': ['"karla"', 'sans-serif'] 
       },
     },
   },

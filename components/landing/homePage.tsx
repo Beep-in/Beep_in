@@ -19,7 +19,7 @@ function HomePage() {
       <div className='flex mt-20'>
         <div className='lg:w-[50vw] sm:w-[43vw]'>
         <div className='lg:pl-28 sm:pl-6 w-[30vw] pt-[8%]'>
-          <h1 className='text-blue-500 text-3xl'>Easily engage your customers anywhere.</h1>
+          <h1 className='text-blue-500 text-3xl font-karla'>Easily engage your customers anywhere.</h1>
           <p className='pt-8'>Lorem ipsum dolor sit amet consectetur. Cursus tempor enim viverra sed. Felis quisque.</p>
           <button className='bg-gradient-to-l from-green-700 to-blue-500 text-white rounded-lg h-12 w-40 mt-10'>Get started</button>
         </div>

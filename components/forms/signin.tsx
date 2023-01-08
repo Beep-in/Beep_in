@@ -86,11 +86,12 @@ export default function Signin() {
           <Image
             width={600}
             height={600}
-            alt="signup image"
+            alt="sign in image"
             src={'/images/login.png'}
+            className="ml-8 mt-28 lg:w-[42vw] sm:w-0"
           />
         </div>
-        <div className="float-right w-1/2 h-auto">
+        <div className="float-right lg:w-1/2 sm:w-full h-auto">
           <h1 className="text-center font-karia font-bold text-2xl">
             Welcome back
           </h1>
