@@ -304,7 +304,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="block">
                 {method.typeContacts && (
                   <textarea
-                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg text-sm"
+                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg text-sm font-inter"
                     placeholder="Type telephone numbers of receivers separated with comma"
                     {...register('receiver')}
                     name="receiver"
@@ -312,7 +312,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 )}
                 {method.uploadFile && (
                   <div className="flex mt-4 w-full">
-                    <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 font-inter">
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <Upload className="text-3xl mt-4" />
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 pb-4">
@@ -339,9 +339,9 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <button
                 // onClick={() => dispatch({ type: "failed" })}
                 type="submit"
-                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
+                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 font-inter"
               >
-                <FaRegPaperPlane className="mr-3 font-inter" />
+                <FaRegPaperPlane className="mr-3" />
                 SEND
               </button>
             </form>
@@ -352,7 +352,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
       {recieve.group && (
         <div>
           <div className="h-96 w-3/4 mt-28 absolute right-10">
-            <h1 className="text-2xl text-center">SEND MESSAGE</h1>
+            <h1 className="text-2xl text-center font-inter">SEND MESSAGE</h1>
 
             <form
               action=""
@@ -360,14 +360,14 @@ export default function MessageType(req: NextRequest): JSX.Element {
               className=" w-3/4 ml-auto mr-auto"
             >
               <div className="flex ml-36 mt-10">
-                <label htmlFor="name" className="pt-4">
+                <label htmlFor="name" className="pt-4 font-karla">
                   Receiver :
                 </label>
                 <select
                   {...register('receiver')}
                   name="receiver"
                   placeholder="Group name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-1/3 rounded-lg pl-8 ml-24 "
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-20 font-inter"
                 >
                   <option value="">Group name</option>
                   {user!.groups.map((group) => {
@@ -377,18 +377,18 @@ export default function MessageType(req: NextRequest): JSX.Element {
               </div>
         
               <div className="flex ml-36 mt-4">
-                <label htmlFor="Message">Message :</label>
+                <label htmlFor="Message" className='font-karla'>Message :</label>
                 <textarea
                   {...register('text')}
                   name="text"
                   id=""
                   placeholder="Type a message.."
-                  className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                  className=" pt-4 block border-solid border border-[#6C63FF] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full font-inter"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 "
+                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 font-inter"
               >
                 <FaRegPaperPlane className="mr-3" />
                 SEND

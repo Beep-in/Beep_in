@@ -173,12 +173,12 @@ function Topup() {
 
   return (
     <div className="w-full">
-      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center">
-        <h1>Topup History</h1>
-        <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center">
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center text-[#6C63FF] font-karla text-[#6C63FF]">
+        <h1 className="text-lg">Topup History</h1>
+        <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center font-karla">
           Filter by <Filter className="text-[#6C63FF]  ml-2 mt-1" />
         </button>
-        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10">
+        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10 font-karla">
           Download Report <Download />
         </button>
       </div>
@@ -189,7 +189,7 @@ function Topup() {
           className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
         >
           <AiOutlineRight className="mt-1 ml-2" />
-          <li className="pl-4">Topup history</li>
+          <li className="pl-4 font-karla">Topup history</li>
         </button>
         <button
           onClick={() => setShowPopup(true)}
@@ -197,7 +197,7 @@ function Topup() {
         >
           <AiOutlineRight className="mt-1 ml-2" />
 
-          <li className="pl-4">Buy SMS</li>
+          <li className="pl-4 font-karla">Buy SMS</li>
         </button>
       </div>
 
@@ -208,7 +208,7 @@ function Topup() {
               <div className="p-1.5 w-full inline-block align-middle">
                 <div className="overflow-hidden">
                   <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-gray-50 font-karla">
                       <tr>
                         <th scope="col" className=" px-6 py-3 text-left ">
                           Agent Names
@@ -230,7 +230,7 @@ function Topup() {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200">
+                    <tbody className="divide-y divide-gray-200 font-inter">
                       {tableData.map((sms_data) => (
                         <tr>
                           <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
@@ -285,34 +285,34 @@ function Topup() {
                 alt="topup-tick"
                 className="absolute top-14 ml-[14vw]"
               />
-              <h1 className="font-bold text-xl pt-14 text-center">Topup</h1>
+              <h1 className="font-bold text-xl pt-14 text-center font-karla">Topup</h1>
               <form action="" className="ml-16 mt-10">
                 <input
                   type="text"
                   name="nameeofagent"
                   placeholder="Name of agent"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 "
+                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 font-karla"
                 />
                 <input
                   type="text"
                   name="mobilrnumber"
                   placeholder="Mobile number"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-6"
+                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-6 font-karla"
                 />
                 <input
                   type="text"
                   name="numberofsms"
                   placeholder="Number of SMS"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-6 "
+                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-6 font-karla"
                 />
               </form>
 
               <button
                 onClick={() => dispatch({ type: "allMethods" })}
-                className="flex float-right mr-20 mt-16 items-center font-normal"
+                className="flex float-right mr-20 mt-16 items-center font-normal font-karla"
               >
                 Payment method
                 <BiChevronRightCircle className="text-4xl text-[#6C63FF] ml-4" />
@@ -330,7 +330,7 @@ function Topup() {
                 alt="topup-tick"
                 className="absolute top-14 ml-[14vw]"
               />
-              <h1 className="font-bold text-xl pt-20 text-center">
+              <h1 className="font-bold text-xl pt-20 text-center font-karla">
                 Payment method
               </h1>
 
@@ -345,7 +345,7 @@ function Topup() {
                       // onChange={radioHandler}
                       onClick={() => dispatch({ type: "momo" })}
                     />
-                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       MTN momo
                     </label>
                   </div>
@@ -358,7 +358,7 @@ function Topup() {
                       className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300   dark:bg-gray-700 dark:border-gray-600"
                       onClick={() => dispatch({ type: "bank" })}
                     />
-                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       Bank Payment
                     </label>
                   </div>
@@ -371,7 +371,7 @@ function Topup() {
                       className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600"
                       onClick={() => dispatch({ type: "card" })}
                     />
-                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       Master Card / Paypal / VISA Card
                     </label>
                   </div>
@@ -380,12 +380,12 @@ function Topup() {
 
               <div className="flex mt-16 justify-between ml-16 mr-16">
                 <Link href="topupResult">
-                  <button className="flex  items-center font-normal">
+                  <button className="flex  items-center font-normal font-karla">
                     <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
-                <button className="flex  items-center font-normal">
+                <button className="flex  items-center font-normal font-karla">
                   Continue
                   <BiChevronRightCircle className="text-4xl text-[#6C63FF] ml-4" />
                 </button>
@@ -403,7 +403,7 @@ function Topup() {
                 alt="topup-tick"
                 className="absolute top-14 ml-[14vw]"
               />
-              <h1 className="font-bold text-xl pt-14 text-center">
+              <h1 className="font-bold text-xl pt-14 text-center font-karla">
                 Momo payment
               </h1>
               <form action="" className="ml-16 mt-14">
@@ -412,19 +412,19 @@ function Topup() {
                   name="nameeofagent"
                   placeholder="Your phone number"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 "
+                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 font-karla"
                 />
                 <input
                   type="text"
                   name="mobilrnumber"
                   placeholder="Amount(Frw)"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-12"
+                  className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-12 font-karla"
                 />
               </form>
               <div className="flex mt-20 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
-                  <button className="flex  items-center font-normal">
+                  <button className="flex  items-center font-normal font-karla">
                     <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
@@ -432,7 +432,7 @@ function Topup() {
 
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg font-karla"
                 >
                   Done
                 </button>
@@ -450,13 +450,13 @@ function Topup() {
                 alt="topup-tick"
                 className="absolute top-14 ml-[14vw]"
               />
-              <h1 className="font-bold text-xl pt-14 text-center">By Bank</h1>
+              <h1 className="font-bold text-xl pt-14 text-center font-karla">By Bank</h1>
               <form action="" className=" mt-10">
                 <div className="flex items-center justify-center w-full">
                   <label className="flex flex-col items-center justify-center w-2/3 h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6 font-karlaaa">
                       <Upload className="text-3xl" />
-                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4">
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 font-karla">
                         Upload proof of payment
                       </p>
                     </div>
@@ -466,14 +466,14 @@ function Topup() {
               </form>
               <div className="flex mt-20 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
-                  <button className="flex  items-center font-normal">
+                  <button className="flex  items-center font-normal font-karla">
                     <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg font-karla "
                 >
                   Done
                 </button>
@@ -493,36 +493,36 @@ function Topup() {
               />
               <h1 className="font-bold text-xl pt-14 text-center">By card</h1>
               <form action="" className="ml-16 mt-10">
-                <label htmlFor="">CARD NUMBER</label>
+                <label htmlFor="" className="font-karla">CARD NUMBER</label>
                 <input
                   type="text"
                   name="nameeofagent"
                   placeholder="Card number"
                   required
-                  className=" block border-solid border bg-[#D9D9D9]  h-14 mt-2  w-5/6 rounded-lg pl-8 "
+                  className=" block border-solid border bg-[#D9D9D9]  h-14 mt-2  w-5/6 rounded-lg pl-8 font-karla "
                 />
                 <div className="flex mt-2">
                   <div className="">
-                    <label htmlFor="">EXPIRATION DATE</label>
+                    <label htmlFor="" className="font-karla">EXPIRATION DATE</label>
                     <div className="flex">
                       <input
                         type=""
-                        name="mobilrnumber"
+                        name="mobilenumber"
                         placeholder=""
                         required
-                        className=" block border-solid border bg-[#D9D9D9]  h-14 w-24 rounded-lg pl-4  mt-2 pr-4"
+                        className=" block border-solid border bg-[#D9D9D9]  h-14 w-24 rounded-lg pl-4  mt-2 pr-4 ,font-karla"
                       />
                       <input
                         type=""
-                        name="mobilrnumber"
+                        name="mobilenumber"
                         placeholder=""
                         required
-                        className=" block border-solid border bg-[#D9D9D9]  h-14 w-24 rounded-lg ml-4  mt-2 pl-4 pr-4"
+                        className=" block border-solid border bg-[#D9D9D9]  h-14 w-24 rounded-lg ml-4  mt-2 pl-4 pr-4 font-karla"
                       />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="">CVC</label>
+                    <label htmlFor="" className="font-karla pl-6">CVC</label>
 
                     <input
                       type="text"
@@ -534,7 +534,7 @@ function Topup() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <label htmlFor="" className="pt-4">
+                  <label htmlFor="" className="pt-4 font-karla">
                     CARD HOLDER'S NAMES
                   </label>
                   <input
@@ -542,20 +542,20 @@ function Topup() {
                     name="numberofsms"
                     placeholder="Number of SMS"
                     required
-                    className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-2 "
+                    className=" block border-solid border bg-[#D9D9D9]  h-14  w-5/6 rounded-lg pl-8 mt-2 font-karla"
                   />
                 </div>
               </form>
               <div className="flex mt-8 justify-between ml-16 mr-20">
                 <Link href="methodofPayment">
-                  <button className="flex  items-center font-normal">
+                  <button className="flex  items-center font-normal font-karla">
                     <BiChevronLeftCircle className="text-4xl text-[#6C63FF] mr-4" />
                     Topup
                   </button>
                 </Link>
                 <button
                   onClick={() => dispatch({ type: "complete" })}
-                  className="bg-[#6C63FF] text-white w-16 rounded-lg "
+                  className="bg-[#6C63FF] text-white w-16 rounded-lg font-karla"
                 >
                   Done
                 </button>
