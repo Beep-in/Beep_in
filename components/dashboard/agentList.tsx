@@ -9,12 +9,13 @@ import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 type Agent = {
   [x: string]: any;
   name: string;
-  mobileNumber:string,
+  phone_number:string,
   email: string,
   category: string,
-  accountStatus:string
+  status:string
 };
 type AgentResponse = Agent;
+
  async function AgentList() {
   const token = getCookie('accessToken')
   const { data:agents} = await axios.get<AgentResponse>("https://beepin.onrender.com/agent/all", {
@@ -64,13 +65,13 @@ console.log(agents.email);
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 font-inter">
-                    {agents.map((agent_data:Agent) => (
+                    {agents?.map((agent_data:Agent) => (
                       <tr>
                         <td className="px-6 py-5 text-sm font-medium text-gray-800 whitespace-nowrap">
                           {agent_data.name}
                         </td>
                         <td className="px-12 py-5 text-sm text-gray-800 whitespace-nowrap flex">
-                          {agent_data.mobileNumber}
+                          {agent_data.phone_number}
                         </td>
                         <td className="px-24 py-5 text-sm text-gray-800 whitespace-nowrap">
                           {agent_data.email}
@@ -79,7 +80,7 @@ console.log(agents.email);
                           {agent_data.category}
                         </td>
                         <td className="px-24 py-5 text-sm font-medium text-right whitespace-nowrap flex">
-                          {agent_data.accountStatus}
+                          {agent_data.status}
                           <CircleFill className="text-green-500 ml-4 text-xs" />
                         </td>
                         <td className="py-3">
