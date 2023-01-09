@@ -50,21 +50,21 @@ export function AuthProvider({ children }: Props) {
 
   const [loading, setLoading] = React.useState<boolean>(true);
   const router = useRouter()
-        React.useEffect(() => {
-      /* we are going to use localStorage for user storage
-          but we will leter use cookies when integrated with backend.
-      */
-      setLoading(true);
-      const user = localStorage.getItem('user');
-      if (user) {
-          setUser(JSON.parse(user));
-      } else {
-          if (router.pathname !== '/')
-              router.push("/auth/login")
-      }
-      setLoading(false);
-      // console.log("pathname", router.pathname);
-  }, [router.pathname]);
+  //       React.useEffect(() => {
+  //     /* we are going to use localStorage for user storage
+  //         but we will leter use cookies when integrated with backend.
+  //     */
+  //     setLoading(true);
+  //     const user = localStorage.getItem('user');
+  //     if (user) {
+  //         setUser(JSON.parse(user));
+  //     } else {
+  //         if (router.pathname !== '/')
+  //             router.push("/auth/login")
+  //     }
+  //     setLoading(true);
+  //     // console.log("pathname", router.pathname);
+  // }, [router.pathname]);
   const login = async (values: LoginInput) => {
     // setFiel(JSON.stringify(values));
     // setLoading(true);
