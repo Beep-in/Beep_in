@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import {  CircleFill } from "react-bootstrap-icons";
 import axios from "axios"
-
+import Cookies from "cookie";
+import { getCookie } from "cookies-next";
+import { NextRequest } from "next/server";
+import useAuth from "../context/authContext";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 
 type Agent = {
@@ -11,17 +14,19 @@ type Agent = {
   category: string,
   accountStatus:string
 };
- function AgentList({data}: {data:Agent[]}) {
-     axios.get("https://beepin.onrender.com/agent/all", {
-     headers: {
-       Accept:"application/json"
-     },
-   }).then((res) => {
-    console.log(res);
-    
-  });
-  console.log(data);
-  
+type AgentResponse = Agent;
+ async function AgentList() {
+  const {agent} = useAuth();
+  const token = getCookie('accessToken')
+  const { data:agents} = await axios.get<AgentResponse>("https://beepin.onrender.com/agent/all", {
+    headers: {
+      'Accept-Encoding': 'application/json',
+      authorization: token,
+    },
+ });
+
+console.log(agents);
+
     return (
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center font-karla text-[#6C63FF]  text-xl">
@@ -59,22 +64,22 @@ type Agent = {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 font-inter">
-                    {data && data.map((sms_data) => (
+                    {agent!.agents.map((agent_data:Agent) => (
                       <tr>
                         <td className="px-6 py-5 text-sm font-medium text-gray-800 whitespace-nowrap">
-                          {sms_data.name}
+                          {agent_data.name}
                         </td>
                         <td className="px-12 py-5 text-sm text-gray-800 whitespace-nowrap flex">
-                          {sms_data.mobileNumber}
+                          {agent_data.mobileNumber}
                         </td>
                         <td className="px-24 py-5 text-sm text-gray-800 whitespace-nowrap">
-                          {sms_data.email}
+                          {agent_data.email}
                         </td>
                         <td className="py-5 text-sm font-medium text-right whitespace-nowrap">
-                          {sms_data.category}
+                          {agent_data.category}
                         </td>
                         <td className="px-24 py-5 text-sm font-medium text-right whitespace-nowrap flex">
-                          {sms_data.accountStatus}
+                          {agent_data.accountStatus}
                           <CircleFill className="text-green-500 ml-4 text-xs" />
                         </td>
                         <td className="py-3">
