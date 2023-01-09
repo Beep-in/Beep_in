@@ -173,8 +173,8 @@ function Topup() {
 
   return (
     <div className="w-full">
-      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center text-[#6C63FF] font-karla text-[#6C63FF]">
-        <h1 className="text-lg">Topup History</h1>
+      <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center text-[#6C63FF] font-karla">
+        <h1 className="text-lg lg:text-center sm:absolute sm:left-[40%]">Topup History</h1>
         <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center font-karla">
           Filter by <Filter className="text-[#6C63FF]  ml-2 mt-1" />
         </button>
@@ -202,14 +202,14 @@ function Topup() {
       </div>
 
       {topup.topupHistory && (
-        <div className="h-96 w-3/4 mt-28 absolute right-10">
+        <div className="h-96 w-3/4 mt-28 absolute lg:right-10 md:right-2 sm:right-1">
           <div className="flex flex-col mt-4">
             <div className="overflow-x-auto">
-              <div className="p-1.5 w-full inline-block align-middle">
+              <div className="p-1.5 lg:w-full md:w-[40vw] lg:ml-0 md:ml-10 inline-block align-middle h-[40vh]">
                 <div className="overflow-hidden">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50 font-karla">
-                      <tr>
+                      <tr> 
                         <th scope="col" className=" px-6 py-3 text-left ">
                           Agent Names
                         </th>
@@ -230,7 +230,7 @@ function Topup() {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200 font-inter">
+                    <tbody className="divide-y divide-gray-200 font-inter h-[40vh]">
                       {tableData.map((sms_data) => (
                         <tr>
                           <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
@@ -249,9 +249,9 @@ function Topup() {
                             {sms_data.totalAmount}
                           </td>
 
-                          <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap">
+                          <td className="px-6 py-4 text-sm font-medium text-right  gap-2  whitespace-nowrap">
                             <Link href="requestTopup">
-                              <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 pl-4 pt-2 rounded-lg">
+                              <button className="flex bg-[#4CAF50] bg-opacity-5 text-green-500 h-8 w-24 lg:pl-4 pt-2 rounded-lg">
                                 <p className="pr-2">Balance</p>
                                 <AiOutlineEye />
                               </button>
@@ -260,7 +260,7 @@ function Topup() {
                         </tr>
                       ))}
                     </tbody>
-                    1
+                    
                   </table>
                 </div>
               </div>

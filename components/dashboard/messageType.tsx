@@ -146,11 +146,14 @@ export default function MessageType(req: NextRequest): JSX.Element {
     <div className="w-full">
       <div className="h-20 w-full border-b-2 border-solid flex justify-center float-right items-center font-inter text-[#6C63FF] text-xl">
         <h1>Messages</h1>
-        <button className="bg-[#6C63FF] h-12 w-12 text-center rounded-lg absolute right-10">
+        <button 
+        
+         onClick={{type:"single"}?()=> dispatch({type:"single"}):()=>dispatch({type:"bulk"})}
+         className="bg-[#6C63FF] h-12 w-12 text-center rounded-lg absolute right-10 hover:bg-blue-400">
           <AiOutlinePlus className="text-white text-center ml-3 text-xl font-bold" />
         </button>
       </div>
-      <div className="absolute left-24 top-48 list-none flex gap-8 flex-col">
+      <div className="absolute left-24 top-52 list-none flex gap-8 flex-col">
         <button
           onClick={() => dispatch({ type: 'single' })}
           className="flex hover:text-[#6C63FF] w-auto focus:h-12 items-center pr-28 focus:bg-gradient-to-r from-blue-100 via-sky-100 focus:bg-opacity-5"
@@ -175,7 +178,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
         </button>
       </div>
       {recieve.messageIcon && (
-        <div className="h-96 mt-28 absolute right-[35%]">
+        <div className="h-96 mt-28 absolute lg:right-[35%] mg:right-[20%] sm:right-[10%]">
           <Image
             width={400}
             height={400}
@@ -199,44 +202,44 @@ export default function MessageType(req: NextRequest): JSX.Element {
             >
               <div className="flex ml-20 mt-10">
                 <label htmlFor="name" className="pt-4 font-karla">
-                  Sender :
+                  Sender 
                 </label>
                 <input
                   {...register('name')}
                   name="name"
                   type="text"
                   placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 font-inter"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  lg:w-2/3 rounded-lg pl-8 ml-24 font-inter"
                 />
               </div>
               <div className="flex ml-20 mt-4">
                 <label htmlFor="name" className="pt-4 font-karla">
-                  Phone number :
+                  Phone_number 
                 </label>
                 <input
                   {...register('receiver')}
                   name="receiver"
                   type="telephone"
                   placeholder="Add telephone"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-8 font-inter"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  lg:w-2/3 rounded-lg pl-8 ml-8 font-inter"
                 />
               </div>
     
               <div className="flex ml-20 mt-4">
-                <label htmlFor="Message" className='font-karla'>Message :</label>
+                <label htmlFor="Message" className='font-karla'>Message </label>
                 <textarea
                   {...register('text')}
                   name="text"
                   placeholder="Type a message.."
-                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full font-inter"
+                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  lg:w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full font-inter"
                 ></textarea>
               </div>
               <button
                 
                 type="submit"
-                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 font-inter"
+                className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 lg:mr-36 font-inter"
               >
-                <FaRegPaperPlane className="mr-3"/>
+                <FaRegPaperPlane className="mr-3 "/>
                 SEND
               </button>
             </form>
@@ -256,21 +259,22 @@ export default function MessageType(req: NextRequest): JSX.Element {
             >
               <div className="flex ml-36 mt-10">
                 <label htmlFor="name" className="pt-4 font-karla">
-                  Sender :
+                  Sender
                 </label>
                 <input
                   {...register('name')}
                   name="name"
                   type="text"
                   placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 font-inter"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14 w-2/3 rounded-lg pl-8 ml-24 font-inter"
                 />
               </div>
-              <div className="flex">
+              <div className="lg:flex sm:block">
                 <div className="flex mt-6">
                   <label htmlFor="name" className="pl-36 font-karla">
-                    Method type :
+                    Method_type
                   </label>
+                  
                   <div className="flex items-center">
                     <input
                       onClick={() => setDisplayMethod({ type: 'typeContacts' })}
@@ -292,7 +296,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                       type="radio"
                       value="uploadFile"
                       name="default-radio"
-                      className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 ml-40"
+                      className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 lg:ml-40 sm:ml-4"
                     />
                     <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 font-karla">
                       Upload a file
@@ -304,7 +308,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
               <div className="block">
                 {method.typeContacts && (
                   <textarea
-                    className="h-24 ml-[32%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg text-sm font-inter"
+                    className="h-24 lg:ml-[32%] sm:ml-[50%] mt-4 w-1/2 min-h-24 max-h-24 text-blue-600 bg-gray-100 border-gray-300  dark:bg-gray-700 dark:border-gray-600 pl-8 pt-4 rounded-lg text-sm font-inter"
                     placeholder="Type telephone numbers of receivers separated with comma"
                     {...register('receiver')}
                     name="receiver"
@@ -312,7 +316,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 )}
                 {method.uploadFile && (
                   <div className="flex mt-4 w-full">
-                    <label className="flex flex-col items-center justify-center w-1/2  ml-[32%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 font-inter">
+                    <label className="flex flex-col items-center justify-center w-1/2  lg:ml-[32%] sm:ml-[50%] h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 font-inter">
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <Upload className="text-3xl mt-4" />
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 pt-4 pb-4">
@@ -328,7 +332,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 )}
               </div>
               <div className="flex ml-36 mt-4">
-                <label htmlFor="Message" className='font-karla'>Message :</label>
+                <label htmlFor="Message" className='font-karla'>Message</label>
                 <textarea
                   {...register('text')}
                   name="text"

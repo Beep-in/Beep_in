@@ -21,7 +21,7 @@ export default function TopNavbar() {
               </form>
             </div>
           </div>
-          <div className="flex absolute right-10 gap-4">
+          <div className="flex absolute lg:right-10 sm:right-2  gap-4">
             <img
               src="/icons/notification.svg"
               alt="notification"

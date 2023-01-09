@@ -91,7 +91,9 @@ function TopupRequests() {
       )}
       {mode.confirmTopup && (
         <div className="w-1/2 h-auto pb-10 pt-6 mt-14 ml-auto mr-auto shadow-sm shadow-gray-400">
-          <h1 className="text-center text-2xl text-[#6C63FF]">Confirm Top up</h1>
+          <h1 className="text-center text-2xl text-[#6C63FF]">
+            Confirm Top up
+          </h1>
           <div className="flex justify-evenly mt-6">
             <div>
               <p className="text-sm">Select number of SMS to sell</p>
@@ -169,7 +171,9 @@ function TopupRequests() {
       )}
       {mode.approveTopup && (
         <div className="w-1/2 h-auto pb-10 pt-6 mt-14 ml-auto mr-auto shadow-sm shadow-gray-400">
-          <h1 className="text-center text-2xl text-[#6C63FF]">Approve Top up</h1>
+          <h1 className="text-center text-2xl text-[#6C63FF]">
+            Approve Top up
+          </h1>
           <div className="flex justify-evenly mt-20">
             <div className="">
               <p className="text-sm">Number of SMS requested</p>

@@ -136,7 +136,7 @@ function GroupsManagement() {
         <button className="flex bg-gray-100 h-12 text-center rounded-lg absolute right-64 pl-4 w-32 items-center font-karla">
           Filter by <Filter className="text-[#6C63FF]  ml-2 mt-1" />
         </button>
-        <button className="flex bg-[#6C63FF] text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 font-karla rounded-lg">
+        <button onClick={() => setCreateGroup(true)} className="flex bg-[#6C63FF] text-white items-center text-center gap-3 absolute right-10 h-12 w-32 pl-2 font-karla rounded-lg hover:bg-blue-400">
           <AiOutlinePlus />
           New group
         </button>

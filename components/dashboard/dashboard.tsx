@@ -414,7 +414,7 @@ function Dashboard(): JSX.Element {
         </div>
       )}
       {statistics.report && (
-        <div className="h-96 w-3/4 mt-20 absolute right-10">
+        <div className="h-96 w-3/4 mt-20 absolute right-10 ">
           <div className="flex justify-between">
             <h1 className="font-bold text-xl">Report</h1>
             <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
@@ -461,7 +461,7 @@ function Dashboard(): JSX.Element {
         </div>
       )}
       {statistics.sms_list && (
-        <div className="h-96 w-3/4 mt-20 absolute right-10">
+        <div className="h-96 lg:w-3/4 sm:w-[60vw] mt-20 absolute right-10">
           <div className="flex justify-between">
             <h1 className="font-bold text-xl font-karla">SMS List</h1>
             <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
@@ -484,7 +484,7 @@ function Dashboard(): JSX.Element {
             <div className="overflow-x-auto">
               <div className="p-1.5 w-full inline-block align-middle">
                 <div className="overflow-hidden ">
-                  <table className="min-w-full divide-y divide-gray-200">
+                  <table className="min-w-full divide-y divide-gray-200 w-[40vw]">
                     <thead className="bg-gray-50 font-karla">
                       <tr>
                         <th scope="col" className="px-6 py-3  text-left ">
@@ -530,7 +530,7 @@ function Dashboard(): JSX.Element {
                               {sms_data.status}
                             </button>
                           </td>
-                          <td className="px-6 py-4 text-sm font-medium text-right absolute right-4  gap-2  whitespace-nowrap flex">
+                          <td className="px-6 py-4 text-sm font-medium text-right absolute lg:right-4 sm:right-0 gap-2  whitespace-nowrap flex">
                             <AiOutlineEye className="text-[#6C63FF] text-xl" />
                             <Trash3 className="text-red-500 text-xl" />
                           </td>
