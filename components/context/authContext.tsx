@@ -18,27 +18,18 @@ export interface user{
   created_at: string;
   groups: Array<any>;
 }; 
-export interface agent{
-  [x: string]: any;
-  id:string;
-  name:string;
-  mobileNumber:string;
-  email:string;
-  category:string;
-  accountStatus:string;
-}
 
 export type authContextType = {
   user: user | null;
   login:(data:LoginInput)=> void;
-  logout: () => void;AuthContext
-  agent:agent | null;
+  logout: () => void;
+
 };
 const authContextDefaultValues: authContextType = {
   user: null,
   login: (data : LoginInput) => {},
   logout: () => {},
-  agent:null
+
 };
 export const AuthContext = createContext<authContextType>(
   authContextDefaultValues,
@@ -55,7 +46,7 @@ interface Props  {
 
 export function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<user | null>(null);
-  const [agent, setAgent] = useState<agent | null>(null);
+ 
   const [loading, setLoading] = React.useState<boolean>(true);
   const router = useRouter()
   //       React.useEffect(() => {
@@ -126,7 +117,7 @@ export function AuthProvider({ children }: Props) {
     login,
     logout,
     loading,
-     agent
+     
   };
 
   return (<AuthContext.Provider value={value}>{children}</AuthContext.Provider>);

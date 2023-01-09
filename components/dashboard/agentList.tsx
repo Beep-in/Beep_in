@@ -3,11 +3,11 @@ import {  CircleFill } from "react-bootstrap-icons";
 import axios from "axios"
 import Cookies from "cookie";
 import { getCookie } from "cookies-next";
-import { NextRequest } from "next/server";
-import useAuth from "../context/authContext";
+
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 
 type Agent = {
+  [x: string]: any;
   name: string;
   mobileNumber:string,
   email: string,
@@ -16,7 +16,7 @@ type Agent = {
 };
 type AgentResponse = Agent;
  async function AgentList() {
-  const {agent} = useAuth();
+ 
   const token = getCookie('accessToken')
   const { data:agents} = await axios.get<AgentResponse>("https://beepin.onrender.com/agent/all", {
     headers: {
@@ -64,7 +64,7 @@ console.log(agents);
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 font-inter">
-                    {agent!.agents.map((agent_data:Agent) => (
+                    {agents.map((agent_data:Agent) => (
                       <tr>
                         <td className="px-6 py-5 text-sm font-medium text-gray-800 whitespace-nowrap">
                           {agent_data.name}
