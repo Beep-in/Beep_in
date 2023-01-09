@@ -19,6 +19,7 @@ export interface user{
   groups: Array<any>;
 }; 
 
+
 export type authContextType = {
   user: user | null;
   login:(data:LoginInput)=> void;
@@ -29,7 +30,7 @@ const authContextDefaultValues: authContextType = {
   user: null,
   login: (data : LoginInput) => {},
   logout: () => {},
-
+  
 };
 export const AuthContext = createContext<authContextType>(
   authContextDefaultValues,
@@ -46,7 +47,7 @@ interface Props  {
 
 export function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<user | null>(null);
- 
+
   const [loading, setLoading] = React.useState<boolean>(true);
   const router = useRouter()
   //       React.useEffect(() => {
@@ -117,7 +118,7 @@ export function AuthProvider({ children }: Props) {
     login,
     logout,
     loading,
-     
+
   };
 
   return (<AuthContext.Provider value={value}>{children}</AuthContext.Provider>);

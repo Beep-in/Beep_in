@@ -16,7 +16,6 @@ type Agent = {
 };
 type AgentResponse = Agent;
  async function AgentList() {
- 
   const token = getCookie('accessToken')
   const { data:agents} = await axios.get<AgentResponse>("https://beepin.onrender.com/agent/all", {
     headers: {
@@ -26,6 +25,7 @@ type AgentResponse = Agent;
  });
 
 console.log(agents);
+console.log(agents.email);
 
     return (
     <div className="w-full">
