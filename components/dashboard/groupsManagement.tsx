@@ -1,6 +1,7 @@
 import { AiOutlineRight } from "react-icons/ai";
 import { useState, useReducer, useEffect } from "react";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
+import useDownloader from "react-use-downloader";
 import {
   Upload,
   XCircle,
@@ -97,7 +98,6 @@ function GroupsManagement() {
   const [createGroup, setCreateGroup] = useState(false);
   const [eventHappen, dispatch] = useReducer(eventDisplay, initialEvent);
   const { register, handleSubmit } = useForm<FormValues>();
-
   const [tableData, setTableData] = useState([]);
 
   const submit = (data: FormValues) => {

@@ -1257,6 +1257,11 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-use-downloader@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-use-downloader/-/react-use-downloader-1.2.1.tgz#58ddfe6607f0fec70882cca9871ec6bf068200ba"
+  integrity sha512-GX1nCbQGPBN3SjBHnefdADgjXjSkTuRK2iBgaREGK3WdR6QRgdHZN8UJm/ckt80DX1tfBNE6wIZcOc/GoRIFlQ==
+
 react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"

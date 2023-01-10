@@ -1,4 +1,5 @@
 import React from "react";
+import useDownloader from "react-use-downloader";
 import {
   ResponsiveContainer,
   LineChart,
@@ -98,7 +99,9 @@ function Dashboard(): JSX.Element {
     initialStatics
   );
   const ref = useRef();
-
+  const {size,elapsed,percentage,download,cancel,error,isInProgress} = useDownloader();
+  const fileUrl ="http://localhost:3000/dashboard/dashboardView";
+  const filename = "File.pdf";
   const messageType = [
     { value: "Message Type", label: "Message Type" },
     { value: "Single", label: "Single" },
@@ -158,9 +161,9 @@ function Dashboard(): JSX.Element {
     <div className="w-full">
       <div className="h-14 w-full border-b-2 border-solid flex justify-center float-right items-center font-karla">
         <h1 className="text-[#6C63FF] text-lg">Analytics</h1>
-        <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10">
+        {/* <button onClick={()=>download(fileUrl,filename)} className="flex bg-white text-[#6C63FF] items-center text-center gap-3 absolute right-10">
           Download Report <Download />
-        </button>
+        </button> */}
       </div>
       <div className="absolute left-24 top-52 list-none flex gap-8 flex-col">
         <button
@@ -417,7 +420,7 @@ function Dashboard(): JSX.Element {
         <div className="h-96 w-3/4 mt-20 absolute right-10 ">
           <div className="flex justify-between">
             <h1 className="font-bold text-xl">Report</h1>
-            <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
+            <button onClick={()=>download(fileUrl,filename)} className="flex bg-white text-[#6C63FF] items-center text-center gap-3 hover:text-blue-400">
               Download Report <Download />
             </button>
           </div>
@@ -458,6 +461,7 @@ function Dashboard(): JSX.Element {
           <button className="h-14 bg-[#6C63FF] rounded-lg text-white w-48 mt-14 font-karla text-lg">
             Generate report
           </button>
+  
         </div>
       )}
       {statistics.sms_list && (
@@ -465,7 +469,7 @@ function Dashboard(): JSX.Element {
           <div className="flex justify-between">
             <h1 className="font-bold text-xl font-karla">SMS List</h1>
             <button className="flex bg-white text-[#6C63FF] items-center text-center gap-3">
-              Download Report <Download />
+              Download List<Download />
             </button>
           </div>
           <div className="mt-8">

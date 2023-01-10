@@ -30,6 +30,7 @@
     "react-hook-form": "^7.39.4",
     "react-icons": "^4.6.0",
     "react-select": "^5.6.0",
+    "react-use-downloader": "^1.2.1",
     "reactjs-popup": "^2.0.5",
     "recharts": "^2.2.0",
     "services": "^0.0.3",
