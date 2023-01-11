@@ -10,6 +10,7 @@ import Cookies from 'cookie';
 import { getCookie } from 'cookies-next';
 import { NextRequest } from 'next/server';
 import useAuth from '../context/authContext';
+import useResponse from '../context/responseContext';
 interface FormValues {
   name: string;
   receiver: string;
@@ -105,11 +106,11 @@ const methodType = (method: typeof initialMethod, action: ACTIONTYPE) => {
   }
 };
 
-export default function MessageType(req: NextRequest): JSX.Element {
+export default function MessageType(): JSX.Element {
   const [recieve, dispatch] = useReducer(recieverType, initialReciever);
-  const [success, setSuccess] = useState(true);
-  const [failed, setFailed] = useState(true);
   const [method, setDisplayMethod] = useReducer(methodType, initialMethod);
+  const {updateSuccess, updateMessage, updateFailure} = useResponse();
+
   const options = [
     { value: 'Type numbers', label: 'Type numbers' },
     { value: 'upload file', label: 'upload file' },
@@ -123,10 +124,10 @@ export default function MessageType(req: NextRequest): JSX.Element {
     setFields(JSON.stringify(data));
     console.log(data);
     const url = recieve.single
-      ? 'https://beepin.onrender.com/message/send/single'
+      ? `${process.env.NEXT_PUBLIC_BEEP_IN_BACKEND_URL}/message/send/single`
       : recieve.bulk
-      ? 'https://beepin.onrender.com/message/send/multiple'
-      : 'https://beepin.onrender.com/message/send/group';
+      ? `${process.env.NEXT_PUBLIC_BEEP_IN_BACKEND_URL}/message/send/multiple`
+      : `${process.env.NEXT_PUBLIC_BEEP_IN_BACKEND_URL}/message/send/group`;
     axios
       .post(url, data, {
         headers: {
@@ -135,10 +136,12 @@ export default function MessageType(req: NextRequest): JSX.Element {
         },
       })
       .then((res) => {
-        console.log(res);
-         dispatch({ type: "success" })
+        updateSuccess()
+        updateMessage(res.data.message)
       })
       .catch((err) => {
+        updateFailure()
+        updateMessage(err.message)
         console.log(err);
       });
   };
@@ -209,7 +212,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   name="name"
                   type="text"
                   placeholder="Add name"
-                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  lg:w-2/3 rounded-lg pl-8 ml-24 font-inter"
+                  className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  w-2/3 rounded-lg pl-8 ml-24 "
                 />
               </div>
               <div className="flex ml-20 mt-4">
@@ -224,9 +227,17 @@ export default function MessageType(req: NextRequest): JSX.Element {
                   className=" block border-solid border border-[#6C63FF] border-opacity-10 h-14  lg:w-2/3 rounded-lg pl-8 ml-8 font-inter"
                 />
               </div>
-    
               <div className="flex ml-20 mt-4">
-                <label htmlFor="Message" className='font-karla'>Message </label>
+                <label htmlFor="Message">Sender :</label>
+                <textarea
+                  {...register('name')}
+                  name="name"
+                  placeholder="Disaplayed sender name"
+                  className=" pt-4 block border-solid border border-[#3a3944] border-opacity-10 h-48  w-2/3 rounded-lg pl-8 ml-20 max-h-48 min-h-full"
+                ></textarea>
+              </div>
+              <div className="flex ml-20 mt-4">
+                <label htmlFor="Message">Message :</label>
                 <textarea
                   {...register('text')}
                   name="text"
@@ -341,7 +352,6 @@ export default function MessageType(req: NextRequest): JSX.Element {
                 ></textarea>
               </div>
               <button
-                // onClick={() => dispatch({ type: "failed" })}
                 type="submit"
                 className=" bg-blue-600 text-white rounded-lg flex h-12 items-center w-28 pl-6 float-right mt-8 mr-36 font-inter"
               >
@@ -351,7 +361,7 @@ export default function MessageType(req: NextRequest): JSX.Element {
             </form>
           </div>
         </div>
-      )}
+      )}Beep-in/Bee
 
       {recieve.group && (
         <div>
@@ -399,70 +409,6 @@ export default function MessageType(req: NextRequest): JSX.Element {
               </button>
             </form>
           </div>
-        </div>
-      )}
-      {success && (
-        <div>
-          {recieve.success && (
-            <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
-              <X
-                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
-                onClick={() => setSuccess(false)}
-              />
-              <img
-                src="/icons/messegeSuccess.svg"
-                alt="messege-tick"
-                className="ml-auto mr-auto pt-28"
-              />
-              <div className="w-72 ml-auto mr-auto">
-                <h1 className="text-center pt-8 text-xl">Success!</h1>
-
-                <p className="text-center pt-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Semper scelerisque diam ac nunc rhoncus eget vitae venenatis.
-                  Commodo aliquam aliquam tincidunt et sit sit. Aliquam in et
-                  fermentum vel at.
-                </p>
-              </div>
-              <div className="">
-                <button className="h-12 w-40 bg-[#6C63FF] text-white rounded-lg mt-10 ml-[45%]">
-                  continue
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-      {failed && (
-        <div>
-          {recieve.failed && (
-            <div className="h-full w-full bg-white shadow-sm shadow-slate-400 absolute top-0 left-0">
-              <X
-                className="float-right text-xl hover:text-[#6C63FF] hover:text-2xl"
-                onClick={() => setFailed(false)}
-              />
-              <img
-                src="/icons/messegeFailed.svg"
-                alt="messege-cross"
-                className="ml-auto mr-auto pt-28"
-              />
-              <div className="w-72 ml-auto mr-auto">
-                <h1 className="text-center pt-8 text-xl">Oooops!</h1>
-
-                <p className="text-center pt-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Semper scelerisque diam ac nunc rhoncus eget vitae venenatis.
-                  Commodo aliquam aliquam tincidunt et sit sit. Aliquam in et
-                  fermentum vel at.
-                </p>
-              </div>
-              <div className="">
-                <button className="h-12 w-40 bg-[#6C63FF] text-white rounded-lg mt-10 ml-[45%]">
-                  Try Again
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       )}
     </div>

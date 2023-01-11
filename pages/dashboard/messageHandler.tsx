@@ -1,7 +1,8 @@
 import React from 'react'
 import LeftSidebar from '../../components/dashboard/leftSidebar';
-import TopNavbar from '../../components/dashboard/topBar';
 import MessageType from '../../components/dashboard/messageType';
+import TopNavbar from '../../components/dashboard/topBar';
+import Response from '../../components/utils/response';
 function MessageHandler() {
   return (
     <div>
@@ -10,6 +11,7 @@ function MessageHandler() {
         <LeftSidebar />
         <MessageType />
         </div>
+        <Response/>
     </div>
   )
 }

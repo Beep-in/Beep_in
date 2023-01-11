@@ -10,6 +10,9 @@ module.exports = {
         'karla': ['"karla"', 'sans-serif'],
         'inter': ['"inter"', 'sans-serif'],
       },
+      backgroundColor: {
+        'transBlue' : 'rgba(76, 175, 80, 0.05)'
+      }
     },
   },
   plugins: [],
